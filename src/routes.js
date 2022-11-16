@@ -6,3 +6,5 @@ export const InfoPath = '/info'
 export const LoginPath = '/login';
 export const RegisterPath = '/register';
 export const AboutPath = '/about';
+export const AddAnggotaPatunganPath = '/patungan/add/anggota';
+export const AddKegiatanPatunganPath = '/patungan/add/kegiatan';
