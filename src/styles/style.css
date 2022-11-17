@@ -1,10 +1,16 @@
 :root {
-  --background: #FFFFFF;
+  --background: #764AF1;
   --on-background: #202124;
   --on-shadow: rgba(0, 0, 0, 0.3);
-  --dashboard: #6DB4F4;
-  --list: #E2E2E2;
-  --button: #3B3F46;
+  --dashboard: #FDEBD6;
+  --list: #9772FB;
+  --button: #1A2849;
+  --text: #FFFFFF;
+  --link-logreg: #FDEBD6;
+  --text-small: #D4C4FF;
+  --text-dark: #323232;
+  --text-back: #B79DFF;
+  --button-choice: #9772FB;
 }
 
 * {
@@ -15,9 +21,16 @@
 }
 
 body {
-  font-family: 'PT Sans', sans-serif;
-  background-color: white;
-  color: #202124;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+footer {
+  font-weight: 500;
+  text-align: center;
+  color: #B79DFF;
+  margin-top: 40px;
 }
 
 header {
@@ -25,7 +38,7 @@ header {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  color: var(--on-background);
+  color: var(--text);
   background-color: var(--background);
   border-bottom: 1px solid var(--on-shadow);
 }
@@ -37,19 +50,20 @@ header h1 {
 
 header .navigation ul li {
   display: inline-block;
-  font-size: 24px;
+  font-size: 18px;
   margin: 0 12px;
 }
 
 main {
   margin: 0 auto;
-  padding: 32px 0;
+  padding: 25px 0;
   width: 90%;
   max-width: 1200px;
 }
 
 a {
-  color: black;
+  color: var(--text);
+  text-decoration: none;
 }
 
 .input__action {
@@ -57,7 +71,7 @@ a {
   background-color: #FAFAFA;
   border: 2px solid #E6E6E6;
   border-radius: 10px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   padding: 13px 10px 13px 20px;
@@ -66,6 +80,7 @@ a {
 
 .input__action::placeholder {
   color: #A3ABBB;
+  font-size: 14px;
 }
 
 
@@ -77,18 +92,34 @@ a {
 
 .payu__dashboard{
   padding: 6px;
-  margin-bottom: 15px;
 }
 
 .payu__dashboard-item {
-  color: white;
-  margin: 10px 0 20px 0;
-  padding: 20px;
-  background-color: var(--dashboard);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px 0 var(--on-shadow);
-  padding: 15px;
-  height: 10em;
+  color: var(--text);
+  margin-top: 15px;
+  padding: 5px 0;
+}
+
+.payu__dashboard-item p {
+  font-size: 14px;
+}
+
+.payu__dashboard-item__patungan {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payu__dashboard-item__button {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.payu__dashboard-item__button button {
+  border: 0;
+  font-size: 25px;
+  color: var(--text);
+  background-color: var(--background);
 }
 
 .payu__list-patungan{
@@ -96,24 +127,11 @@ a {
 }
 
 .payu__list-patungan-item{
-  color: black;
-  margin: 10px 0 20px 0;
-  padding: 20px;
+  margin: 10px 0;
   background-color: var(--list);
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 var(--on-shadow);
-  padding: 15px;
-}
-
-.payu__dashboard-item-container {
-  display: flex;
-  flex-flow: column nowrap;
-  align-content: space-between;
-  gap: 15px;
-}
-
-.payu__dashboard-item-container > div {
-  margin: 8px 0;
+  padding: 15px 20px;
 }
 
 .payu__list-patungan-item__text{
@@ -123,12 +141,12 @@ a {
 
 .payu__list-patungan-item__text > p {
   padding: 5px 0 5px 0;
+  color: var(--text-small);
+  font-size: 12px;
 }
 
 .payu__list-patungan-item__description{
-  font-weight: bolder;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: 600;
 }
 
 /* 
@@ -139,25 +157,59 @@ a {
 
 .detail__dashboard{
   padding: 6px;
-  margin-bottom: 5px;
+}
+
+.detail__dashboard-title {
+  padding: 10px 0;
+  margin-bottom: 15px;
+}
+
+.detail__dashboard-title p {
+  font-size: 14px;
 }
 
 .detail__dashboard-item {
-  color: white;
+  color: var(--text-dark);
   margin: 10px 0;
   padding: 20px;
   background-color: var(--dashboard);
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 var(--on-shadow);
   padding: 15px;
-  height: 10em;
+  font-size: 12px;
 }
 
-.detail__dashboard-item-container {
+.detail__dashboard-item__flex {
   display: flex;
-  flex-flow: column nowrap;
-  align-content: space-between;
-  gap: 30px;
+  justify-content: space-between;
+}
+
+.detail__dashboard-item__flex button {
+  border: 0;
+  background-color: var(--dashboard);
+  font-size: 24px;
+}
+
+.detail__dashboard-item__name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.detail__dashboard-item-button {
+  display: flex;
+  justify-content: center;
+}
+
+.detail__dashboard-item-button button{
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: var(--text);
+  padding: 10px;
+  margin: 20px 15px 0 15px;
+  border: 1px solid var(--button);
+  border-radius: 8px;
+  background-color: var(--button);
 }
 
 .detail__list-user{
@@ -165,45 +217,49 @@ a {
 }
 
 .detail__list-user-choice {
+  margin-bottom: 10px;
+}
+
+.detail__list-user-choice button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  width: 10em;
+  height: 3.5em;
+  color: var(--text);
+  padding: 12px;
+  margin-right: 10px;
+  border: 0;
+  border-radius: 25px;
+  background-color: var(--button-choice);
+}
+
+.detail__list-user-search {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
   padding: 10px;
+  margin: 10px 0 15px 0;
+  border-radius: 10px;
+  border: 0;
 }
 
 .detail__list-user-item{
-  color: black;
-  margin: 0 0 20px 0;
-  padding: 20px;
+  color: var(--text);
+  margin: 0 0 10px 0;
+  padding: 15px 20px;
   background-color: var(--list);
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 var(--on-shadow);
-  padding: 15px;
 }
 
 .detail__list-user-item__name{
   font-weight: bolder;
   padding-bottom: 8px;
+  font-size: 16px;
 }
 
-.detail__action {
-  position: fixed;
-  display: flex;
-  gap: 16px;
-  bottom: 32px;
-  right: 32px;
-}
-
-.action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  border: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  background-color: var(--button);
-  color: var(--background);
-  padding: 8px;
-  cursor: pointer;
+.detail__list-user-item__money {
+  font-size: 10px;
 }
 
 /* 
@@ -223,74 +279,107 @@ a {
   background-color: #FAFAFA;
   border: 2px solid #E6E6E6;
   border-radius: 10px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   padding: 13px 10px 13px 20px;
-  margin-top: 20px;
-}
-
-.add-patungan__input .add-patungan__input__description {
-  width: 100%;
-  background-color: #FAFAFA;
-  border: 2px solid #E6E6E6;
-  border-radius: 10px;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 16px;
-  font-weight: lighter;
-  padding: 13px 10px 13px 20px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .add-patungan__input__title::placeholder {
   color: #A3ABBB;
 }
 
-.add-patungan__input__description::placeholder {
-  color: #A3ABBB;
+.add-patungan__wrapper {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: var(--list);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 var(--on-shadow);
 }
 
-.add-patungan__user {
-  margin-top: 15px;
+.add-patungan__wrapper-info {
+  color: var(--text-dark);
+  background-color: var(--dashboard);
+  padding: 18px 22px;
+  margin-top: 8px;
+  border-radius: 8px;
 }
 
-.add-patungan__add-user {
-  margin: 10px 0;
-  border: 8px solid #E6E6E6;
-  border-radius: 12px;
-  background-color: #E6E6E6;
+.add-patungan__wrapper-title {
+  font-size: 14px;
 }
 
-.add-patungan__input__name::placeholder {
-  color: #A3ABBB;
-}
-
-.add-patungan__input__total::placeholder {
-  color: #A3ABBB;
-}
-
-.add-patungan__input .add-patungan__input__name {
-  width: 100%;
-  background-color: #FAFAFA;
-  border: 2px solid #E6E6E6;
-  border-radius: 10px;
-  font-family: 'PT Sans', sans-serif;
+.add-patungan__anggota-info-user {
+  font-weight: 600;
   font-size: 16px;
-  font-weight: lighter;
-  padding: 13px 10px 13px 20px;
   margin-bottom: 5px;
 }
 
-.add-patungan__input .add-patungan__input__total {
-  width: 100%;
-  background-color: #FAFAFA;
-  border: 2px solid #E6E6E6;
-  border-radius: 10px;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 16px;
-  font-weight: lighter;
-  padding: 13px 10px 13px 20px;
+.add-patungan__anggota-info-money {
+  font-size: 12px;
 }
+
+.add-patungan__kegiatan-info-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.add-patungan__kegiatan-info-money {
+  font-size: 12px;
+}
+
+.add-patungan__flex-container {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+}
+
+.add-patungan__flex-container button {
+  border: 0;
+  font-size: 22px;
+  color: var(--text);
+  background-color: var(--list);
+}
+
+/*========================================*/
+/*========================================*/
+
+.add-patungan__add-user {
+  margin: 10px 0;
+  border-radius: 12px;
+}
+
+.add-patungan__add-user__text {
+  margin: 15px 0;
+}
+
+.add-patungan__add-user__text p {
+  color: var(--text-back);
+  font-size: 14px;
+}
+
+/*========================================*/
+/*========================================*/
+
+.add-patungan__add-activity {
+  margin: 10px 0;
+  border-radius: 12px;
+}
+
+.add-patungan__add-activity__text {
+  margin: 15px 0;
+}
+
+.add-patungan__add-activity__text p {
+  color: var(--text-back);
+  font-size: 14px;
+}
+
+/*========================================*/
+/*========================================*/
+
 
 .add-patungan__action {
   margin-top: 15px;
@@ -300,8 +389,8 @@ a {
   width: 100%;
   padding: 12px 20px;
   background-color: var(--button);
-  color: var(--background);
-  font-family: 'PT Sans', sans-serif;
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   border: 0;
   border-radius: 8px;
@@ -323,7 +412,19 @@ a {
   padding: 8px;
 }
 
+.info-page__image{
+  margin: 10px 10px 50px 10px;
+}
+
+.info-page__image img{
+  display: block;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .info-page__text {
+  color: var(--text);
   margin-bottom: 30px;
 }
 
@@ -332,7 +433,7 @@ a {
 }
 
 .info-page__link a{
-  padding: 15px;
+  padding: 15px 22px;
   margin: 10px 0;
   text-decoration: none;
 }
@@ -348,15 +449,15 @@ a {
 }
 
 .about-page__what p{
-  margin: 15px 0 25px 0;
+  margin: 10px 0 25px 0;
 }
 
 .about-page__why p{
-  margin: 15px 0 25px 0;
+  margin: 10px 0 25px 0;
 }
 
 .about-page__who ol{
-  margin: 15px 0 25px 0;
+  margin: 10px 0 25px 0;
 }
 
 .about-page__who ol li {
@@ -373,7 +474,7 @@ a {
   padding: 8px;
 }
 
-.input-login h2 {
+.login-page__header{
   margin-bottom: 25px;
 }
 
@@ -382,12 +483,12 @@ a {
 }
 
 .login__action button {
-  padding: 15px;
+  padding: 15px 22px;
 }
 
 .login-page a {
   text-decoration: none;
-  color: #005DFF;
+  color: var(--link-logreg);
 }
 
 .login__link {
@@ -405,6 +506,10 @@ a {
   padding: 8px
 }
 
+.register-page__header{
+  margin-bottom: 25px;
+}
+
 .input-register h2 {
   margin-bottom: 25px;
 }
@@ -414,12 +519,12 @@ a {
 }
 
 .register__action button {
-  padding: 15px;
+  padding: 15px 22px;
 }
 
 .register-page a {
   text-decoration: none;
-  color: #005DFF;
+  color: var(--link-logreg);
 }
 
 .register__link {
@@ -441,37 +546,64 @@ a {
   }
 
   header .navigation ul li {
-    font-size: 18px;
+    font-size: 14px;
     margin: 0 8px;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .home{
-    display: flex;
-    justify-content: space-between;
+@media screen and (min-width: 435px) {
+  header .navigation ul li {
+    font-size: 14px;
+    margin: 0 8px;
   }
+}
+
+@media screen and (min-width: 600px) {
+  .detail__dashboard-item {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
 
   .payu__dashboard {
-    width: 50%;
+    width: 100%;
   }
-
+  
   .payu__dashboard-item {
     height: 100%;
   }
 
+  .payu__dashboard-item h3 {
+    font-size: 26px;
+  }
+
+  .payu__dashboard-item__patungan p {
+    font-size: 16px;
+  }
+
+  .payu__list-patungan-item__description {
+    font-size: 18px;
+  }
+
+  .payu__list-patungan-item__text p {
+    font-size: 14px;
+  }
+
+  .payu__dashboard-item__button button {
+    font-size: 32px;
+  }
+
   .payu__list-patungan {
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
 
-  .detail-patungan{
-    display: flex;
-    justify-content: space-between;
-  }
+  /*=====================================*/
+  /*=====================================*/
 
   .detail__dashboard {
-    width: 50%;
+    width: 100%;
   }
 
   .detail__dashboard-item {
@@ -479,7 +611,96 @@ a {
   }
 
   .detail__list-user {
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
+
+  .detail__list-user-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+  }
+
+  .detail__dashboard-item-button {
+    display: flex;
+    justify-content: right;
+  }
+
+  .detail__dashboard-item__flex button {
+    font-size: 28px;
+  }
+
+  /*=====================================*/
+  /*=====================================*/
+}
+
+@media screen and (min-width: 1000px) {
+  header .navigation ul li {
+    font-size: 18px;
+  }
+
+  .login-page {
+    width: 50%;
+  }
+
+  .register-page {
+    width: 50%;
+  }
+
+  .info-page {
+    margin-top: 30px;
+    display: flex;
+    gap: 40px;
+  }
+
+  .info-page__text h2 {
+    font-size: 30px;
+  }
+
+  .info-page__text-acronym {
+    font-size: 22px;
+  }
+
+  .info-page__text-desc {
+    font-size: 18px;
+  }
+
+  .info-page__image {
+    width: 40%;
+    order: 2;
+    margin: auto;
+  }
+
+  .info-page__image img{
+    height: 300px;
+  }
+
+  .info-page__container {
+    width: 60%;
+  }
+
+  .detail__dashboard-title h2 {
+    font-size: 28px;
+  }
+
+  .detail__dashboard-title p {
+    font-size: 16px;
+  }
+
+  .detail__dashboard-item__name {
+    font-size: 22px;
+  }
+
+  .detail__dashboard-item__info p {
+    font-size: 14px;
+  }
+
+  .detail__list-user-item__name{
+    font-size: 18px;
+  }
+  
+  .detail__list-user-item__money {
+    font-size: 12px;
+  }
+
 }

@@ -18,7 +18,6 @@ function LoginInput({ login }){
   return (
     <div className='input-login'>
       <form onSubmit={onSubmitHandler} className='login-input'>
-        <h2>Login</h2>
         <input className="input__action" type="email" id='email' placeholder="Email" value={email} onChange={onEmailChange} required/>
         <input className="input__action" type="password" id='password' placeholder="Password" value={password} onChange={onPasswordChange} required/>
         <div className='login__action'>

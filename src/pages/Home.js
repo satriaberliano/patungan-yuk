@@ -1,33 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { DetailPatunganPath } from "../routes";
+import { DetailPatunganPath, TambahPatunganPath } from "../routes";
+import { FiPlusSquare, FiLogOut } from 'react-icons/fi';
+import { FaUsers, FaCoins } from 'react-icons/fa';
 
 function Home(){
   return(
     <section className="home">
       <section className="payu__dashboard">
-        <h2>Dashboard</h2>
         <div className="payu__dashboard-item">
-          <section className="payu__dashboard-item-container">
-            <div>
-              <h3>Halo, Pengguna!</h3>
+          <h3>Hai, Pengguna!</h3>
+          <div className="payu__dashboard-item__patungan">
+            <p>Kamu  memiliki 3 Patungan</p>
+            <div className="payu__dashboard-item__button">
+              <button type='button'><Link to={`${TambahPatunganPath}`}><FiPlusSquare /></Link></button>
+              <button type='button'><FiLogOut /></button>
             </div>
-            <div>
-              <p>Kamu  memiliki</p>
-              <h3>3 Patungan</h3>
-            </div>
-          </section>
+          </div>
         </div>
       </section>
       <section className="payu__list-patungan">
-        <h2>Daftar Patungan Kamu</h2>
         <div className="payu__list-patungan-item">
           <p className="payu__list-patungan-item__description">
             <Link to={`${DetailPatunganPath}`}>Jalan - jalan ke Labuan Bajo</Link>
           </p>
           <section className="payu__list-patungan-item__text">
-            <p>4 anggota</p>
-            <p>Rp 12.000.000</p>
+            <p><FaUsers /> 4 anggota</p>
+            <p><FaCoins /> Rp 12.000.000</p>
           </section>
         </div>
         <div className="payu__list-patungan-item">
@@ -35,8 +34,8 @@ function Home(){
             <Link to={`${DetailPatunganPath}`}>Belanja ke Paris Van Java</Link>
           </p>
           <section className="payu__list-patungan-item__text">
-            <p>2 anggota</p>
-            <p>Rp 4.000.000</p>
+            <p><FaUsers /> 2 anggota</p>
+            <p><FaCoins /> Rp 4.000.000</p>
           </section>
         </div>
         <div className="payu__list-patungan-item">
@@ -44,8 +43,8 @@ function Home(){
             <Link to={`${DetailPatunganPath}`}>Hangout</Link>
           </p>
           <section className="payu__list-patungan-item__text">
-            <p>3 anggota</p>
-            <p>Rp 600.000</p>
+            <p><FaUsers /> 3 anggota</p>
+            <p><FaCoins /> Rp 600.000</p>
           </section>
         </div>
       </section>

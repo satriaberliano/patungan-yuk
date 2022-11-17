@@ -1,5 +1,9 @@
 import React from "react";
 import { FiArrowRight } from 'react-icons/fi';
+import { FaCoins } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import { FiPlusSquare } from 'react-icons/fi';
+import { AddAnggotaPatunganPath, AddKegiatanPatunganPath } from "../routes";
 
 class PatunganInput extends React.Component{
   constructor(props){
@@ -14,8 +18,6 @@ class PatunganInput extends React.Component{
 
     this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
     this.onDescriptionChangeEventHandler = this.onDescriptionChangeEventHandler.bind(this);
-    this.onNameChangeEventHandler = this.onNameChangeEventHandler.bind(this);
-    this.onTotalChangeEventHandler = this.onTotalChangeEventHandler.bind(this);
     this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
   }
 
@@ -35,22 +37,6 @@ class PatunganInput extends React.Component{
     })
   }
 
-  onNameChangeEventHandler(event){
-    this.setState(() => {
-      return {
-        name: event.target.value
-      }
-    })
-  }
-
-  onTotalChangeEventHandler(event){
-    this.setState(() => {
-      return {
-        total: event.target.value
-      }
-    })
-  }
-
   onSubmitEventHandler(event){
     event.preventDefault();
     this.props.addPatungan(this.state);
@@ -62,11 +48,26 @@ class PatunganInput extends React.Component{
         <h2>Buat Patungan</h2>
         <form onSubmit={this.onSubmitEventHandler}>
           <input className='add-patungan__input__title' type='text' placeholder="Judul" required value={this.state.title} onChange={this.onTitleChangeEventHandler}/>
-          <input className='add-patungan__input__description' type='text' placeholder="Deskripsi" required value={this.state.description} onChange={this.onDescriptionChangeEventHandler}/>
-          <p className='add-patungan__user'>Anggota</p>
-          <div className='add-patungan__add-user'>
-            <input className='add-patungan__input__name' type='text' placeholder="Nama" required value={this.state.name} onChange={this.onNameChangeEventHandler}/>
-            <input className='add-patungan__input__total' type='text' placeholder="Jumlah Patungan" required value={this.state.total} onChange={this.onTotalChangeEventHandler}/>
+        </form>
+          <div className="add-patungan__wrapper">
+            <div className='add-patungan__flex-container'>
+              <p className='add-patungan__wrapper-title'>Anggota</p>
+              <button type='button' className='add-patungan__button'><Link to={AddAnggotaPatunganPath}><FiPlusSquare /></Link></button>
+            </div>
+            <div className='add-patungan__wrapper-info'>
+              <p className='add-patungan__anggota-info-user'>Aldo</p>
+              <p className='add-patungan__anggota-info-money'><FaCoins /> Rp 3.000.000</p>
+            </div>
+          </div>
+          <div className="add-patungan__wrapper">
+            <div className='add-patungan__flex-container'>
+              <p className='add-patungan__wrapper-title'>Kegiatan</p>
+              <button type='button' className='add-patungan__button'><Link to={AddKegiatanPatunganPath}><FiPlusSquare /></Link></button>
+            </div>
+            <div className='add-patungan__wrapper-info'>
+              <p className='add-patungan__kegiatan-info-title'>Biaya Hotel 5 Hari</p>
+              <p className='add-patungan__anggota-info-money'><FaCoins /> Rp 3.000.000</p>
+            </div>
           </div>
           <div className='add-patungan__action'>
             <button className='action-submit' type='submit' title='Simpan'>
@@ -74,7 +75,6 @@ class PatunganInput extends React.Component{
               <FiArrowRight />
             </button>
           </div>
-        </form>
       </section>
     )
   }

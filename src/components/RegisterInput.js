@@ -26,7 +26,6 @@ function RegisterInput({ register }) {
   return (
     <div className='input-register'>
       <form onSubmit={onSubmitHandler} className='register-input'>
-        <h2>Register</h2>
         <input className="input__action" type="text" placeholder="Nama" value={name} onChange={onNameChange} required/>
         <input className="input__action" type="email" placeholder="Email" value={email} onChange={onEmailChange} required/>
         <input className="input__action" type="password" placeholder="Password" value={password} onChange={onPasswordChange} required/>
