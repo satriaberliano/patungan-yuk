@@ -1,7 +1,7 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 
-class AddKegiatanPatunganPage extends React.Component{
+class ChangeKegiatanPatunganPage extends React.Component{
   constructor(props){
     super(props);
 
@@ -32,22 +32,22 @@ class AddKegiatanPatunganPage extends React.Component{
 
   onSubmitEventHandler(event){
     event.preventDefault();
-    this.props.addKegiatan(this.state);
+    this.props.addAnggota(this.state);
   }
 
   render(){
     return(
-      <div className="add-kegiatan-patungan-page">
-        <div className='add-patungan__add-activity'>
-          <div className='add-patungan__add-activity__text'>
-            <h2>Tambah Kegiatan</h2>
+      <div className="change-kegiatan-patungan-page">
+        <div className='add-patungan__change-kegiatan'>
+          <div className='add-patungan__change-kegiatan__text'>
+            <h2>Ubah Kegiatan</h2>
           </div>
           <form onSubmit={this.onSubmitEventHandler}>
-            <input className='input__action' type='text' placeholder="Judul" required value={this.state.activity} onChange={this.onActivityChangeEventHandler}/>
-            <input className='input__action' type='text' placeholder="Dana yang digunakan" required value={this.state.spend} onChange={this.onSpendChangeEventHandler}/>
-            <div className='add-patungan__action'>
-              <button className='action-submit' type='submit' title='Tambah'>
-                <p>Tambah</p>
+            <input className='input__action' type='text' placeholder="Judul" value={this.state.activity} onChange={this.onActivityChangeEventHandler}/>
+            <input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.spend} onChange={this.onSpendChangeEventHandler}/>
+            <div className='register__action'>
+              <button className='action-submit' type='submit' title='Ubah'>
+                <p>Ubah</p>
                 <FiArrowRight />
               </button>
             </div>
@@ -58,4 +58,4 @@ class AddKegiatanPatunganPage extends React.Component{
   }
 };
 
-export default AddKegiatanPatunganPage;
+export default ChangeKegiatanPatunganPage;
