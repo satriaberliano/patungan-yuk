@@ -1,0 +1,12 @@
+export const rootPath = '/';
+export const notFoundPath = '/*';
+export const DetailPatunganPath = '/detail-patungan'; //di tambah id nanti
+export const TambahPatunganPath = '/patungan/add';
+export const InfoPath = '/info'
+export const LoginPath = '/login';
+export const RegisterPath = '/register';
+export const AboutPath = '/about';
+export const AddAnggotaPatunganPath = '/patungan/add/anggota';
+export const AddKegiatanPatunganPath = '/patungan/add/kegiatan';
+export const EditKegiatanPath = '/patungan/editkegiatan' //ditambah judulkegiatan atau ID kegiatan
+export const AddJumlahPatunganAnggotaPath = '/patungan/tambahjumlahpatungan' // ditambah nama anggota / id anggota yang diedit
