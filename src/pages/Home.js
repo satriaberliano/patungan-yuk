@@ -9,13 +9,13 @@ function Home(){
     <section className="home">
       <section className="payu__dashboard">
         <div className="payu__dashboard-item">
-          <h3>Hai, Pengguna!</h3>
-          <div className="payu__dashboard-item__patungan">
+          <div className="payu__dashboard-item__text">
+            <h2>Hai, Pengguna!</h2>
             <p>Kamu  memiliki 3 Patungan</p>
-            <div className="payu__dashboard-item__button">
-              <button type='button'><Link to={`${TambahPatunganPath}`}><FiPlusSquare /></Link></button>
-              <button type='button'><FiLogOut /></button>
-            </div>
+          </div>
+          <div className="payu__dashboard-item__button">
+            <button type='button'><Link to={`${TambahPatunganPath}`}><FiPlusSquare /></Link></button>
+            <button type='button'><FiLogOut /></button>
           </div>
         </div>
       </section>

@@ -4,12 +4,12 @@ import { HiOutlineTrash } from 'react-icons/hi';
 import { Link } from "react-router-dom";
 import { AddAnggotaPatunganPath, AddKegiatanPatunganPath } from "../routes";
 
-function DetailDashboard(){
+function DetailDashboard({ deletePatungan }){
   return(
     <div className="detail__dashboard-item">
       <div className="detail__dashboard-item__flex">
         <p className="detail__dashboard-item__name">Jalan - jalan ke Labuan Bajo</p>
-        <button type="button"><HiOutlineTrash /></button>
+        <button type="button" onClick={deletePatungan}><HiOutlineTrash /></button>
       </div>
       <div className="detail__dashboard-item__info">
         <p className="detail__dashboard-item__user"><FaUsers /> 4 anggota</p>

@@ -14,6 +14,7 @@ import AddKegiatanPatunganPage from "../pages/AddKegiatanPatunganPage";
 import AddJumlahPatunganAnggotaPage from "../pages/AddJumlahPatunganAnggotaPage";
 import EditKegiatanPage from "../pages/EditKegiatanPage";
 
+
 function PayuApp(){
   return(
     <div className="app-container">
