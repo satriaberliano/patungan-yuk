@@ -3,12 +3,12 @@
   --on-background: #202124;
   --on-shadow: rgba(0, 0, 0, 0.3);
   --dashboard: #FDEBD6;
-  --list: #9772FB;
+  --list: #E0E0E0;
   --button: #0F891B;
   --on-button-text: #FFFFFF;
   --text: #232323;
   --link-logreg: #FDEBD6;
-  --text-small: #D4C4FF;
+  --text-small: #636363;
   --text-dark: #323232;
   --text-back: #B79DFF;
   --button-choice: #9772FB;
@@ -19,13 +19,14 @@
   margin: 0;
   box-sizing: border-box;
   transition: background 0.3s ease-in;
-  /* border: 0.1px solid red; */
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background);
   color: var(--text);
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
@@ -56,8 +57,13 @@ header .navigation ul li {
   margin: 0 12px;
 }
 
+.header-logo-wrapper a {
+  display: flex;
+  align-items: center;
+}
+
 .header-logo {
-  height: 30px;
+  height: 25px;
 }
 
 main {
@@ -445,6 +451,10 @@ a {
   color: #A3ABBB;
 }
 
+.title-submit {
+  margin-top: 10px;
+}
+
 .action-submit__link {
   display: flex;
   align-items: center;
@@ -456,7 +466,7 @@ a {
 }
 
 .add-new-patungan__form {
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   background-color: #E0E0E0;
 }
@@ -476,7 +486,7 @@ a {
 .new-anggota__item,
 .new-kegiatan__item {
   background-color: #E0E0E0;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -488,7 +498,7 @@ a {
 .new-anggota__name,
 .new-kegiatan__title {
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .new-anggota__money,
@@ -511,6 +521,13 @@ a {
   align-items: center;
   border: none;
   background-color: transparent;
+}
+
+.conditional-rendering {
+  font-size: 14px;
+  font-style: italic;
+  color: #636363;
+  padding: 20px 0;
 }
 
 
