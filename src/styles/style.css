@@ -5,11 +5,11 @@
   --dashboard: #B9F1BF;
   --list: #E0E0E0;
   --button: #0F891B;
-  --title: #232323;
   --button-text: #FFFFFF;
+  --title: #232323;
   --text: #636363;
-  --text-nav: #0C6915;
   --link-logreg: #0F891B;
+  --text-nav: #0C6915;
   --text-small: #232323;
   --text-dark: #323232;
   --text-back: #B79DFF;
@@ -53,11 +53,18 @@ body {
   color: var(--text);
 }
 
+#root {
+  min-height: 85vh; 
+  margin: 0; 
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 footer {
   font-weight: 500;
   text-align: center;
   color: #A3ABBB;
-  margin-top: 40px;
+  margin: 25px 0;
 }
 
 h2, h3 {
@@ -114,6 +121,25 @@ a {
   font-size: 14px;
 }
 
+.currencyinput {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+}
+
+.currencyinput input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.currencyinput p {
+  text-align: center;
+  font-weight: bolder;
+  padding: 13px;
+  background-color: #A3ABBB;
+  margin: 8px 0;
+  border: 2px solid #E6E6E6;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 
 /* 
 =====================================

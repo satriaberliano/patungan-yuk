@@ -17,8 +17,8 @@ function DetailDashboard({ deletePatungan }){
         <p className="detail__dashboard-item__leftover">Sisa patungan: Rp 5.000.000</p>
       </div>
       <div className="detail__dashboard-item-button">
-        <button type="button"><Link to={`${AddAnggotaPatunganPath}`}>Tambah Anggota</Link></button>
-        <button type="button"><Link to={`${AddKegiatanPatunganPath}`}>Tambah Kegiatan</Link></button>
+        <button type="button"><Link to={AddAnggotaPatunganPath}>Tambah Anggota</Link></button>
+        <button type="button"><Link to={AddKegiatanPatunganPath}>Tambah Kegiatan</Link></button>
       </div>
     </div>
   );

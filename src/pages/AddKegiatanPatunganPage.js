@@ -43,10 +43,10 @@ class AddKegiatanPatunganPage extends React.Component{
             <h2>Tambah Kegiatan</h2>
           </div>
           <form onSubmit={this.onSubmitEventHandler}>
-            <input className='input__action' type='text' placeholder="Judul" required value={this.state.activity} onChange={this.onActivityChangeEventHandler}/>
-            <input className='input__action' type='text' placeholder="Dana yang digunakan" required value={this.state.spend} onChange={this.onSpendChangeEventHandler}/>
+            <input className='input__action' type='text' placeholder="Judul kegiatan" required value={this.state.activity} onChange={this.onActivityChangeEventHandler}/>
+            <span className="currencyinput"><p>Rp</p><input className='input__action' type='text' placeholder="Dana yang digunakan" required value={this.state.spend} onChange={this.onSpendChangeEventHandler}/></span>
             <div className='add-patungan__action'>
-              <button className='action-submit' type='submit' title='Tambah'>
+              <button className='action-submit' type='submit' title='Tambah rincian kegiatan'>
                 <p>Tambah</p>
                 <FiArrowRight />
               </button>

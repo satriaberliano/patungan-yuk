@@ -43,8 +43,8 @@ class AddAnggotaPatunganPage extends React.Component{
             <h2>Tambah Anggota</h2>
           </div>
           <form onSubmit={this.onSubmitEventHandler}>
-            <input className='input__action' type='text' placeholder="Nama" required value={this.state.name} onChange={this.onNameChangeEventHandler}/>
-            <input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.total} onChange={this.onTotalChangeEventHandler}/>
+            <input className='input__action' type='text' placeholder="Nama Anggota" required value={this.state.name} onChange={this.onNameChangeEventHandler}/>
+            <span className="currencyinput"><p>Rp</p><input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.total} onChange={this.onTotalChangeEventHandler}/></span>
             <div className='register__action'>
               <button className='action-submit' type='submit' title='Tambah'>
                 <p>Tambah</p>
