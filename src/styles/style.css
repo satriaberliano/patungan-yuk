@@ -1,11 +1,12 @@
 :root {
-  --background: #764AF1;
+  --background: #F4F7ED;
   --on-background: #202124;
   --on-shadow: rgba(0, 0, 0, 0.3);
   --dashboard: #FDEBD6;
   --list: #9772FB;
-  --button: #1A2849;
-  --text: #FFFFFF;
+  --button: #0F891B;
+  --on-button-text: #FFFFFF;
+  --text: #232323;
   --link-logreg: #FDEBD6;
   --text-small: #D4C4FF;
   --text-dark: #323232;
@@ -18,6 +19,7 @@
   margin: 0;
   box-sizing: border-box;
   transition: background 0.3s ease-in;
+  /* border: 0.1px solid red; */
 }
 
 body {
@@ -29,7 +31,7 @@ body {
 footer {
   font-weight: 500;
   text-align: center;
-  color: #B79DFF;
+  color: #A3ABBB;
   margin-top: 40px;
 }
 
@@ -54,6 +56,10 @@ header .navigation ul li {
   margin: 0 12px;
 }
 
+.header-logo {
+  height: 30px;
+}
+
 main {
   margin: 0 auto;
   padding: 25px 0;
@@ -69,7 +75,7 @@ a {
 .input__action {
   width: 100%;
   background-color: #FAFAFA;
-  border: 2px solid #E6E6E6;
+  border: 2px solid #A3ABBB;
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -389,18 +395,124 @@ a {
   width: 100%;
   padding: 12px 20px;
   background-color: var(--button);
-  color: var(--text);
+  color: var(--on-button-text);
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .action-submit svg {
   font-size: 20px;
 }
+
+
+/* 
+=====================================
+           ADD NEW PATUNGAN
+=====================================
+*/
+.add-new-patungan__title {
+  margin-bottom: 20px;
+}
+
+.add-new-patungan__title .optional {
+  font-style: italic;
+  color: #636363;
+  font-size: 14px;
+}
+
+.add-new-patungan__input__title,
+.add-new-anggota__input__name,
+.add-new-anggota__input__value,
+.add-new-kegiatan__input__name,
+.add-new-kegiatan__input__value {
+  width: 100%;
+  background-color: #FAFAFA;
+  border: 2px solid #A3ABBB;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  padding: 13px 10px 13px 20px;
+  margin-bottom: 10px;
+}
+
+.add-patungan__input__title::placeholder {
+  color: #A3ABBB;
+}
+
+.action-submit__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--on-button-text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+.add-new-patungan__form {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+}
+
+.new-patungan-action-submit {
+  background-color: #656E81;
+}
+
+.new-patungan__contaner {
+  margin: 20px 0;
+}
+
+.new-patungan__title {
+  font-weight: 600;
+}
+
+.new-anggota__item,
+.new-kegiatan__item {
+  background-color: #E0E0E0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #323232;
+  margin-top: 10px;
+}
+
+.new-anggota__name,
+.new-kegiatan__title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.new-anggota__money,
+.new-kegiatan__money {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.new-anggota__money svg,
+.new-kegiatan__money svg {
+  margin-right: 5px;
+}
+
+.action-delete__anggota,
+.action-delete__kegiatan {
+  font-size: 30px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+}
+
 
 /* 
 =====================================

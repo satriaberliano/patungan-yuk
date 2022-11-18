@@ -1,7 +1,9 @@
 export const rootPath = '/';
 export const notFoundPath = '/*';
 export const DetailPatunganPath = '/detail-patungan'; //di tambah id nanti
-export const TambahPatunganPath = '/patungan/add';
+export const AddNewPatunganPath = '/patungan/add/new';
+export const AddNewAnggotaPatunganPath = '/patungan/add/new/anggota';
+export const AddNewKegiatanPatunganPath = '/patungan/add/new/kegiatan';
 export const InfoPath = '/info'
 export const LoginPath = '/login';
 export const RegisterPath = '/register';

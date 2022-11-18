@@ -7,7 +7,7 @@ function AppHeader(){
   return(
     <>
       <h1>
-        <Link to={`${rootPath}`}>PAYU</Link>
+        <Link to={`${rootPath}`}><img className='header-logo' src='./images/logo-header.png' /></Link>
       </h1>
       <Navigation />
     </>
