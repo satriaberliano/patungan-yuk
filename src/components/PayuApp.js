@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import AppHeader from "./AppHeader";
 import DetailPage from "../pages/DetailPage";
 import AddNewPatunganPage from "../pages/AddNewPatunganPage";
-import { rootPath, DetailPatunganPath, AddNewPatunganPath, InfoPath, LoginPath, RegisterPath, AboutPath, AddAnggotaPatunganPath, AddKegiatanPatunganPath, AddNewAnggotaPatunganPath, AddNewKegiatanPatunganPath } from '../routes';
+import { rootPath, DetailPatunganPath, AddNewPatunganPath, InfoPath, LoginPath, RegisterPath, AboutPath, AddAnggotaPatunganPath, AddKegiatanPatunganPath, AddNewAnggotaPatunganPath, AddNewKegiatanPatunganPath, AddJumlahPatunganAnggotaPath, EditKegiatanPath, AddUangPatunganPath, ChangeKegiatanPath } from '../routes';
 import InfoPage from "../pages/InfoPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
@@ -13,6 +13,10 @@ import AddAnggotaPatunganPage from "../pages/AddAnggotaPatunganPage";
 import AddKegiatanPatunganPage from "../pages/AddKegiatanPatunganPage";
 import AddNewAnggotaPatunganPage from "../pages/AddNewAnggotaPatunganPage";
 import AddNewKegiatanPatunganPage from "../pages/AddNewKegiatanPatunganPage";
+import AddJumlahPatunganAnggotaPage from "../pages/AddJumlahPatunganAnggotaPage";
+import EditKegiatanPage from "../pages/EditKegiatanPage";
+import AddUangPatunganPage from "../pages/AddUangPatunganPage";
+import ChangeKegiatanPatunganPage from "../pages/ChangeKegiatanPatunganPage";
 
 function PayuApp(){
   return(
@@ -35,6 +39,8 @@ function PayuApp(){
           <Route path={AddKegiatanPatunganPath} element={<AddKegiatanPatunganPage />}></Route>
           <Route path={AddJumlahPatunganAnggotaPath} element={<AddJumlahPatunganAnggotaPage />}></Route>
           <Route path={EditKegiatanPath} element={<EditKegiatanPage />}></Route>
+          <Route path={AddUangPatunganPath} element={<AddUangPatunganPage />}></Route>
+          <Route path={ChangeKegiatanPath} element={<ChangeKegiatanPatunganPage />}></Route>
         </Routes>
       </main>
     </div>
