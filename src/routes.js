@@ -12,3 +12,5 @@ export const AddAnggotaPatunganPath = '/detail-patungan/add/anggota';
 export const AddKegiatanPatunganPath = '/detail-patungan/add/kegiatan';
 export const EditKegiatanPath = '/detail-patungan/edit-kegiatan' //ditambah judulkegiatan atau ID kegiatan
 export const AddJumlahPatunganAnggotaPath = '/detail-patungan/tambah-jumlah-patungan' // ditambah nama anggota / id anggota yang diedit
+export const AddUangPatunganPath = '/detail-patungan/add-uang-patungan'
+export const ChangeKegiatanPath = '/detail-patungan/change-kegiatan';
