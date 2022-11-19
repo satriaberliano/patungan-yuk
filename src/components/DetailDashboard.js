@@ -1,13 +1,15 @@
 import React from "react";
 import { FaUsers, FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash } from 'react-icons/hi';
+import { Link } from "react-router-dom";
+import { AddAnggotaPatunganPath, AddKegiatanPatunganPath } from "../routes";
 
-function DetailDashboard(){
+function DetailDashboard({ deletePatungan }){
   return(
     <div className="detail__dashboard-item">
       <div className="detail__dashboard-item__flex">
         <p className="detail__dashboard-item__name">Jalan - jalan ke Labuan Bajo</p>
-        <button type="button"><HiOutlineTrash /></button>
+        <button type="button" onClick={deletePatungan}><HiOutlineTrash /></button>
       </div>
       <div className="detail__dashboard-item__info">
         <p className="detail__dashboard-item__user"><FaUsers /> 4 anggota</p>
@@ -15,8 +17,8 @@ function DetailDashboard(){
         <p className="detail__dashboard-item__leftover">Sisa patungan: Rp 5.000.000</p>
       </div>
       <div className="detail__dashboard-item-button">
-        <button type="button">Tambah Anggota</button>
-        <button type="button">Tambah Kegiatan</button>
+        <Link to={AddAnggotaPatunganPath}><button type="button">Tambah Anggota</button></Link>
+        <Link to={AddKegiatanPatunganPath}><button type="button">Tambah Kegiatan</button></Link>
       </div>
     </div>
   );
