@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { DetailPatunganPath, TambahPatunganPath } from "../routes";
+import { DetailPatunganPath, AddNewPatunganPath } from "../routes";
 import { FiPlusSquare, FiLogOut } from 'react-icons/fi';
 import { FaUsers, FaCoins } from 'react-icons/fa';
 
@@ -9,13 +9,13 @@ function Home(){
     <section className="home">
       <section className="payu__dashboard">
         <div className="payu__dashboard-item">
-          <div className="payu__dashboard-item__text">
-            <h2>Hai, Pengguna!</h2>
+          <h3>Hai, Pengguna!</h3>
+          <div className="payu__dashboard-item__patungan">
             <p>Kamu  memiliki 3 Patungan</p>
-          </div>
-          <div className="payu__dashboard-item__button">
-            <button type='button'><Link to={`${TambahPatunganPath}`}><FiPlusSquare /></Link></button>
-            <button type='button'><FiLogOut /></button>
+            <div className="payu__dashboard-item__button">
+              <button type='button'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
+              <button type='button'><FiLogOut /></button>
+            </div>
           </div>
         </div>
       </section>
