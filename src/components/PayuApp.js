@@ -33,6 +33,8 @@ function PayuApp(){
           <Route path={AboutPath} element={<AboutPage />}></Route>
           <Route path={AddAnggotaPatunganPath} element={<AddAnggotaPatunganPage />}></Route>
           <Route path={AddKegiatanPatunganPath} element={<AddKegiatanPatunganPage />}></Route>
+          <Route path={AddJumlahPatunganAnggotaPath} element={<AddJumlahPatunganAnggotaPage />}></Route>
+          <Route path={EditKegiatanPath} element={<EditKegiatanPage />}></Route>
         </Routes>
       </main>
     </div>

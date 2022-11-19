@@ -1,25 +1,15 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 
-class AddAnggotaPatunganPage extends React.Component{
+class AddUangPatunganPage extends React.Component{
   constructor(props){
     super(props);
 
     this.state = {
-      name: '',
       total: '',
     }
 
-    this.onNameChangeEventHandler = this.onNameChangeEventHandler.bind(this);
     this.onTotalChangeEventHandler = this.onTotalChangeEventHandler.bind(this);
-  }
-
-  onNameChangeEventHandler(event){
-    this.setState(() => {
-      return {
-        name: event.target.value
-      }
-    })
   }
 
   onTotalChangeEventHandler(event){
@@ -37,14 +27,15 @@ class AddAnggotaPatunganPage extends React.Component{
 
   render(){
     return(
-      <div className="add-anggota-patungan-page">
-        <div className='add-patungan__add-user'>
-          <div className='add-patungan__add-user__text'>
-            <h2>Tambah Anggota</h2>
+      <div className="add-uang-patungan-page">
+        <div className='add-patungan__add-uang'>
+          <div className='add-patungan__add-uang__text'>
+            <h2>Tambah Patungan</h2>
+            <p>Untuk Hifki</p>
           </div>
+          <p><span>Dana yang ingin ditambahkan</span></p>
           <form onSubmit={this.onSubmitEventHandler}>
-            <input className='input__action' type='text' placeholder="Nama Anggota" required value={this.state.name} onChange={this.onNameChangeEventHandler}/>
-            <span className="currencyinput"><p>Rp</p><input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.total} onChange={this.onTotalChangeEventHandler}/></span>
+            <input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.total} onChange={this.onTotalChangeEventHandler}/>
             <div className='register__action'>
               <button className='action-submit' type='submit' title='Tambah'>
                 <p>Tambah</p>
@@ -58,4 +49,4 @@ class AddAnggotaPatunganPage extends React.Component{
   }
 };
 
-export default AddAnggotaPatunganPage;
+export default AddUangPatunganPage;
