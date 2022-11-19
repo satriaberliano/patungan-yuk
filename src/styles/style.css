@@ -2,22 +2,16 @@
   --background: #F4F7ED;
   --on-background: #202124;
   --on-shadow: rgba(0, 0, 0, 0.3);
-  --dashboard: #B9F1BF;
+  --dashboard: #FDEBD6;
   --list: #E0E0E0;
   --button: #0F891B;
-  --button-text: #FFFFFF;
-  --title: #232323;
-  --text: #636363;
+  --on-button-text: #FFFFFF;
+  --text: #232323;
   --link-logreg: #0F891B;
-  --text-nav: #0C6915;
-  --text-small: #232323;
+  --text-small: #636363;
   --text-dark: #323232;
   --text-back: #B79DFF;
-  --text-green: #0F891B;
-  --text-dark-green: #0C6915;
-  --text-red: #F32424;
-  --button-choice: #0F891B;
-  --button-choice-default: #E0E0E0;
+  --button-choice: #9772FB;
 }
 
 .swal-text {
@@ -64,7 +58,7 @@ footer {
   font-weight: 500;
   text-align: center;
   color: #A3ABBB;
-  margin: 25px 0;
+  margin-top: 40px;
 }
 
 h2, h3 {
@@ -81,7 +75,7 @@ header {
   border-bottom: 1px solid var(--on-shadow);
 }
 
-header h1 {
+header .header-logo-wrapper {
   flex: 1;
   margin-left: 20px;
 }
@@ -90,6 +84,15 @@ header .navigation ul li {
   display: inline-block;
   font-size: 18px;
   margin: 0 12px;
+}
+
+.header-logo-wrapper a {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 25px;
 }
 
 main {
@@ -107,7 +110,7 @@ a {
 .input__action {
   width: 100%;
   background-color: #FAFAFA;
-  border: 2px solid #E6E6E6;
+  border: 2px solid #A3ABBB;
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -580,18 +583,135 @@ a {
   width: 100%;
   padding: 12px 20px;
   background-color: var(--button);
-  color: var(--button-text);
+  color: var(--on-button-text);
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .action-submit svg {
   font-size: 20px;
 }
+
+
+/* 
+=====================================
+           ADD NEW PATUNGAN
+=====================================
+*/
+.add-new-patungan__title {
+  margin-bottom: 20px;
+}
+
+.add-new-patungan__title .optional {
+  font-style: italic;
+  color: #636363;
+  font-size: 14px;
+}
+
+.add-new-patungan__input__title,
+.add-new-anggota__input__name,
+.add-new-anggota__input__value,
+.add-new-kegiatan__input__name,
+.add-new-kegiatan__input__value {
+  width: 100%;
+  background-color: #FAFAFA;
+  border: 2px solid #A3ABBB;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  padding: 13px 10px 13px 20px;
+  margin-bottom: 10px;
+}
+
+.add-patungan__input__title::placeholder {
+  color: #A3ABBB;
+}
+
+.title-submit {
+  margin-top: 10px;
+}
+
+.action-submit__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--on-button-text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+.add-new-patungan__form {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+}
+
+.new-patungan-action-submit {
+  background-color: #656E81;
+}
+
+.new-patungan__contaner {
+  margin: 20px 0;
+}
+
+.new-patungan__title {
+  font-weight: 600;
+}
+
+.new-anggota__item,
+.new-kegiatan__item {
+  background-color: #E0E0E0;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #323232;
+  margin-top: 10px;
+}
+
+.new-anggota__name,
+.new-kegiatan__title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.new-anggota__money,
+.new-kegiatan__money {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.new-anggota__money svg,
+.new-kegiatan__money svg {
+  margin-right: 5px;
+}
+
+.action-delete__anggota,
+.action-delete__kegiatan {
+  font-size: 30px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+}
+
+.conditional-rendering {
+  font-size: 14px;
+  font-style: italic;
+  color: #636363;
+  padding: 20px 0;
+}
+
 
 /* 
 =====================================
