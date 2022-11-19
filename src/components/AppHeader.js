@@ -6,9 +6,11 @@ import { rootPath } from "../routes";
 function AppHeader(){
   return(
     <>
-      <h1 className='header-logo-wrapper'>
-        <Link to={`${rootPath}`}>PAYU</Link>
-      </h1>
+      <div className='header-logo-wrapper'>
+        <Link to={`${rootPath}`}>
+          <img className='header-logo' src='./images/logo-header.png' alt='Payu' />   
+        </Link>
+      </div>
       <Navigation />
     </>
   )

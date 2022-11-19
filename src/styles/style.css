@@ -7,7 +7,7 @@
   --button: #0F891B;
   --on-button-text: #FFFFFF;
   --text: #232323;
-  --link-logreg: #FDEBD6;
+  --link-logreg: #0F891B;
   --text-small: #636363;
   --text-dark: #323232;
   --text-back: #B79DFF;
@@ -46,7 +46,7 @@ header {
   border-bottom: 1px solid var(--on-shadow);
 }
 
-header h1 {
+header .header-logo-wrapper {
   flex: 1;
   margin-left: 20px;
 }
