@@ -2,7 +2,7 @@
   --background: #F4F7ED;
   --on-background: #202124;
   --on-shadow: rgba(0, 0, 0, 0.3);
-  --dashboard: #FDEBD6;
+  --dashboard: #B9F1BF;
   --list: #E0E0E0;
   --button: #0F891B;
   --on-button-text: #FFFFFF;
@@ -11,7 +11,7 @@
   --text-small: #636363;
   --text-dark: #323232;
   --text-back: #B79DFF;
-  --button-choice: #9772FB;
+  --button-choice: #0F891B;
 }
 
 .swal-text {
@@ -39,6 +39,7 @@
   margin: 0;
   box-sizing: border-box;
   /* transition: background 0.3s ease-in; */
+  /* border: 1px solid blue; */
 }
 
 body {
@@ -135,13 +136,10 @@ a {
 }
 .currencyinput p {
   text-align: center;
-  font-weight: bolder;
   padding: 13px;
   background-color: #A3ABBB;
   margin: 8px 0;
-  border: 2px solid #E6E6E6;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 10px 0 0 10px;
 }
 
 /* 
@@ -192,7 +190,7 @@ a {
   margin: 10px 0;
   background-color: var(--list);
   border-radius: 8px;
-  box-shadow: 0 3px 4px 0 var(--on-shadow);
+  /* box-shadow: 0 3px 4px 0 var(--on-shadow); */
   padding: 15px 20px;
 }
 
@@ -203,6 +201,7 @@ a {
 .payu__list-patungan-item__text{
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .payu__list-patungan-item__text > p {
@@ -240,8 +239,6 @@ a {
   padding: 20px;
   background-color: var(--dashboard);
   border-radius: 8px;
-  box-shadow: 0 4px 6px 0 var(--on-shadow);
-  padding: 15px;
   font-size: 12px;
 }
 
@@ -273,15 +270,16 @@ a {
 
 .detail__dashboard-item-button {
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
-.detail__dashboard-item-button button{
+.detail__dashboard-item-button button {
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
-  color: var(--button-text);
+  color: #FFFFFF;
   padding: 10px;
-  margin: 20px 15px 0 15px;
+  margin-top: 20px;
+  margin-right: 20px;
   border: 1px solid var(--button);
   border-radius: 8px;
   background-color: var(--button);
@@ -313,7 +311,7 @@ a {
 }
 
 .active, .tab:hover {
-  color: var(--button-text);
+  color: #FFFFFF;
   background-color: var(--button-choice);
   box-shadow: 0 3px 6px 0 var(--on-shadow);
   transition: 0.3s ease-in;
@@ -322,11 +320,12 @@ a {
 .detail__list-user-search {
   width: 100%;
   font-family: "Poppins", sans-serif;
-  font-size: 12px;
-  padding: 10px;
+  font-size: 16px;
+  font-weight: lighter;
+  padding: 13px 10px 13px 20px;
+  border: 2px solid #A3ABBB;
   margin: 10px 0 15px 0;
   border-radius: 10px;
-  border: 0;
 }
 
 .detail__list-user__wrapper {
@@ -335,7 +334,7 @@ a {
   padding: 15px 20px;
   background-color: var(--list);
   border-radius: 8px;
-  box-shadow: 0 3px 4px 0 var(--on-shadow);
+  /* box-shadow: 0 3px 4px 0 var(--on-shadow); */
   display: flex;
   justify-content: space-between;
 }
@@ -378,7 +377,7 @@ a {
   padding: 15px 20px;
   background-color: var(--list);
   border-radius: 8px;
-  box-shadow: 0 3px 4px 0 var(--on-shadow);
+  /* box-shadow: 0 3px 4px 0 var(--on-shadow); */
   display: flex;
   justify-content: space-between;
 }
@@ -597,6 +596,10 @@ a {
   font-size: 20px;
 }
 
+.action-about-page {
+  background-color: #0F891B;
+}
+
 
 /* 
 =====================================
@@ -626,7 +629,6 @@ a {
   font-size: 16px;
   font-weight: lighter;
   padding: 13px 10px 13px 20px;
-  margin-bottom: 10px;
 }
 
 .add-patungan__input__title::placeholder {
@@ -907,6 +909,11 @@ a {
     font-size: 16px;
   }
 
+  .payu__list-patungan-item {
+    padding: 20px 25px;
+    border-radius: 20px;
+  }
+
   .payu__list-patungan-item__description {
     font-size: 18px;
   }
@@ -933,6 +940,8 @@ a {
 
   .detail__dashboard-item {
     height: 100%;
+    border-radius: 20px;
+    padding: 30px;
   }
 
   .detail__list-user {
@@ -950,11 +959,6 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 10px;
-  }
-
-  .detail__dashboard-item-button {
-    display: flex;
-    justify-content: right;
   }
 
   .detail__dashboard-item__flex button {
