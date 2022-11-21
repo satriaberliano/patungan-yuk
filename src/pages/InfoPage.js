@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LoginPath, RegisterPath } from '../routes';
+import { AboutPath, LoginPath, RegisterPath } from '../routes';
 import { FiArrowRight } from 'react-icons/fi';
 import logo from '../assets/patungan-image.png';
 
@@ -23,6 +23,10 @@ function InfoPage() {
           </Link>
           <Link to={RegisterPath} className='action-submit'>
             <p>Buat Akun</p>
+            <FiArrowRight />
+          </Link>
+          <Link to={AboutPath} className='action-submit action-about-page'>
+            <p>Tentang PAYU</p>
             <FiArrowRight />
           </Link>
         </div>

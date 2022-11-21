@@ -14,12 +14,12 @@ function RegisterPage(){
   return (
     <div className="register-page">
       <div className="register-page__header">
-        <h2>Register</h2>
+        <h2>Buat Akun</h2>
         <p>Silakan registrasi untuk membuat akun</p>
       </div>
       <RegisterInput />
       <p className='register__link'>Kembali ke 
-        <Link to={LoginPath}> Login</Link>
+        <Link to={LoginPath}> Masuk</Link>
       </p>
     </div>
   );

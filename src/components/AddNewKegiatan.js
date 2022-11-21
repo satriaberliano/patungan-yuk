@@ -24,14 +24,19 @@ function AddNewKegiatan({ addNewKegiatan }) {
         placeholder='Judul' 
         value={title}
         onChange={setTitle}
+        required
       />
-      <input 
-        className='add-new-kegiatan__input__value' 
-        type='text' 
-        placeholder='Jumlah uang yang dihabiskan' 
-        value={money}
-        onChange={setMoney}
-      />
+      <span className="currencyinput">
+        <p>Rp</p>
+        <input 
+          className='add-new-kegiatan__input__value input__action' 
+          type='text' 
+          placeholder='Jumlah uang yang dihabiskan' 
+          value={money}
+          onChange={setMoney}
+          required
+        />
+      </span>
       <button className='action-submit new-patungan-action-submit' type='submit' title='Tambah'>
         <p>Tambah</p>
         <FiArrowRight />
