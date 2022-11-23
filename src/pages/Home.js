@@ -33,9 +33,7 @@ function Home(){
         </Link>
         <Link to={`${DetailPatunganPath}`}>
           <div className="payu__list-patungan-item">
-            <p className="payu__list-patungan-item__description">
-              <Link to={`${DetailPatunganPath}`}>Belanja ke Paris Van Java</Link>
-            </p>
+            <p className="payu__list-patungan-item__description">Belanja ke Paris Van Java</p>
             <section className="payu__list-patungan-item__text">
               <p><FaUsers /> 2 anggota</p>
               <p><FaCoins /> Rp 4.000.000</p>
@@ -44,9 +42,7 @@ function Home(){
         </Link>
         <Link to={`${DetailPatunganPath}`}>
           <div className="payu__list-patungan-item">
-            <p className="payu__list-patungan-item__description">
-              <Link to={`${DetailPatunganPath}`}>Hangout</Link>
-            </p>
+            <p className="payu__list-patungan-item__description">Hangout</p>
             <section className="payu__list-patungan-item__text">
               <p><FaUsers /> 3 anggota</p>
               <p><FaCoins /> Rp 600.000</p>
