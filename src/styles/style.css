@@ -39,7 +39,6 @@
   margin: 0;
   box-sizing: border-box;
   /* transition: background 0.3s ease-in; */
-  /* border: 1px solid blue; */
 }
 
 body {
@@ -190,7 +189,6 @@ a {
   margin: 10px 0;
   background-color: var(--list);
   border-radius: 8px;
-  /* box-shadow: 0 3px 4px 0 var(--on-shadow); */
   padding: 15px 20px;
 }
 
@@ -334,7 +332,6 @@ a {
   padding: 15px 20px;
   background-color: var(--list);
   border-radius: 8px;
-  /* box-shadow: 0 3px 4px 0 var(--on-shadow); */
   display: flex;
   justify-content: space-between;
 }
@@ -377,7 +374,6 @@ a {
   padding: 15px 20px;
   background-color: var(--list);
   border-radius: 8px;
-  /* box-shadow: 0 3px 4px 0 var(--on-shadow); */
   display: flex;
   justify-content: space-between;
 }
@@ -649,12 +645,6 @@ a {
   font-size: 16px;
 }
 
-.add-new-patungan__form {
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #E0E0E0;
-}
-
 .new-patungan-action-submit {
   background-color: #656E81;
 }
@@ -669,7 +659,7 @@ a {
 
 .new-anggota__item,
 .new-kegiatan__item {
-  background-color: #E0E0E0;
+  background-color: #A3ABBB;
   padding: 15px 20px;
   border-radius: 10px;
   display: flex;
@@ -712,6 +702,26 @@ a {
   font-style: italic;
   color: #636363;
   padding: 20px 0;
+}
+
+.add-new-patungan__input .judul,
+.add-new-patungan__input .anggota,
+.add-new-patungan__input .kegiatan {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+}
+
+.add-patungan-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.optional {
+  margin-bottom: 10px;
+  font-style: italic;
+  font-size: 14px;
 }
 
 
