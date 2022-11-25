@@ -36,6 +36,7 @@ class AddUangPatunganPage extends React.Component{
           <p><span>Dana yang ingin ditambahkan</span></p>
           <form onSubmit={this.onSubmitEventHandler}>
             <input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.total} onChange={this.onTotalChangeEventHandler}/>
+
             <div className='register__action'>
               <button className='action-submit' type='submit' title='Tambah'>
                 <p>Tambah</p>

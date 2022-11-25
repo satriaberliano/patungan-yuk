@@ -37,6 +37,7 @@ function AddNewKegiatan({ addNewKegiatan }) {
           required
         />
       </span>
+
       <button className='action-submit new-patungan-action-submit' type='submit' title='Tambah'>
         <p>Tambah</p>
         <FiArrowRight />

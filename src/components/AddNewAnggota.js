@@ -24,6 +24,7 @@ function AddNewAnggota({ addNewAnggota }) {
         placeholder='Nama' 
         value={name}
         onChange={setName}
+
         required
       />
       <span className="currencyinput">
@@ -37,7 +38,6 @@ function AddNewAnggota({ addNewAnggota }) {
           required
         />
       </span>
-
       <button className='action-submit new-patungan-action-submit' type='submit' title='Tambah'>
         <p>Tambah</p>
         <FiArrowRight />
