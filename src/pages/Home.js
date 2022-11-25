@@ -9,9 +9,11 @@ function Home(){
     <section className="home">
       <section className="payu__dashboard">
         <div className="payu__dashboard-item">
-          <h3>Hai, Pengguna!</h3>
+          <div className='payu__dashboard-item__title'>
+            <h2>Hai Pengguna!</h2>
+            <p>Kamu memiliki 3 patungan</p>
+          </div>
           <div className="payu__dashboard-item__patungan">
-            <p>Kamu  memiliki 3 Patungan</p>
             <div className="payu__dashboard-item__button">
               <button type='button'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
               <button type='button'><FiLogOut /></button>
@@ -20,33 +22,33 @@ function Home(){
         </div>
       </section>
       <section className="payu__list-patungan">
-        <div className="payu__list-patungan-item">
-          <p className="payu__list-patungan-item__description">
-            <Link to={`${DetailPatunganPath}`}>Jalan - jalan ke Labuan Bajo</Link>
-          </p>
-          <section className="payu__list-patungan-item__text">
-            <p><FaUsers /> 4 anggota</p>
-            <p><FaCoins /> Rp 12.000.000</p>
-          </section>
-        </div>
-        <div className="payu__list-patungan-item">
-          <p className="payu__list-patungan-item__description">
-            <Link to={`${DetailPatunganPath}`}>Belanja ke Paris Van Java</Link>
-          </p>
-          <section className="payu__list-patungan-item__text">
-            <p><FaUsers /> 2 anggota</p>
-            <p><FaCoins /> Rp 4.000.000</p>
-          </section>
-        </div>
-        <div className="payu__list-patungan-item">
-          <p className="payu__list-patungan-item__description">
-            <Link to={`${DetailPatunganPath}`}>Hangout</Link>
-          </p>
-          <section className="payu__list-patungan-item__text">
-            <p><FaUsers /> 3 anggota</p>
-            <p><FaCoins /> Rp 600.000</p>
-          </section>
-        </div>
+        <Link to={`${DetailPatunganPath}`}>
+          <div className="payu__list-patungan-item">
+            <h3 className="payu__list-patungan-item__description">Jalan - jalan ke Labuan Bajo</h3>
+            <section className="payu__list-patungan-item__text">
+              <p><FaUsers /> 4 anggota</p>
+              <p><FaCoins /> Rp 12.000.000</p>
+            </section>
+          </div>
+        </Link>
+        <Link to={`${DetailPatunganPath}`}>
+          <div className="payu__list-patungan-item">
+            <p className="payu__list-patungan-item__description">Belanja ke Paris Van Java</p>
+            <section className="payu__list-patungan-item__text">
+              <p><FaUsers /> 2 anggota</p>
+              <p><FaCoins /> Rp 4.000.000</p>
+            </section>
+          </div>
+        </Link>
+        <Link to={`${DetailPatunganPath}`}>
+          <div className="payu__list-patungan-item">
+            <p className="payu__list-patungan-item__description">Hangout</p>
+            <section className="payu__list-patungan-item__text">
+              <p><FaUsers /> 3 anggota</p>
+              <p><FaCoins /> Rp 600.000</p>
+            </section>
+          </div>
+        </Link>
       </section>
     </section>
   )

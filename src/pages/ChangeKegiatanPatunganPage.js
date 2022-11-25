@@ -44,10 +44,7 @@ class ChangeKegiatanPatunganPage extends React.Component{
           </div>
           <form onSubmit={this.onSubmitEventHandler}>
             <input className='input__action' type='text' placeholder="Judul" value={this.state.activity} onChange={this.onActivityChangeEventHandler}/>
-            <span className="currencyinput">
-                <p>Rp</p>
-                <input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.spend} onChange={this.onSpendChangeEventHandler}/>
-            </span>
+            <input className='input__action' type='text' placeholder="Jumlah Patungan" required value={this.state.spend} onChange={this.onSpendChangeEventHandler}/>
             <div className='register__action'>
               <button className='action-submit' type='submit' title='Ubah'>
                 <p>Ubah</p>
