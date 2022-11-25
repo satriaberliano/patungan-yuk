@@ -38,10 +38,9 @@ function AddNewPatungan({ newPatungan }) {
     event.preventDefault();
     
     newPatungan({
-      id: +new Date(),
       title: title,
-      anggota: anggota,
-      kegiatan: kegiatan,
+      Members: anggota,
+      Activity: kegiatan,
     });
   }
 
@@ -88,7 +87,7 @@ function AddNewPatungan({ newPatungan }) {
       </div>
 
       <div className='add-new-patungan__action'>
-        <button className='action-submit' type='submit' title='Selanjutnya' onClick={addPatunganClickHandler}>
+        <button className='action-submit' type='submit' title='Selanjutnya' onClick={addPatunganClickHandler} disabled={!title}>
           <Link className='action-submit__link'>
             <p>Simpan</p>
             <FiArrowRight />

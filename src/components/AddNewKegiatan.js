@@ -3,16 +3,16 @@ import { FiArrowRight } from 'react-icons/fi';
 import useInput from "../hooks/useInput";
 
 function AddNewKegiatan({ addNewKegiatan }) {
-  const [title, setTitle] = useInput();
-  const [ money, setMoney ] = useInput();
+  const [title, setTitle] = useInput('');
+  const [ money, setMoney ] = useInput(0);
 
   const newKegiatanSubmitHandler = (event) => {
     event.preventDefault();
     
     addNewKegiatan({
       id: +new Date(),
-      title: title,
-      money: money,
+      Name: title,
+      Spend: Number(money),
     });
   }
 
@@ -30,14 +30,13 @@ function AddNewKegiatan({ addNewKegiatan }) {
         <p>Rp</p>
         <input 
           className='add-new-kegiatan__input__value input__action' 
-          type='text' 
+          type='number' 
           placeholder='Jumlah uang yang dihabiskan' 
           value={money}
           onChange={setMoney}
           required
         />
       </span>
-
       <button className='action-submit new-patungan-action-submit' type='submit' title='Tambah'>
         <p>Tambah</p>
         <FiArrowRight />
