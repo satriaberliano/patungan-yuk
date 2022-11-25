@@ -1,52 +1,45 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
+import useInput from "../hooks/useInput";
+import {db} from '../firebase-config';
+import { doc, getDoc, updateDoc } from "firebase/firestore"
+import UrlParser from "../url-parser";
 
-class AddKegiatanPatunganPage extends React.Component{
-  constructor(props){
-    super(props);
+function AddKegiatanPatunganPage(){
+  const [name, setName] = useInput('');
+  const [spend, setSpend ] = useInput(0);
+  const url = UrlParser.parserActiveUrl();
 
-    this.state = {
-      activity: '',
-      spend: '',
-    }
-
-    this.onActivityChangeEventHandler = this.onActivityChangeEventHandler.bind(this);
-    this.onSpendChangeEventHandler = this.onSpendChangeEventHandler.bind(this);
-  }
-
-  onActivityChangeEventHandler(event){
-    this.setState(() => {
-      return {
-        activity: event.target.value
-      }
-    })
-  }
-
-  onSpendChangeEventHandler(event){
-    this.setState(() => {
-      return {
-        spend: event.target.value
-      }
-    })
-  }
-
-  onSubmitEventHandler(event){
+  const addNewActivityHandler = async (event) => {
     event.preventDefault();
-    this.props.addKegiatan(this.state);
+    const patunganRef = doc(db, "patungan", url.id);
+    const data = await getDoc(patunganRef);
+    const newActivity = {
+      id: +new Date(),
+      Name: name,
+      Spend: Number(spend),
+    }
+    let activityData = data.data().Activity;
+    activityData.push(newActivity);
+
+    await updateDoc(patunganRef, {Activity: activityData})
+    alert("Data kegiatan berhasil ditambahkan");
   }
 
-  render(){
-    return(
-      <div className="add-kegiatan-patungan-page">
+  return(
+    <div className="add-kegiatan-patungan-page">
         <div className='add-patungan__add-activity'>
           <div className='add-patungan__add-activity__text'>
             <h2>Tambah Kegiatan</h2>
           </div>
-          <form onSubmit={this.onSubmitEventHandler}>
-            <input className='input__action' type='text' placeholder="Judul kegiatan" required value={this.state.activity} onChange={this.onActivityChangeEventHandler}/>
-            <span className="currencyinput"><p>Rp</p><input className='input__action' type='text' placeholder="Dana yang digunakan" required value={this.state.spend} onChange={this.onSpendChangeEventHandler}/></span>
+          <form onSubmit={addNewActivityHandler}>
+            <input className='input__action' type='text' placeholder="Judul kegiatan" value={name} onChange={setName} required/>
+            <span className="currencyinput">
+              <p>Rp</p>
+              <input className='input__action' type='number' placeholder="Dana yang digunakan" value={spend} onChange={setSpend} required/>
+            </span>
             <div className='add-patungan__action'>
-              <button className='action-submit' type='submit' title='Tambah rincian kegiatan'>
+              <button className='action-submit' type='submit' title='Tambah rincian kegiatan' disabled={!name || !spend}>
                 <p>Tambah</p>
                 <FiArrowRight />
               </button>
@@ -54,8 +47,7 @@ class AddKegiatanPatunganPage extends React.Component{
           </form>
         </div>
       </div>
-    );
-  }
-};
+  )
+}
 
 export default AddKegiatanPatunganPage;
