@@ -65,6 +65,17 @@ h2, h3 {
   color: var(--title);
 }
 
+
+button:hover {
+  background-color: #26bd35;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+}
+
 header {
   display: flex;
   align-items: center;
