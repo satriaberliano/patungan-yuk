@@ -5,10 +5,14 @@ import { collection, getDocs, query, where } from "firebase/firestore"
 import { AddNewPatunganPath } from "../routes";
 import { FiPlusSquare, FiLogOut } from 'react-icons/fi';
 import { FaUsers, FaCoins } from 'react-icons/fa';
+import ApiSource from "d:/sib x dicoding/.capstone/capstone project file/patungan-yuk/src/data/api-source";
+import UnsplashSource from "d:/sib x dicoding/.capstone/capstone project file/patungan-yuk/src/data/unsplash-source";
 
 function Home(){
   const [patungan, setPatungan] = useState([]);
   const [numbersPatungan, setNumbersPatungan] = useState(0);
+  const [ image, setImage ] = useState('');
+
   // const title = "Jalan jalan ke labuan bajo"
   
   // const patunganCollectionRef = query(collection(db, "patungan"), where("title", "==", title))
@@ -22,16 +26,30 @@ function Home(){
       setNumbersPatungan(data.docs.length);
     }
 
+    async function image() {
+      const result = await UnsplashSource.getImage('sky');
+      setImage(result);
+    }
+
     getPatungan();
+    image();
+
   },[])
 
   return(
     <section className="home">
       <section className="payu__dashboard">
+        <div className="payu__dashboard-hero">
+          <img className="payu__dashboard-image" src={image} alt="dashboard-images"></img>
+          <div className="payu__dashboard-hero-content">
+            <h2>Hai Pengguna!</h2>
+            <p>Selamat datang di halaman dashboard patungan</p>
+            <p>Kamu memiliki {numbersPatungan} patungan</p>
+          </div>
+        </div>
         <div className="payu__dashboard-item">
           <div className='payu__dashboard-item__title'>
-            <h2>Hai Pengguna!</h2>
-            <p>Kamu memiliki {numbersPatungan} patungan</p>
+            <h2>Daftar Patungan</h2>
           </div>
           <div className="payu__dashboard-item__patungan">
             <div className="payu__dashboard-item__button">
