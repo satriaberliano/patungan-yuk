@@ -1,0 +1,57 @@
+.info-page {
+  padding: 8px;
+}
+
+.info-page__image {
+  margin: 10px 10px 50px 10px;
+}
+
+.info-page__image img {
+  display: block;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.info-page__text {
+  color: var(--text);
+  margin-bottom: 30px;
+}
+
+.info-page__text p {
+  margin: 10px 0;
+}
+
+.info-page__link a {
+  padding: 15px 22px;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+/* 
+  about page
+*/
+
+.about-page {
+  padding: 8px;
+}
+
+.about-page div h2 {
+  color: var(--text-green);
+}
+
+.about-page__what p {
+  margin: 5px 0 30px 0;
+}
+
+.about-page__why p {
+  margin: 5px 0 30px 0;
+}
+
+.about-page__who ol {
+  margin: 5px 0 30px 0;
+}
+
+.about-page__who ol li {
+  margin-left: 15px;
+}
