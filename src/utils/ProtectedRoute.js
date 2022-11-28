@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
-import { getAccessToken } from "./helper";
+import { auth } from "../config/firebase";
 
 function ProtectedRoute(props){
-  const token = getAccessToken();
+  const user = auth.currentUser;
 
-  if(!token) return <Navigate to='/info' />;
+  if(!user) return <Navigate to='/info' />;
   return props.children;
-}
 
+}
 export default ProtectedRoute;
