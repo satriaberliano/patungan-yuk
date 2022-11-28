@@ -2,24 +2,20 @@ import React from "react";
 import RegisterInput from "../components/RegisterInput";
 import { Link } from "react-router-dom";
 import { LoginPath } from "../routes";
+import LocaleContext from "../contexts/LocaleContext";
 
 function RegisterPage(){
-  // async function onRegisterHandler(user) {
-  // const { error } = await register(user);
-  // if (!error) {
-  // alert('Register Berhasil');
-  //}
-  // }
+  const { locale } = React.useContext(LocaleContext);
 
   return (
     <div className="register-page">
       <div className="register-page__header">
-        <h2>Buat Akun</h2>
-        <p>Silakan registrasi untuk membuat akun</p>
+        <h2>{locale === 'id' ? 'Daftar' : 'Sign Up'}</h2>
+        <p>{locale === 'id' ? 'Silakan registrasi untuk membuat akun' : 'Please register to create an account'}</p>
       </div>
       <RegisterInput />
-      <p className='register__link'>Kembali ke 
-        <Link to={LoginPath}> Masuk</Link>
+      <p className='register__link'>{locale === 'id' ? 'Kembali ke ' : 'Back to '}
+        <Link to={LoginPath}>{locale === 'id' ? 'Masuk' : 'Sign In'}</Link>
       </p>
     </div>
   );

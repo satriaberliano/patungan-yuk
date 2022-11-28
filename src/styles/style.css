@@ -94,8 +94,19 @@ header .header-logo-wrapper {
 
 header .navigation ul li {
   display: inline-block;
-  font-size: 18px;
+  font-size: 30px;
   margin: 0 12px;
+}
+
+.navigation__translate-button {
+  border: 0;
+  font-size: 30px;
+  color: var(--text-dark);
+  background-color: var(--background);
+}
+
+.navigation__translate-button:hover {
+  background-color: transparent;
 }
 
 .header-logo-wrapper a {

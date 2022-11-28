@@ -6,15 +6,17 @@ import { Link } from "react-router-dom";
 import {db} from '../firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import swal from "sweetalert";
+import LocaleContext from "../contexts/LocaleContext";
 
 
 function AnggotaList({ patunganMembers, idPatungan }) {
+  const { locale } = React.useContext(LocaleContext);
   
   const deleteAnggota = async (idPatungan,idMember) => {
     const patunganRef = doc(db, "patungan", idPatungan);
     const data = await getDoc(patunganRef);
     let membersData = data.data().Members;
-    let memberDeleteIndex = membersData.findIndex((obj => obj.id == idMember));
+    let memberDeleteIndex = membersData.findIndex((obj => obj.id === idMember));
     membersData.splice(memberDeleteIndex, 1);
     
     await updateDoc(patunganRef, {Members: membersData});
@@ -26,20 +28,20 @@ function AnggotaList({ patunganMembers, idPatungan }) {
     {patunganMembers.map((member) => {
       const onDeleteAnggota = () => {
         swal({
-          title: "Apakah anda yakin ingin menghapus anggota ini?",
-          text: "Anggota yang dihapus akan hilang dari daftar anggota patungan",
+          title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus anggota ini?' : 'Are you sure want to delete this member?'}`,
+          text: `${locale === 'id' ? 'Anggota yang dihapus akan hilang dari daftar anggota patungan' : 'Deleted members will disappear from patungan member list'}`,
           icon: "warning",
           buttons: true,
           dangerMode: true,
         })
         .then((willDelete) => {
           if (willDelete) {
-            swal("Anggota berhasil dihapus", {
+            swal(`${locale === 'id' ? 'Anggota berhasil dihapus' : 'Member was successfully deleted'}`, {
               icon: "success",
             });
             deleteAnggota(idPatungan, member.id);
           } else {
-            swal("Anggota batal dihapus");
+            swal(`${locale === 'id' ? 'Anggota batal dihapus' : 'Canceled member deleted'}`);
           }
         });
       }

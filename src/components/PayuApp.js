@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import Home from "../pages/Home";
 import AppHeader from "./AppHeader";
@@ -15,31 +15,47 @@ import AddJumlahPatunganAnggotaPage from "../pages/AddJumlahPatunganAnggotaPage"
 import EditKegiatanPage from "../pages/EditKegiatanPage";
 import AddUangPatunganPage from "../pages/AddUangPatunganPage";
 import ChangeKegiatanPatunganPage from "../pages/ChangeKegiatanPatunganPage";
+import LocaleContext from "../contexts/LocaleContext";
 
 function PayuApp(){
+  const [locale, setLocale] = useState(localStorage.getItem('locale') || 'id');
+
+  const localeValue = React.useMemo(() => {
+    return {
+      locale,
+      toggleLocale: () => {
+        const newLocale = locale === 'id' ? 'en' : 'id';
+        localStorage.setItem('locale', newLocale);
+        setLocale(newLocale);
+      }
+    };
+  }, [locale]);
+
   return(
-    <div className="app-container">
-      <header>
-        <AppHeader />
-      </header>
-      <main>
-        <Routes>
-          <Route path={rootPath} element={<Home />}></Route>
-          <Route path={DetailPatunganPath} element={<DetailPage />}></Route>
-          <Route path={AddNewPatunganPath} element={<AddNewPatunganPage />}></Route>
-          <Route path={InfoPath} element={<InfoPage />}></Route>
-          <Route path={LoginPath} element={<LoginPage />}></Route>
-          <Route path={RegisterPath} element={<RegisterPage />}></Route>
-          <Route path={AboutPath} element={<AboutPage />}></Route>
-          <Route path={AddAnggotaPatunganPath} element={<AddAnggotaPatunganPage />}></Route>
-          <Route path={AddKegiatanPatunganPath} element={<AddKegiatanPatunganPage />}></Route>
-          <Route path={AddJumlahPatunganAnggotaPath} element={<AddJumlahPatunganAnggotaPage />}></Route>
-          <Route path={EditKegiatanPath} element={<EditKegiatanPage />}></Route>
-          <Route path={AddUangPatunganPath} element={<AddUangPatunganPage />}></Route>
-          <Route path={ChangeKegiatanPath} element={<ChangeKegiatanPatunganPage />}></Route>
-        </Routes>
-      </main>
-    </div>
+    <LocaleContext.Provider value={localeValue}>
+      <div className="app-container">
+        <header>
+          <AppHeader />
+        </header>
+        <main>
+          <Routes>
+            <Route path={rootPath} element={<Home />}></Route>
+            <Route path={DetailPatunganPath} element={<DetailPage />}></Route>
+            <Route path={AddNewPatunganPath} element={<AddNewPatunganPage />}></Route>
+            <Route path={InfoPath} element={<InfoPage />}></Route>
+            <Route path={LoginPath} element={<LoginPage />}></Route>
+            <Route path={RegisterPath} element={<RegisterPage />}></Route>
+            <Route path={AboutPath} element={<AboutPage />}></Route>
+            <Route path={AddAnggotaPatunganPath} element={<AddAnggotaPatunganPage />}></Route>
+            <Route path={AddKegiatanPatunganPath} element={<AddKegiatanPatunganPage />}></Route>
+            <Route path={AddJumlahPatunganAnggotaPath} element={<AddJumlahPatunganAnggotaPage />}></Route>
+            <Route path={EditKegiatanPath} element={<EditKegiatanPage />}></Route>
+            <Route path={AddUangPatunganPath} element={<AddUangPatunganPage />}></Route>
+            <Route path={ChangeKegiatanPath} element={<ChangeKegiatanPatunganPage />}></Route>
+          </Routes>
+        </main>
+      </div>
+    </LocaleContext.Provider>
   );
 }
 
