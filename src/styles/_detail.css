@@ -1,0 +1,206 @@
+.detail__dashboard {
+  padding: 6px;
+}
+
+.detail__dashboard-title {
+  padding: 10px 0;
+  margin-bottom: 15px;
+}
+
+.detail__dashboard-title p {
+  font-size: 14px;
+}
+
+.detail__dashboard-item {
+  color: var(--text);
+  margin: 10px 0;
+  padding: 20px;
+  background-color: var(--list);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.detail__dashboard-item__flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail__dashboard-item__flex button {
+  border: 0;
+  background-color: transparent;
+  font-size: 24px;
+}
+
+.detail__dashboard-item__name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.detail__dashboard-item__leftover {
+  color: var(--text-green);
+}
+
+.detail__dashboard-item__info p {
+  font-size: 13px;
+  margin: 3px 0;
+}
+
+.detail__dashboard-item-button {
+  display: flex;
+  justify-content: left;
+}
+
+.detail__dashboard-item-button button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: var(--text-dark);
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 1px solid #3fd34e;
+  border-radius: 12px;
+  background-color: #96f1a0;
+  font-weight: 400;
+}
+
+.detail__dashboard-item-button button:hover {
+  background-color: var(--button);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.detail__dashboard-item-button button a {
+  color: var(--button-text);
+}
+
+.detail__list-user {
+  padding: 8px;
+}
+
+.detail__list-user-choice {
+  margin-bottom: 10px;
+}
+
+.tab {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  width: 10em;
+  height: 3.5em;
+  color: var(--text);
+  padding: 12px;
+  margin-right: 10px;
+  border: 0;
+  border-radius: 25px;
+  background-color: var(--button-choice-default);
+}
+
+.active,
+.tab:hover {
+  color: #ffffff;
+  background-color: var(--button-choice);
+  transition: 0.3s ease-in;
+}
+
+.detail__list-user-search {
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  padding: 13px 10px 13px 20px;
+  border: 2px solid var(--border-grey);
+  margin: 10px 0 15px 0;
+  border-radius: 10px;
+}
+
+.detail__list-user__wrapper {
+  color: var(--text);
+  margin: 0 0 10px 0;
+  padding: 15px 20px;
+  background-color: var(--list);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail__list-user-item__name {
+  color: var(--text);
+  font-weight: bolder;
+  padding-bottom: 8px;
+  font-size: 16px;
+}
+
+.detail__list-user-item__money {
+  font-size: 12px;
+  color: var(--text-green);
+}
+
+.detail__list-user-item__money svg {
+  color: var(--text);
+}
+
+.detail__list-user-button {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.detail__list-user-button button {
+  border: 0;
+  font-size: 28px;
+  background-color: transparent;
+  color: var(--text);
+}
+
+.detail__list-user-button button a {
+  color: var(--text);
+}
+
+.detail__list-user-button button:hover,
+.detail__list-activity-button button:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.detail__list-activity__wrapper {
+  color: var(--text);
+  margin: 0 0 10px 0;
+  padding: 15px 20px;
+  background-color: var(--list);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail__list-activity-item__name {
+  color: var(--text);
+  font-weight: bolder;
+  padding-bottom: 8px;
+  font-size: 16px;
+}
+
+.detail__list-activity-item__money {
+  font-size: 12px;
+  color: var(--text-red);
+}
+
+.detail__list-activity-item__money svg {
+  color: var(--text);
+}
+
+.detail__list-activity-button {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.detail__list-activity-button button {
+  border: 0;
+  font-size: 28px;
+  color: var(--text);
+  background-color: var(--list);
+}
+
+.detail__list-activity-button button a {
+  color: var(--on-background);
+}
