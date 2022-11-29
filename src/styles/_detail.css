@@ -26,6 +26,14 @@
   align-items: center;
 }
 
+.detail__dashboard-item__flex-button {
+  display: flex;
+}
+
+.detail__dashboard-item__flex-button button {
+  margin-left: 5px;
+}
+
 .detail__dashboard-item__flex button {
   border: 0;
   background-color: transparent;
@@ -154,7 +162,6 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-top: 5px;
 }
 
 .detail__list-user-button button,
@@ -176,7 +183,6 @@
 .detail__list-user-button button:hover,
 .detail__list-activity-button button:hover {
   background-color: transparent;
-  color: #ffffff;
 }
 
 .detail__list-activity-item__name {

@@ -1,6 +1,7 @@
 export const rootPath = '/';
 export const notFoundPath = '/*';
-export const DetailPatunganPath = '/detail-patungan/:id'; //di tambah id nanti
+export const DetailPatunganPath = '/detail-patungan/:id';
+export const SharedDetailPatunganPath = '/shared-detail-patungan/:idShared';
 export const AddNewPatunganPath = '/patungan/add/new';
 export const InfoPath = '/info'
 export const LoginPath = '/login';
@@ -8,7 +9,5 @@ export const RegisterPath = '/register';
 export const AboutPath = '/about';
 export const AddAnggotaPatunganPath = '/detail-patungan/:id/add/anggota';
 export const AddKegiatanPatunganPath = '/detail-patungan/:id/add/kegiatan';
-export const EditKegiatanPath = '/detail-patungan/edit-kegiatan' //ditambah judulkegiatan atau ID kegiatan
-export const AddJumlahPatunganAnggotaPath = '/detail-patungan/tambah-jumlah-patungan' // ditambah nama anggota / id anggota yang diedit
 export const AddUangPatunganPath = '/detail-patungan/:id/:idMember/add-uang-patungan'
 export const ChangeKegiatanPath = '/detail-patungan/:id/:idActivity/change-kegiatan';

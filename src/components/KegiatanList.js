@@ -3,12 +3,12 @@ import React from "react";
 import { FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi';
 import { Link } from "react-router-dom";
-import {db} from '../firebase-config';
+import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import swal from "sweetalert";
 import LocaleContext from "../contexts/LocaleContext";
 
-function KegiatanList({ patunganActivity, idPatungan }) {
+function KegiatanList({ patunganActivity, idPatungan, searchTerm }) {
   const { locale } = React.useContext(LocaleContext);
 
   const deleteKegiatan = async (idPatungan,idActivity) => {
@@ -25,7 +25,13 @@ function KegiatanList({ patunganActivity, idPatungan }) {
 
   return(
   <div className="detail__list-activity-container">
-    {patunganActivity.map((activity) => {
+    {patunganActivity.filter((val) =>{
+      if (searchTerm == "") {
+        return val
+      } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return val
+      }
+    }).map((activity) => {
       const onDeleteKegiatan = () => {
         swal({
           title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus kegiatan ini?' : 'Are you sure want to delete this activity?'}`,

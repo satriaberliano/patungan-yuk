@@ -4,13 +4,12 @@ import { FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { FiPlusSquare } from 'react-icons/fi';
 import { Link } from "react-router-dom";
-import {db} from '../firebase-config';
+import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import swal from "sweetalert";
 import LocaleContext from "../contexts/LocaleContext";
 
-
-function AnggotaList({ patunganMembers, idPatungan }) {
+function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
   const { locale } = React.useContext(LocaleContext);
   
   const deleteAnggota = async (idPatungan,idMember) => {
@@ -26,7 +25,13 @@ function AnggotaList({ patunganMembers, idPatungan }) {
   }
   return(
   <div className="detail__list-user-container">
-    {patunganMembers.map((member) => {
+    {patunganMembers.filter((val) => {
+      if (searchTerm == "") {
+        return val
+      } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return val
+      }
+    }).map((member) => {
       const onDeleteAnggota = () => {
         swal({
           title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus anggota ini?' : 'Are you sure want to delete this member?'}`,
