@@ -29,7 +29,7 @@
 
 .payu__dashboard-item {
   color: var(--text);
-  margin-top: 5px;
+  margin-top: 10px;
   padding: 5px 0;
   display: flex;
   justify-content: space-between;
@@ -44,12 +44,11 @@
   display: flex;
   justify-content: space-around;
   gap: 20px;
-  margin-top: 10px;
 }
 
 .payu__dashboard-item__button button {
   border: 0;
-  font-size: 30px;
+  font-size: 25px;
   color: var(--text);
   background-color: transparent;
 }
@@ -60,16 +59,26 @@
 
 .payu__dashboard-item__button button a {
   color: var(--text);
+  padding: 8.5px;
+  display: flex;
+  align-items: center;
 }
 
 .payu__list-patungan {
   padding: 6px;
+  flex-direction: column;
+}
+
+.payu__list-patungan .list-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .payu__list-patungan-item {
-  margin: 10px 0;
+  margin: 5px 0;
   background-color: var(--list);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 15px 20px;
 }
 

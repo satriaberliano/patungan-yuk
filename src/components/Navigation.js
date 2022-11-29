@@ -24,7 +24,7 @@ function Navigation(){
             <button className="navigation__translate-button" onClick={toggleLocale}><MdGTranslate /></button>
           </li>
           <li>
-            <Link to={InfoPath}><AiOutlineInfoCircle /></Link>
+            <Link className="navigation__info-button" to={InfoPath}><AiOutlineInfoCircle /></Link>
           </li>
         </ul>
       </nav>
