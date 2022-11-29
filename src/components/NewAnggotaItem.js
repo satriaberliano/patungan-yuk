@@ -11,7 +11,7 @@ function NewAnggotaItem({ Name, Total }) {
           <p className='new-anggota__money'><FaCoins /> Rp {Total}</p>
         </div>
         <div className='new-anggota__delete'>
-          <button className='action-delete__anggota'><RiDeleteBinLine /></button>
+          <button className='action-delete__anggota'aria-label='delete button'><RiDeleteBinLine /></button>
         </div>
       </div>
     </>

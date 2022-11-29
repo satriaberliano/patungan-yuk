@@ -1,15 +1,19 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
 import { FiArrowRight } from "react-icons/fi";
 import useInput from "../hooks/useInput";
 import {db} from '../firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import UrlParser from "../url-parser";
+import LocaleContext from "../contexts/LocaleContext";
 
 function AddUangPatunganPage(){
   const [name, setName] = useState('');
   const [total, setTotal] =useState(0);
   const [addedMoney, setAddedMoney] = useInput(0);
   const url = UrlParser.parserActiveUrlEdit();
+  const { locale } = React.useContext(LocaleContext);
   
 
   const addUangPatunganHandler = async (event) => {
@@ -23,7 +27,7 @@ function AddUangPatunganPage(){
     membersData[memberEditIndex].Total = newTotal;
 
     await updateDoc(patunganRef, {Members: membersData})
-    alert("Total patungan anggota berhasil ditambahkan");
+    alert(`${locale === 'id' ? 'Total patungan anggota berhasil ditambahkan' : 'Member patungan has been successfully added'}`);
   }
 
   useEffect(()=> {
@@ -45,11 +49,11 @@ function AddUangPatunganPage(){
   <div className="add-uang-patungan-page">
     <div className='add-patungan__add-uang'>
       <div className='add-patungan__add-uang__text'>
-        <h2>Tambah Patungan</h2>
-        <p>Untuk {name}</p>
-        <p>Dana saat ini : Rp {total}</p>
+        <h2 tabIndex="0">{locale === 'id' ? 'Tambah Patungan' : 'Add Patungan'}</h2>
+        <p tabIndex="0">{locale === 'id' ? `Untuk ${name}` : `For ${name}`}</p>
+        <p tabIndex="0">{locale === 'id' ? `Dana saat ini : Rp ${total}` : `Current funds : Rp ${total}`}</p>
       </div>
-      <p><span>Dana yang ingin ditambahkan</span></p>
+      <p tabIndex="0"><span>{locale === 'id' ? 'Dana yang ingin ditambahkan' : 'Funds you want to add'}</span></p>
       <form onSubmit={addUangPatunganHandler}>
         <input className='input__action' 
           type='number'  
@@ -59,7 +63,7 @@ function AddUangPatunganPage(){
           required/>
         <div className='register__action'>
           <button className='action-submit' type='submit' title='Tambah dana patungan anggota' disabled={!addedMoney}>
-            <p>Tambah</p>
+            <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
             <FiArrowRight />
           </button>
         </div>

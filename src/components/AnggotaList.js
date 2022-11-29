@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import { FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash } from 'react-icons/hi';
@@ -16,7 +17,7 @@ function AnggotaList({ patunganMembers, idPatungan }) {
     const patunganRef = doc(db, "patungan", idPatungan);
     const data = await getDoc(patunganRef);
     let membersData = data.data().Members;
-    let memberDeleteIndex = membersData.findIndex((obj => obj.id === idMember));
+    let memberDeleteIndex = membersData.findIndex((obj => obj.id == idMember));
     membersData.splice(memberDeleteIndex, 1);
     
     await updateDoc(patunganRef, {Members: membersData});
@@ -45,14 +46,14 @@ function AnggotaList({ patunganMembers, idPatungan }) {
           }
         });
       }
-      return <div className="detail__list-user__wrapper" key={member.id}>
+      return  <div className="detail__list-user__wrapper" key={member.id}>
                 <div className="detail__list-user-item">
-                  <p className="detail__list-user-item__name">{member.Name}</p>
-                  <p className="detail__list-user-item__money"><FaCoins /> Rp {member.Total}</p>
+                  <p tabIndex="0" className="detail__list-user-item__name">{member.Name}</p>
+                  <p tabIndex="0" className="detail__list-user-item__money"><FaCoins /> Rp {member.Total}</p>
                 </div>
                 <div className="detail__list-user-button">
-                  <button onClick={onDeleteAnggota}><HiOutlineTrash /></button>
-                  <button><Link to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`}><FiPlusSquare /></Link></button>
+                  <button onClick={onDeleteAnggota} aria-label='delete button'><HiOutlineTrash /></button>
+                  <button><Link to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`} aria-label='add money'><FiPlusSquare /></Link></button>
                 </div>
               </div>
     })}

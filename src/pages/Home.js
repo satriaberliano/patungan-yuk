@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {db} from '../firebase-config';
 import { collection, getDocs } from "firebase/firestore"
-import { AddNewPatunganPath } from "../routes";
+import { AddNewPatunganPath, InfoPath } from "../routes";
 import { FiPlusSquare, FiLogOut } from 'react-icons/fi';
 import { FaUsers, FaCoins } from 'react-icons/fa';
 import UnsplashSource from "d:/sib x dicoding/.capstone/capstone project file/patungan-yuk/src/data/unsplash-source";
@@ -44,20 +44,18 @@ function Home(){
         <div className="payu__dashboard-hero">
           <img className="payu__dashboard-image" src={image} alt="dashboard-images"></img>
           <div className="payu__dashboard-hero-content">
-            <h2>{locale === 'id' ? 'Hai Pengguna' : 'Hi User'}!</h2>
-            <p>{locale === 'id' ? 'Selamat datang di halaman dashboard patungan' : 'Welcome to patungan dashboard page'}</p>
-            <p>{locale === 'id' ? `Kamu memiliki ${numbersPatungan} patungan` : `You have ${numbersPatungan} patungan`}</p>
+            <h2 tabIndex="0">{locale === 'id' ? 'Hai Pengguna' : 'Hi User'}!</h2>
+            <p tabIndex="0">{locale === 'id' ? 'Selamat datang di halaman dashboard patungan' : 'Welcome to patungan dashboard page'}</p>
+            <p tabIndex="0">{locale === 'id' ? `Kamu memiliki ${numbersPatungan} patungan` : `You have ${numbersPatungan} patungan`}</p>
           </div>
         </div>
         <div className="payu__dashboard-item">
           <div className='payu__dashboard-item__title'>
-            <h3>{locale === 'id' ? 'Daftar Patungan' : 'Patungan List'}</h3>
+            <h3 tabIndex="0">{locale === 'id' ? 'Daftar Patungan' : 'Patungan List'}</h3>
           </div>
-          <div className="payu__dashboard-item__patungan">
-            <div className="payu__dashboard-item__button">
-              <button type='button'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
-              <button type='button'><FiLogOut /></button>
-            </div>
+          <div className="payu__dashboard-item__button">
+            <button type='button'aria-label='add new patungan'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
+            <button type='button'aria-label='logout button'><Link to={`${InfoPath}`}><FiLogOut /></Link></button>
           </div>
         </div>
       </section>
@@ -67,7 +65,7 @@ function Home(){
             return member.Total
           })
           const sumBalance = balanceMembers.reduce((partialSum, a) => partialSum + a, 0);
-          return <div key={group.id} >
+          return <div className="list-wrapper" key={group.id} >
                   <Link to={`/detail-patungan/${group.id}`}>
                     <div className="payu__list-patungan-item">
                       <h3 className="payu__list-patungan-item__description">{group.title}</h3>

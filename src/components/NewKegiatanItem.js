@@ -10,7 +10,7 @@ function NewKegiatanItem({ Name, Spend }) {
         <p className='new-kegiatan__money'><FaCoins /> Rp {Spend}</p>
       </div>
       <div className='new-kegiatan__delete'>
-        <button className='action-delete__kegiatan'><RiDeleteBinLine /></button>
+        <button className='action-delete__kegiatan' aria-label='delete button'><RiDeleteBinLine /></button>
       </div>
     </div>
   );

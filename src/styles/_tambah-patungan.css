@@ -275,6 +275,11 @@
   background-color: transparent;
 }
 
+.action-delete__anggota:hover,
+.action-delete__kegiatan:hover {
+  background-color: transparent;
+}
+
 .conditional-rendering {
   font-size: 14px;
   font-style: italic;

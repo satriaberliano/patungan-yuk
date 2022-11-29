@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import { FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi';
@@ -14,7 +15,7 @@ function KegiatanList({ patunganActivity, idPatungan }) {
     const patunganRef = doc(db, "patungan", idPatungan);
     const data = await getDoc(patunganRef);
     let activityData = data.data().Activity;
-    let activityDeleteIndex = activityData.findIndex((obj => obj.id === idActivity));
+    let activityDeleteIndex = activityData.findIndex((obj => obj.id == idActivity));
     activityData.splice(activityDeleteIndex, 1);
     
     await updateDoc(patunganRef, {Activity: activityData});
@@ -46,12 +47,12 @@ function KegiatanList({ patunganActivity, idPatungan }) {
       }
       return <div className="detail__list-activity__wrapper" key={activity.id}>
                 <div className="detail__list-activity-item">
-                  <p className="detail__list-activity-item__name">{activity.Name}</p>
-                  <p className="detail__list-activity-item__money"><FaCoins /> Rp {activity.Spend}</p>
+                  <p tabIndex="0" className="detail__list-activity-item__name">{activity.Name}</p>
+                  <p tabIndex="0" className="detail__list-activity-item__money"><FaCoins /> Rp {activity.Spend}</p>
                 </div>
                 <div className="detail__list-activity-button">
-                  <button onClick={onDeleteKegiatan}><HiOutlineTrash /></button>
-                  <button><Link to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`}><HiOutlinePencil /></Link></button>
+                  <button onClick={onDeleteKegiatan} aria-label='delete button'><HiOutlineTrash /></button>
+                  <button><Link to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`} aria-label='change activity'><HiOutlinePencil /></Link></button>
                 </div>
               </div>
     })}

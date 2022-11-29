@@ -34,7 +34,7 @@ function AddAnggotaPatunganPage(){
     <div className="add-anggota-patungan-page">
         <div className='add-patungan__add-user'>
           <div className='add-patungan__add-user__text'>
-            <h2>{locale === 'id' ? 'Tambah Anggota' : 'Add Member'}</h2>
+            <h2 tabIndex="0">{locale === 'id' ? 'Tambah Anggota' : 'Add Member'}</h2>
           </div>
           <form onSubmit={addNewAnggotaHandler}>
             <input className='input__action' type='text' placeholder={locale === 'id' ? 'Nama anggota' : 'Member name'} value={name} onChange={setName} required/>

@@ -16,19 +16,28 @@
   margin: 10px 0;
   padding: 20px;
   background-color: var(--list);
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 12px;
 }
 
 .detail__dashboard-item__flex {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .detail__dashboard-item__flex button {
   border: 0;
   background-color: transparent;
-  font-size: 24px;
+  font-size: 25px;
+  padding: 9.5px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+}
+
+.detail__dashboard-item__flex button:hover {
+  background-color: transparent;
 }
 
 .detail__dashboard-item__name {
@@ -55,7 +64,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: var(--text-dark);
-  padding: 10px;
+  padding: 12px;
   margin-top: 20px;
   margin-right: 20px;
   border: 1px solid #3fd34e;
@@ -84,7 +93,7 @@
 
 .tab {
   font-family: 'Poppins', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   width: 10em;
   height: 3.5em;
   color: var(--text);
@@ -113,12 +122,13 @@
   border-radius: 10px;
 }
 
-.detail__list-user__wrapper {
+.detail__list-user__wrapper,
+.detail__list-activity__wrapper {
   color: var(--text);
   margin: 0 0 10px 0;
   padding: 15px 20px;
   background-color: var(--list);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -139,37 +149,34 @@
   color: var(--text);
 }
 
-.detail__list-user-button {
+.detail__list-user-button,
+.detail__list-activity-button {
   display: flex;
+  align-items: center;
   gap: 15px;
   margin-top: 5px;
 }
 
-.detail__list-user-button button {
+.detail__list-user-button button,
+.detail__list-activity-button button {
   border: 0;
-  font-size: 28px;
+  font-size: 25px;
+  padding: 9.5px;
   background-color: transparent;
   color: var(--text);
+  display: flex;
 }
 
-.detail__list-user-button button a {
+.detail__list-user-button button a,
+.detail__list-activity-button button a {
   color: var(--text);
+  display: flex;
 }
 
 .detail__list-user-button button:hover,
 .detail__list-activity-button button:hover {
   background-color: transparent;
   color: #ffffff;
-}
-
-.detail__list-activity__wrapper {
-  color: var(--text);
-  margin: 0 0 10px 0;
-  padding: 15px 20px;
-  background-color: var(--list);
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .detail__list-activity-item__name {
@@ -186,21 +193,4 @@
 
 .detail__list-activity-item__money svg {
   color: var(--text);
-}
-
-.detail__list-activity-button {
-  display: flex;
-  gap: 15px;
-  margin-top: 5px;
-}
-
-.detail__list-activity-button button {
-  border: 0;
-  font-size: 28px;
-  color: var(--text);
-  background-color: var(--list);
-}
-
-.detail__list-activity-button button a {
-  color: var(--on-background);
 }

@@ -10,11 +10,11 @@ function LoginPage(){
   return(
     <div className='login-page'>
       <div className='login-page__header'>
-        <h2>{locale === 'id' ? 'Masuk' : 'Sign In'}</h2>
-        <p>{locale === 'id' ? 'Masukkan email dan password untuk melanjutkan' : 'Enter your email and password to continue'}</p>
+        <h2 tabIndex="0">{locale === 'id' ? 'Masuk' : 'Sign In'}</h2>
+        <p tabIndex="0">{locale === 'id' ? 'Masukkan email dan password untuk melanjutkan' : 'Enter your email and password to continue'}</p>
       </div>
       <LoginInput />
-      <p className='login__link'>{locale === 'id' ? 'Belum memiliki akun? ' : 'Don\'t have an account yet? '}
+      <p tabIndex="0" className='login__link'>{locale === 'id' ? 'Belum memiliki akun? ' : 'Don\'t have an account yet? '}
         <Link to={RegisterPath}> {locale === 'id' ? 'Daftar' : 'Sign Up'}</Link>
       </p>
     </div>
