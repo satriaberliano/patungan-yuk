@@ -120,10 +120,9 @@ function DetailPage(){
             <button type="button" className='tab active' onClick={() => setTab('Anggota')}>{locale === 'id' ? 'Anggota' : 'Members'}</button>
             <button type="button" className='tab' onClick={() => setTab('Kegiatan')}>{locale === 'id' ? 'Kegiatan' : 'Activity'}</button>
           </div>
-          {/* <DetailButtonChoice /> */}
           <input 
             className="detail__list-user-search" 
-            placeholder={locale === 'id' ? 'Cari nama anggota' : 'Find Members name'}
+            placeholder={locale === 'id' ? 'Cari nama anggota atau kegiatan' : 'Find Members name or activity'}
             onChange={event => {setSearchTerm(event.target.value)}}>
           </input>
           <div className='detail__list-user-content'>

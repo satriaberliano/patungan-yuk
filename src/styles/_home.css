@@ -57,9 +57,10 @@
   background-color: transparent;
 }
 
-.payu__dashboard-item__button button a {
+.payu__dashboard-item__button button a,
+.payu__dashboard-item__button .payu__dashboard-logout-button {
   color: var(--text);
-  padding: 8.5px;
+  padding: 9.5px;
   display: flex;
   align-items: center;
 }

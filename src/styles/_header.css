@@ -19,8 +19,7 @@ header .navigation ul li {
 }
 
 .navigation__translate-button,
-.navigation__theme-button,
-.navigation__info-button {
+.navigation__theme-button {
   border: 0;
   font-size: 25px;
   color: var(--text);

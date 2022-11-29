@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {db} from '../config/firebase-config';
 import { collection, getDocs, query, where } from "firebase/firestore"
-import { AddNewPatunganPath } from "../routes";
+import { AddNewPatunganPath, InfoPath } from "../routes";
 import { FiPlusSquare, FiLogOut } from 'react-icons/fi';
 import { FaUsers, FaCoins } from 'react-icons/fa';
 import { signOut } from "firebase/auth";
@@ -38,25 +38,17 @@ function Home(){
     setPatungan(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     setNumbersPatungan(data.docs.length);
   }
-  if(idUser !== undefined){
-   patunganCollectionRef = query(collection(db, "patungan"), where("idUser", "==", idUser));
+  if (idUser !== undefined){
+    patunganCollectionRef = query(collection(db, "patungan"), where("idUser", "==", idUser));
   }else{console.log(idUser)
-    };
+  };
 
   useEffect(()=> {
-      const getPatungan = async () => {
-      const data = await getDocs(patunganCollectionRef);
-      
-      setPatungan(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-      setNumbersPatungan(data.docs.length);
-    }
-
     async function image() {
       const result = await UnsplashSource.getImage('sky');
       setImage(result);
     }
 
-    getPatungan();
     image();
     
     getUserID(setIdUser);
@@ -80,8 +72,8 @@ function Home(){
             <h3 tabIndex="0">{locale === 'id' ? 'Daftar Patungan' : 'Patungan List'}</h3>
           </div>
           <div className="payu__dashboard-item__button">
-            <button type='button'aria-label='add new patungan'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
-            <button type='button'aria-label='logout button'><Link to={`${InfoPath}`}><FiLogOut /></Link></button>
+            <button type='button' aria-label='add new patungan'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
+            <button type='button' className="payu__dashboard-logout-button" aria-label='logout button' onClick={onLogoutHandler}><FiLogOut /></button>
           </div>
         </div>
       </section>

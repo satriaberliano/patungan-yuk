@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCoins } from 'react-icons/fa';
-import { RiDeleteBinLine } from 'react-icons/ri';
+import { HiOutlineTrash } from 'react-icons/hi';
 
 function NewKegiatanItem({ Name, Spend, id, onDelete }) {
   return (
@@ -10,7 +10,7 @@ function NewKegiatanItem({ Name, Spend, id, onDelete }) {
         <p className='new-kegiatan__money'><FaCoins /> Rp {Spend}</p>
       </div>
       <div className='new-kegiatan__delete'>
-        <button className='action-delete__kegiatan' aria-label='delete button' onClick={() => onDelete(id)}><RiDeleteBinLine /></button>
+        <button className='action-delete__kegiatan' aria-label='delete button' onClick={() => onDelete(id)}><HiOutlineTrash /></button>
       </div>
     </div>
   );
