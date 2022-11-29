@@ -77,6 +77,21 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 12px;
+  background-color: var(--button);  
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;

@@ -70,7 +70,7 @@ function PayuApp(){
           <header>
             <AppHeader />
           </header>
-          <main>
+          <main id="mainContent">
             <Routes>
               <Route path={rootPath} element={<Home />}></Route>
               <Route path={DetailPatunganPath} element={<DetailPage />}></Route>

@@ -100,8 +100,8 @@ function DetailPage(){
       <section className="detail-patungan">
         <section className="detail__dashboard">
           <div className="detail__dashboard-title">
-            <h2>{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
-            <p>{locale === 'id' ? 'Detail Patungan Kamu' : 'Your patungan details'}</p>
+            <h2 tabindex="0">{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
+            <p tabindex="0">{locale === 'id' ? 'Detail Patungan Kamu' : 'Your patungan details'}</p>
           </div>
           <DetailDashboard 
             deletePatungan={onDeletePatungan}
