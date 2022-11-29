@@ -1,7 +1,7 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 import useInput from "../hooks/useInput";
-import {db} from '../firebase-config';
+import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import UrlParser from "../url-parser";
 

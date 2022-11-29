@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiArrowRight } from 'react-icons/fi';
 import { Link } from "react-router-dom";
 import useInput from "../hooks/useInput";
@@ -6,11 +6,13 @@ import AddNewKegiatan from "./AddNewKegiatan";
 import NewKegiatanList from "./NewKegiatanList";
 import AddNewAnggota from "./AddNewAnggota";
 import NewAnggotaList from "./NewAnggotaList";
+import { getUserID } from "../utils/helper";
 
 function AddNewPatungan({ newPatungan }) {
   const [ title, setTitle ] = useInput('');
   const [ anggota, setAnggota ] = useState([]);
   const [ kegiatan, setKegiatan ] = useState([]);
+  const [idUser, setIdUser] = useState();
 
   function addNewAnggotaHandler(newAnggota) {
     const data = [];
@@ -38,11 +40,16 @@ function AddNewPatungan({ newPatungan }) {
     event.preventDefault();
     
     newPatungan({
+      idShare: +new Date(),
+      idUser: idUser,
       title: title,
       Members: anggota,
       Activity: kegiatan,
     });
   }
+  useEffect(() => {
+    getUserID(setIdUser);
+  },[])
 
   return (
     <section className='add-new-patungan__input'>

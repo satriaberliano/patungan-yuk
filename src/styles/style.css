@@ -152,6 +152,14 @@ a {
   border-radius: 10px 0 0 10px;
 }
 
+.shared-detail-patungan-notfound-wrapper {
+  margin: 10% 10px;
+  padding: 10px;
+  border: 2px solid black;
+  background-color: #c0bbbb;
+  text-align: center;
+}
+
 /* 
 =====================================
             HALAMAN HOME
@@ -252,8 +260,8 @@ a {
 }
 
 .detail__dashboard-item__flex {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 14fr 1fr 1fr;
 }
 
 .detail__dashboard-item__flex button {

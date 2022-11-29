@@ -3,12 +3,12 @@ import { FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { FiPlusSquare } from 'react-icons/fi';
 import { Link } from "react-router-dom";
-import {db} from '../firebase-config';
+import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import swal from "sweetalert";
 
 
-function AnggotaList({ patunganMembers, idPatungan }) {
+function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
   
   const deleteAnggota = async (idPatungan,idMember) => {
     const patunganRef = doc(db, "patungan", idPatungan);
@@ -23,7 +23,13 @@ function AnggotaList({ patunganMembers, idPatungan }) {
   }
   return(
   <div className="detail__list-user-container">
-    {patunganMembers.map((member) => {
+    {patunganMembers.filter((val) => {
+      if (searchTerm == "") {
+        return val
+      } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return val
+      }
+    }).map((member) => {
       const onDeleteAnggota = () => {
         swal({
           title: "Apakah anda yakin ingin menghapus anggota ini?",

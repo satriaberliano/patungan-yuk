@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AnggotaList from "../components/AnggotaList";
 import DetailDashboard from "../components/DetailDashboard";
-import {db} from '../firebase-config';
+import {db} from '../config/firebase-config';
 import { doc, getDoc, deleteDoc } from "firebase/firestore"
 import KegiatanList from "../components/KegiatanList";
 import swal from "sweetalert";
@@ -37,11 +37,13 @@ function DetailPage(){
   }
 
   const [patunganTitle, setPatunganTitle] = useState('');
+  const [patunganIdShare, setPatunganIdShare] = useState('');
   const [numbersOfMember, setNumbersOfMember] = useState(0)
   const [Balance, setBalance] = useState(0)
   const [remainingBalance, setRemainingBalance] = useState(0)
   const [patunganMembers, setMembers] = useState([]);
-  const [patunganActivity, setActivity] = useState([])
+  const [patunganActivity, setActivity] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const countDetail = async () => {
     const total = await patunganMembers.map((member) => {
@@ -66,6 +68,7 @@ function DetailPage(){
       const data = await getDoc(docRef); 
       const dataPatungan = data.data();
       setPatunganTitle(dataPatungan.title);
+      setPatunganIdShare(dataPatungan.idShare)
       setNumbersOfMember(dataPatungan.Members.length);
       setMembers(dataPatungan.Members);
       setActivity(dataPatungan.Activity);
@@ -106,7 +109,8 @@ function DetailPage(){
             numbersOfMember={numbersOfMember} 
             balance={Balance}
             remainingBalance = {remainingBalance}
-            idPatungan={url.id}/>
+            idPatungan={url.id}
+            patuganIdShare={patunganIdShare}/>
         </section>
         <section className="detail__list-user">
           <div className="detail__list-user-choice" id="tab-button">
@@ -114,10 +118,14 @@ function DetailPage(){
             <button type="button" className='tab' onClick={() => setTab('Kegiatan')}>Kegiatan</button>
           </div>
           {/* <DetailButtonChoice /> */}
-          <input className="detail__list-user-search" placeholder="Cari nama anggota"></input>
+          <input 
+            className="detail__list-user-search" 
+            placeholder="Cari nama anggota"
+            onChange={event => {setSearchTerm(event.target.value)}}>
+          </input>
           <div className='detail__list-user-content'>
-            {tab === 'Anggota' && <AnggotaList  patunganMembers={patunganMembers} idPatungan={url.id}/>}
-            {tab === 'Kegiatan' && <KegiatanList patunganActivity={patunganActivity} idPatungan={url.id}/>}
+            {tab === 'Anggota' && <AnggotaList  patunganMembers={patunganMembers} searchTerm={searchTerm} idPatungan={url.id}/>}
+            {tab === 'Kegiatan' && <KegiatanList patunganActivity={patunganActivity} searchTerm={searchTerm} idPatungan={url.id}/>}
           </div>
         </section>
       </section>

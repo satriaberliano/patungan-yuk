@@ -1,15 +1,20 @@
 import React from "react";
-import { FaUsers, FaCoins } from 'react-icons/fa';
+import { FaUsers, FaCoins, FaShare } from 'react-icons/fa';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { Link } from "react-router-dom";
-import { AddAnggotaPatunganPath, AddKegiatanPatunganPath } from "../routes";
 
-function DetailDashboard({ deletePatungan, patunganTitle, numbersOfMember, balance, remainingBalance, idPatungan }){
+function DetailDashboard({ deletePatungan, patunganTitle, numbersOfMember, balance, remainingBalance, idPatungan, patuganIdShare }){
+  const urlShared = `http://localhost:3000/shared-detail-patungan/${patuganIdShare}`
   return(
     <div className="detail__dashboard-item">
       <div className="detail__dashboard-item__flex">
         <p className="detail__dashboard-item__name">{patunganTitle}</p>
-        <button type="button" onClick={deletePatungan}><HiOutlineTrash /></button>
+        <button type="button" title='Hapus patungan' onClick={deletePatungan}><HiOutlineTrash /></button>
+        <button title='Bagikan patungan' 
+                onClick={() =>  navigator.clipboard.writeText(urlShared)}
+                onMouseUp={()=> alert("Link patungan berhasil dicopy")}>
+                  <FaShare/>
+        </button>
       </div>
       <div className="detail__dashboard-item__info">
         <p className="detail__dashboard-item__user"><FaUsers /> {numbersOfMember} anggota</p>

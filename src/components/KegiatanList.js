@@ -2,11 +2,11 @@ import React from "react";
 import { FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi';
 import { Link } from "react-router-dom";
-import {db} from '../firebase-config';
+import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import swal from "sweetalert";
 
-function KegiatanList({ patunganActivity, idPatungan }) {
+function KegiatanList({ patunganActivity, idPatungan, searchTerm }) {
 
   const deleteKegiatan = async (idPatungan,idActivity) => {
     const patunganRef = doc(db, "patungan", idPatungan);
@@ -22,7 +22,13 @@ function KegiatanList({ patunganActivity, idPatungan }) {
 
   return(
   <div className="detail__list-activity-container">
-    {patunganActivity.map((activity) => {
+    {patunganActivity.filter((val) =>{
+      if (searchTerm == "") {
+        return val
+      } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return val
+      }
+    }).map((activity) => {
       const onDeleteKegiatan = () => {
         swal({
           title: "Apakah anda yakin ingin menghapus kegiatan ini?",
