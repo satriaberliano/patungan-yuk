@@ -48,9 +48,9 @@ function ChangeKegiatanPatunganPage(){
     <div className="change-kegiatan-patungan-page">
         <div className='add-patungan__change-kegiatan'>
           <div className='add-patungan__change-kegiatan__text'>
-            <h2 tabindex="0">{locale === 'id' ? 'Ubah Kegiatan' : 'Change Activity'}</h2>
-            <p tabindex="0">{locale === 'id' ? `Nama kegiatan saat ini: ${name}` : `Current activity name: ${name}`}</p>
-            <p tabindex="0">{locale === 'id' ? `Jumlah dana untuk kegiatan saat ini: Rp ${spend}` : `Amount of funds for current activities: Rp ${spend}`}</p>
+            <h2 tabIndex="0">{locale === 'id' ? 'Ubah Kegiatan' : 'Change Activity'}</h2>
+            <p tabIndex="0">{locale === 'id' ? `Nama kegiatan saat ini: ${name}` : `Current activity name: ${name}`}</p>
+            <p tabIndex="0">{locale === 'id' ? `Jumlah dana untuk kegiatan saat ini: Rp ${spend}` : `Amount of funds for current activities: Rp ${spend}`}</p>
           </div>
           <form onSubmit={changeKegiatanPatunganHandler}>
             <input className='input__action' type='text' placeholder="Judul baru" value={newName} onChange={setNewName} required/>

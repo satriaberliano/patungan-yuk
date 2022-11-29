@@ -47,12 +47,12 @@ function KegiatanList({ patunganActivity, idPatungan }) {
       }
       return <div className="detail__list-activity__wrapper" key={activity.id}>
                 <div className="detail__list-activity-item">
-                  <p tabindex="0" className="detail__list-activity-item__name">{activity.Name}</p>
-                  <p tabindex="0" className="detail__list-activity-item__money"><FaCoins /> Rp {activity.Spend}</p>
+                  <p tabIndex="0" className="detail__list-activity-item__name">{activity.Name}</p>
+                  <p tabIndex="0" className="detail__list-activity-item__money"><FaCoins /> Rp {activity.Spend}</p>
                 </div>
                 <div className="detail__list-activity-button">
-                  <button onClick={onDeleteKegiatan}><HiOutlineTrash /></button>
-                  <button><Link to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`}><HiOutlinePencil /></Link></button>
+                  <button onClick={onDeleteKegiatan} aria-label='delete button'><HiOutlineTrash /></button>
+                  <button><Link to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`} aria-label='change activity'><HiOutlinePencil /></Link></button>
                 </div>
               </div>
     })}

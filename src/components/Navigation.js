@@ -16,15 +16,15 @@ function Navigation(){
       <nav className="navigation">
         <ul>
           <li>
-            <button className="navigation__theme-button" onClick={toggleTheme}>
+            <button className="navigation__theme-button" onClick={toggleTheme} aria-label='theme button'>
             {theme === 'light' ? <RiLightbulbFill /> : <RiLightbulbLine />}
             </button>
           </li>
           <li>
-            <button className="navigation__translate-button" onClick={toggleLocale}><MdGTranslate /></button>
+            <button className="navigation__translate-button" onClick={toggleLocale} aria-label='translate button'><MdGTranslate /></button>
           </li>
           <li>
-            <Link className="navigation__info-button" to={InfoPath}><AiOutlineInfoCircle /></Link>
+            <Link className="navigation__info-button" to={InfoPath}aria-label='info page'><AiOutlineInfoCircle /></Link>
           </li>
         </ul>
       </nav>

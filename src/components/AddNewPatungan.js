@@ -6,11 +6,13 @@ import AddNewKegiatan from "./AddNewKegiatan";
 import NewKegiatanList from "./NewKegiatanList";
 import AddNewAnggota from "./AddNewAnggota";
 import NewAnggotaList from "./NewAnggotaList";
+import LocaleContext from "../contexts/LocaleContext";
 
 function AddNewPatungan({ newPatungan }) {
   const [ title, setTitle ] = useInput('');
   const [ anggota, setAnggota ] = useState([]);
   const [ kegiatan, setKegiatan ] = useState([]);
+  const { locale } = React.useContext(LocaleContext);
 
   function addNewAnggotaHandler(newAnggota) {
     const data = [];
@@ -47,12 +49,12 @@ function AddNewPatungan({ newPatungan }) {
   return (
     <section className='add-new-patungan__input'>
       <div className='add-new-patungan__title'>
-        <h2>Buat Patungan</h2>
-        <p>Silakan isi data berikut untuk membuat patungan.</p>
+        <h2 tabIndex="0">{locale === 'id' ? 'Buat Patungan' : 'Create Patungan'}</h2>
+        <p tabIndex="0">{locale === 'id' ? 'Silakan isi data berikut untuk membuat patungan.' : 'Please fill in the following data to make a patungan (joint venture).'}</p>
       </div>
 
       <div className="judul">
-        <p className="add-patungan-title">1. Masukkan judul patungan</p>
+        <p tabIndex="0" className="add-patungan-title">1. {locale === 'id' ? 'Masukkan judul patungan' : 'Add patungan title'}</p>
         <form>
           <input 
             className='add-new-patungan__input__title' 
@@ -66,22 +68,22 @@ function AddNewPatungan({ newPatungan }) {
       </div>
 
       <div className="anggota">
-        <p className="add-patungan-title">2. Masukkan daftar anggota</p>
+        <p tabIndex="0" className="add-patungan-title">2. {locale === 'id' ? 'Masukkan daftar anggota' : 'Add member list'}</p>
         <AddNewAnggota addNewAnggota={addNewAnggotaHandler} />
 
         <div className='new-patungan__contaner'>
-          <p className='new-patungan__title'>Daftar anggota</p>
+          <p tabIndex="0" className='new-patungan__title'>{locale === 'id' ? 'Daftar anggota' : 'Member list'}</p>
           <NewAnggotaList anggota={anggota} />
         </div>
       </div>
 
       <div className="kegiatan">
-        <p className="add-patungan-title">3. Masukkan daftar kegiatan</p>
-        <p className="optional">*Opsional (bisa ditambah nanti)</p>
+        <p tabIndex="0" className="add-patungan-title">3. {locale === 'id' ? 'Masukkan daftar kegiatan' : 'Add activity list'}</p>
+        <p tabIndex="0" className="optional">*{locale === 'id' ? 'Opsional (bisa ditambah nanti)' : 'Optional (can be added later)'}</p>
         <AddNewKegiatan addNewKegiatan={addNewKegiatanHandler} />
 
         <div className='new-patungan__contaner'>
-          <p className='new-patungan__title'>Daftar kegiatan</p>
+          <p tabIndex="0" className='new-patungan__title'>{locale === 'id' ? 'Daftar kegiatan' : 'Activity list'}</p>
           <NewKegiatanList kegiatan={kegiatan} />
         </div>
       </div>
@@ -89,7 +91,7 @@ function AddNewPatungan({ newPatungan }) {
       <div className='add-new-patungan__action'>
         <button className='action-submit' type='submit' title='Selanjutnya' onClick={addPatunganClickHandler} disabled={!title}>
           <Link className='action-submit__link'>
-            <p>Simpan</p>
+            <p>{locale === 'id' ? 'Simpan' : 'Save'}</p>
             <FiArrowRight />
           </Link>
         </button>

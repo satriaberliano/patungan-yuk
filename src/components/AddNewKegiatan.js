@@ -1,10 +1,12 @@
 import React from "react";
 import { FiArrowRight } from 'react-icons/fi';
+import LocaleContext from "../contexts/LocaleContext";
 import useInput from "../hooks/useInput";
 
 function AddNewKegiatan({ addNewKegiatan }) {
   const [title, setTitle] = useInput('');
   const [ money, setMoney ] = useInput(0);
+  const { locale } = React.useContext(LocaleContext);
 
   const newKegiatanSubmitHandler = (event) => {
     event.preventDefault();
@@ -21,7 +23,7 @@ function AddNewKegiatan({ addNewKegiatan }) {
       <input 
         className='add-new-kegiatan__input__name' 
         type='text' 
-        placeholder='Judul' 
+        placeholder={locale === 'id' ? 'Judul' : 'Title'}
         value={title}
         onChange={setTitle}
         required
@@ -31,14 +33,14 @@ function AddNewKegiatan({ addNewKegiatan }) {
         <input 
           className='add-new-kegiatan__input__value input__action' 
           type='number' 
-          placeholder='Jumlah uang yang dihabiskan' 
+          placeholder={locale === 'id' ? 'Jumlah dana yang dihabiskan' : 'Amount of funds spent'}
           value={money}
           onChange={setMoney}
           required
         />
       </span>
       <button className='action-submit new-patungan-action-submit' type='submit' title='Tambah'>
-        <p>Tambah</p>
+        <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
         <FiArrowRight />
       </button>
     </form>

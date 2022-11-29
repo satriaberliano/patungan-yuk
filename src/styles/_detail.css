@@ -122,7 +122,8 @@
   border-radius: 10px;
 }
 
-.detail__list-user__wrapper {
+.detail__list-user__wrapper,
+.detail__list-activity__wrapper {
   color: var(--text);
   margin: 0 0 10px 0;
   padding: 15px 20px;
@@ -148,14 +149,16 @@
   color: var(--text);
 }
 
-.detail__list-user-button {
+.detail__list-user-button,
+.detail__list-activity-button {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-top: 5px;
 }
 
-.detail__list-user-button button {
+.detail__list-user-button button,
+.detail__list-activity-button button {
   border: 0;
   font-size: 25px;
   padding: 9.5px;
@@ -164,7 +167,8 @@
   display: flex;
 }
 
-.detail__list-user-button button a {
+.detail__list-user-button button a,
+.detail__list-activity-button button a {
   color: var(--text);
   display: flex;
 }
@@ -173,16 +177,6 @@
 .detail__list-activity-button button:hover {
   background-color: transparent;
   color: #ffffff;
-}
-
-.detail__list-activity__wrapper {
-  color: var(--text);
-  margin: 0 0 10px 0;
-  padding: 15px 20px;
-  background-color: var(--list);
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .detail__list-activity-item__name {
@@ -199,21 +193,4 @@
 
 .detail__list-activity-item__money svg {
   color: var(--text);
-}
-
-.detail__list-activity-button {
-  display: flex;
-  gap: 15px;
-  margin-top: 5px;
-}
-
-.detail__list-activity-button button {
-  border: 0;
-  font-size: 28px;
-  color: var(--text);
-  background-color: var(--list);
-}
-
-.detail__list-activity-button button a {
-  color: var(--on-background);
 }

@@ -49,11 +49,11 @@ function AddUangPatunganPage(){
   <div className="add-uang-patungan-page">
     <div className='add-patungan__add-uang'>
       <div className='add-patungan__add-uang__text'>
-        <h2 tabindex="0">{locale === 'id' ? 'Tambah Patungan' : 'Add Patungan'}</h2>
-        <p tabindex="0">{locale === 'id' ? `Untuk ${name}` : `For ${name}`}</p>
-        <p tabindex="0">{locale === 'id' ? `Dana saat ini : Rp ${total}` : `Current funds : Rp ${total}`}</p>
+        <h2 tabIndex="0">{locale === 'id' ? 'Tambah Patungan' : 'Add Patungan'}</h2>
+        <p tabIndex="0">{locale === 'id' ? `Untuk ${name}` : `For ${name}`}</p>
+        <p tabIndex="0">{locale === 'id' ? `Dana saat ini : Rp ${total}` : `Current funds : Rp ${total}`}</p>
       </div>
-      <p tabindex="0"><span>{locale === 'id' ? 'Dana yang ingin ditambahkan' : 'Funds you want to add'}</span></p>
+      <p tabIndex="0"><span>{locale === 'id' ? 'Dana yang ingin ditambahkan' : 'Funds you want to add'}</span></p>
       <form onSubmit={addUangPatunganHandler}>
         <input className='input__action' 
           type='number'  

@@ -48,12 +48,12 @@ function AnggotaList({ patunganMembers, idPatungan }) {
       }
       return  <div className="detail__list-user__wrapper" key={member.id}>
                 <div className="detail__list-user-item">
-                  <p tabindex="0" className="detail__list-user-item__name">{member.Name}</p>
-                  <p tabindex="0" className="detail__list-user-item__money"><FaCoins /> Rp {member.Total}</p>
+                  <p tabIndex="0" className="detail__list-user-item__name">{member.Name}</p>
+                  <p tabIndex="0" className="detail__list-user-item__money"><FaCoins /> Rp {member.Total}</p>
                 </div>
                 <div className="detail__list-user-button">
-                  <button onClick={onDeleteAnggota}><HiOutlineTrash /></button>
-                  <button><Link to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`}><FiPlusSquare /></Link></button>
+                  <button onClick={onDeleteAnggota} aria-label='delete button'><HiOutlineTrash /></button>
+                  <button><Link to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`} aria-label='add money'><FiPlusSquare /></Link></button>
                 </div>
               </div>
     })}

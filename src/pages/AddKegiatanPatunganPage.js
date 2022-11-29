@@ -32,7 +32,7 @@ function AddKegiatanPatunganPage(){
     <div className="add-kegiatan-patungan-page">
         <div className='add-patungan__add-activity'>
           <div className='add-patungan__add-activity__text'>
-            <h2 tabindex="0">{locale === 'id' ? 'Tambah Kegiatan' : 'Add Activity'}</h2>
+            <h2 tabIndex="0">{locale === 'id' ? 'Tambah Kegiatan' : 'Add Activity'}</h2>
           </div>
           <form onSubmit={addNewActivityHandler}>
             <input className='input__action' type='text' placeholder={locale === 'id' ? 'Judul kegiatan' : 'Activity title'} value={name} onChange={setName} required/>

@@ -10,13 +10,13 @@ function DetailDashboard({ deletePatungan, patunganTitle, numbersOfMember, balan
   return(
     <div className="detail__dashboard-item">
       <div className="detail__dashboard-item__flex">
-        <p tabindex="0" className="detail__dashboard-item__name">{patunganTitle}</p>
-        <button type="button" onClick={deletePatungan}><HiOutlineTrash /></button>
+        <p tabIndex="0" className="detail__dashboard-item__name">{patunganTitle}</p>
+        <button type="button" onClick={deletePatungan} aria-label='delete button'><HiOutlineTrash /></button>
       </div>
       <div className="detail__dashboard-item__info">
-        <p tabindex="0" className="detail__dashboard-item__user"><FaUsers /> {numbersOfMember} {locale === 'id' ? 'Anggota' : 'Members'}</p>
-        <p tabindex="0" className="detail__dashboard-item__money"><FaCoins /> Rp {balance}</p>
-        <p tabindex="0" className="detail__dashboard-item__leftover">{locale === 'id' ? 'Sisa patungan' : 'Balance'}: Rp {remainingBalance}</p>
+        <p tabIndex="0" className="detail__dashboard-item__user"><FaUsers /> {numbersOfMember} {locale === 'id' ? 'Anggota' : 'Members'}</p>
+        <p tabIndex="0" className="detail__dashboard-item__money"><FaCoins /> Rp {balance}</p>
+        <p tabIndex="0" className="detail__dashboard-item__leftover">{locale === 'id' ? 'Sisa patungan' : 'Balance'}: Rp {remainingBalance}</p>
       </div>
       <div className="detail__dashboard-item-button">
         <button type="button"><Link to={`/detail-patungan/${idPatungan}/add/anggota`}>{locale === 'id' ? 'Tambah Anggota' : 'Add Member'}</Link></button>

@@ -15,9 +15,9 @@ function InfoPage() {
       </div>
       <div className="info-page__container">
         <div className="info-page__text">
-          <h2 tabindex="0">{locale === 'id' ? 'Selamat Datang di PAYU' : 'Welcome to PAYU'}</h2>
-          <p tabindex="0" className="info-page__text-acronym">Patungan Yuk!</p>
-          <p tabindex="0" className="info-page__text-desc">
+          <h2 tabIndex="0">{locale === 'id' ? 'Selamat Datang di PAYU' : 'Welcome to PAYU'}</h2>
+          <p tabIndex="0" className="info-page__text-acronym">Patungan Yuk!</p>
+          <p tabIndex="0" className="info-page__text-desc">
           {locale === 'id' ? 'Aplikasi pencatatan patungan yang dapat mempermudah Anda dalam mengumpulkan uang bersama dengan teman, keluarga, dan semua orang di dunia' : 'A joint record-keeping application that can make it easier for you to collect money together with friends, family, and everyone in the world'}.
           </p>
         </div>

@@ -44,18 +44,18 @@ function Home(){
         <div className="payu__dashboard-hero">
           <img className="payu__dashboard-image" src={image} alt="dashboard-images"></img>
           <div className="payu__dashboard-hero-content">
-            <h2 tabindex="0">{locale === 'id' ? 'Hai Pengguna' : 'Hi User'}!</h2>
-            <p tabindex="0">{locale === 'id' ? 'Selamat datang di halaman dashboard patungan' : 'Welcome to patungan dashboard page'}</p>
-            <p tabindex="0">{locale === 'id' ? `Kamu memiliki ${numbersPatungan} patungan` : `You have ${numbersPatungan} patungan`}</p>
+            <h2 tabIndex="0">{locale === 'id' ? 'Hai Pengguna' : 'Hi User'}!</h2>
+            <p tabIndex="0">{locale === 'id' ? 'Selamat datang di halaman dashboard patungan' : 'Welcome to patungan dashboard page'}</p>
+            <p tabIndex="0">{locale === 'id' ? `Kamu memiliki ${numbersPatungan} patungan` : `You have ${numbersPatungan} patungan`}</p>
           </div>
         </div>
         <div className="payu__dashboard-item">
           <div className='payu__dashboard-item__title'>
-            <h3 tabindex="0">{locale === 'id' ? 'Daftar Patungan' : 'Patungan List'}</h3>
+            <h3 tabIndex="0">{locale === 'id' ? 'Daftar Patungan' : 'Patungan List'}</h3>
           </div>
           <div className="payu__dashboard-item__button">
-            <button type='button'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
-            <button type='button'><Link to={`${InfoPath}`}><FiLogOut /></Link></button>
+            <button type='button'aria-label='add new patungan'><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
+            <button type='button'aria-label='logout button'><Link to={`${InfoPath}`}><FiLogOut /></Link></button>
           </div>
         </div>
       </section>

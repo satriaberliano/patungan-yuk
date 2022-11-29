@@ -1,10 +1,12 @@
 import React from "react";
 import { FiArrowRight } from 'react-icons/fi';
+import LocaleContext from "../contexts/LocaleContext";
 import useInput from "../hooks/useInput";
 
 function AddNewAnggota({ addNewAnggota }) {
   const [name, setName] = useInput('');
   const [ money, setMoney ] = useInput(0);
+  const { locale } = React.useContext(LocaleContext);
 
   const newAnggotaSubmitHandler = (event) => {
     event.preventDefault();
@@ -21,7 +23,7 @@ function AddNewAnggota({ addNewAnggota }) {
       <input 
         className='add-new-anggota__input__name' 
         type='text' 
-        placeholder='Nama' 
+        placeholder={locale === 'id' ? 'Nama' : 'Name'} 
         value={name}
         onChange={setName}
         required
@@ -31,7 +33,7 @@ function AddNewAnggota({ addNewAnggota }) {
         <input 
           className='add-new-anggota__input__value input__action' 
           type='number' 
-          placeholder='Jumlah Patungan' 
+          placeholder={locale === 'id' ? 'Jumlah patungan' : 'Number of joint ventures'}
           value={money}
           onChange={setMoney}
           required
@@ -39,7 +41,7 @@ function AddNewAnggota({ addNewAnggota }) {
       </span>
 
       <button className='action-submit new-patungan-action-submit' type='submit' title='Tambah'>
-        <p>Tambah</p>
+        <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
         <FiArrowRight />
       </button>
     </form>
