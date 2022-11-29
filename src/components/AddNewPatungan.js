@@ -46,6 +46,16 @@ function AddNewPatungan({ newPatungan }) {
     });
   }
 
+  function onDeleteAnggotaHandler(id) {
+    const deleteAnggota = anggota.filter((agt) => agt.id !== id);
+    setAnggota(deleteAnggota);
+  }
+
+  function onDeleteKegiatanHandler(id) {
+    const deleteKegiatan = kegiatan.filter((kgt) => kgt.id !== id);
+    setKegiatan(deleteKegiatan);
+  }
+
   return (
     <section className='add-new-patungan__input'>
       <div className='add-new-patungan__title'>
@@ -59,7 +69,7 @@ function AddNewPatungan({ newPatungan }) {
           <input 
             className='add-new-patungan__input__title' 
             type='text' 
-            placeholder='Judul' 
+            placeholder={locale === 'id' ? 'Judul' : 'Title'}
             value={title}
             onChange={setTitle}
             required 
@@ -73,7 +83,7 @@ function AddNewPatungan({ newPatungan }) {
 
         <div className='new-patungan__contaner'>
           <p tabIndex="0" className='new-patungan__title'>{locale === 'id' ? 'Daftar anggota' : 'Member list'}</p>
-          <NewAnggotaList anggota={anggota} />
+          <NewAnggotaList anggota={anggota} onDelete={onDeleteAnggotaHandler} />
         </div>
       </div>
 
@@ -84,7 +94,7 @@ function AddNewPatungan({ newPatungan }) {
 
         <div className='new-patungan__contaner'>
           <p tabIndex="0" className='new-patungan__title'>{locale === 'id' ? 'Daftar kegiatan' : 'Activity list'}</p>
-          <NewKegiatanList kegiatan={kegiatan} />
+          <NewKegiatanList kegiatan={kegiatan} onDelete={onDeleteKegiatanHandler} />
         </div>
       </div>
 
