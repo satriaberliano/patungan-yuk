@@ -1,27 +1,50 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {db} from '../firebase-config';
-import { collection, getDocs } from "firebase/firestore"
-import { AddNewPatunganPath, InfoPath } from "../routes";
+import { Link, useNavigate } from "react-router-dom";
+import {db} from '../config/firebase-config';
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { AddNewPatunganPath } from "../routes";
 import { FiPlusSquare, FiLogOut } from 'react-icons/fi';
 import { FaUsers, FaCoins } from 'react-icons/fa';
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase-config";
+import { getUserName, getUserID, putAccessToken } from "../utils/helper";
+import { async } from "@firebase/util";
 import UnsplashSource from "d:/sib x dicoding/.capstone/capstone project file/patungan-yuk/src/data/unsplash-source";
 import LocaleContext from "../contexts/LocaleContext";
 
 function Home(){
+  const [currentUser, setCurrentUser] = useState();
   const [patungan, setPatungan] = useState([]);
   const [numbersPatungan, setNumbersPatungan] = useState(0);
+  const [idUser, setIdUser] = useState();
   const [ image, setImage ] = useState('');
   const { locale } = React.useContext(LocaleContext);
+  const navigate = useNavigate();
 
-  // const title = "Jalan jalan ke labuan bajo"
+  const onLogoutHandler = () => {
+    signOut(auth)
+    .then(() => {
+      alert('Logout Berhasil');
+      putAccessToken('');
+      navigate('/info');
+    })
+  }
+
+  let patunganCollectionRef = query(collection(db, "patungan"), where("idUser", "==", null))
   
-  // const patunganCollectionRef = query(collection(db, "patungan"), where("title", "==", title))
-  const patunganCollectionRef = collection(db, "patungan");
+  const getPatungan = async () => {
+    const data = await getDocs(patunganCollectionRef);
+    setPatungan(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    setNumbersPatungan(data.docs.length);
+  }
+  if(idUser !== undefined){
+   patunganCollectionRef = query(collection(db, "patungan"), where("idUser", "==", idUser));
+  }else{console.log(idUser)
+    };
 
   useEffect(()=> {
-    const getPatungan = async () => {
+      const getPatungan = async () => {
       const data = await getDocs(patunganCollectionRef);
       
       setPatungan(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
@@ -35,16 +58,19 @@ function Home(){
 
     getPatungan();
     image();
-
-  },[]);
-
+    
+    getUserID(setIdUser);
+    getUserName(setCurrentUser);
+    getPatungan();
+  },[idUser]);
+  
   return(
     <section className="home">
       <section className="payu__dashboard">
         <div className="payu__dashboard-hero">
           <img className="payu__dashboard-image" src={image} alt="dashboard-images"></img>
           <div className="payu__dashboard-hero-content">
-            <h2 tabIndex="0">{locale === 'id' ? 'Hai Pengguna' : 'Hi User'}!</h2>
+            <h2 tabIndex="0">{locale === 'id' ? `Hai ${currentUser}` : `Hi ${currentUser}`}!</h2>
             <p tabIndex="0">{locale === 'id' ? 'Selamat datang di halaman dashboard patungan' : 'Welcome to patungan dashboard page'}</p>
             <p tabIndex="0">{locale === 'id' ? `Kamu memiliki ${numbersPatungan} patungan` : `You have ${numbersPatungan} patungan`}</p>
           </div>

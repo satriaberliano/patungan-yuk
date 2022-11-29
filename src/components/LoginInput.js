@@ -1,6 +1,10 @@
 import React from "react";
 import useInput from "../hooks/useInput";
-import { FiArrowRight } from 'react-icons/fi'
+import { FiArrowRight } from 'react-icons/fi';
+import { useNavigate } from "react-router-dom";
+import { auth } from "../config/firebase-config";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { putAccessToken, getUserLogged } from "../utils/helper";
 import LocaleContext from "../contexts/LocaleContext";
 
 function LoginInput({ login }){
@@ -8,13 +12,28 @@ function LoginInput({ login }){
   const [password, onPasswordChange] = useInput('');
   const { locale } = React.useContext(LocaleContext);
 
+  const navigate = useNavigate();
+
+  const onLoginHandler = ({email, password}) => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user.accessToken;
+      alert('Login Berhasil')
+      putAccessToken(user);
+      getUserLogged();
+      navigate('/');
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    });
+  }
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    login({
-      email,
-      password,
-    });
+    onLoginHandler({email, password});
   }
 
   return (

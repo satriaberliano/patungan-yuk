@@ -1,24 +1,50 @@
 import React from "react";
 import useInput from "../hooks/useInput";
 import { FiArrowRight } from "react-icons/fi";
+import { ref, set } from "firebase/database";
+import { auth, userDatabase } from "../config/firebase-config";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import LocaleContext from "../contexts/LocaleContext";
 
-function RegisterInput({ register }) {
+function RegisterInput() {
   const [name, onNameChange] = useInput('');
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
   const [confirmPassword, onConfirmPasswordChange] = useInput('');
   const { locale } = React.useContext(LocaleContext);
 
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
+  const navigate = useNavigate();
 
-    if(password === confirmPassword){
-      register({
+  const onRegisterHandler = async ({ email, name, password  }) => {
+    try {
+    await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      set(ref(userDatabase, "users/" + user.uid), {
         name: name,
         email: email,
         password: password,
       });
+      alert('User Telah Ditambahkan')
+      navigate('/login');
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+    await sendEmailVerification(auth.currentUser).catch((error) => console.log(error.message));
+    await updateProfile(auth.currentUser, { displayName : name }).catch((error) => console.log(error.message));
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+
+    if(password === confirmPassword){
+      onRegisterHandler({ email, name, password });
     }
     else{
       alert(`${locale === 'id' ? 'Register Gagal, Password dan Confirm Password harus sama' : 'Registration Failed, Password and Confirm Password must be the same'}`);
