@@ -2,7 +2,7 @@ import React from "react";
 import LocaleContext from "../contexts/LocaleContext";
 import NewKegiatanItem from "./NewKegiatanItem";
 
-function NewKegiatanList({ kegiatan }) {
+function NewKegiatanList({ kegiatan, onDelete }) {
   const { locale } = React.useContext(LocaleContext);
 
   return (
@@ -12,7 +12,7 @@ function NewKegiatanList({ kegiatan }) {
       ) : (
         <div className='new-kegiatan__list'>
           {kegiatan.map((kgt) => (
-            <NewKegiatanItem key={kgt.id} {...kgt} />
+            <NewKegiatanItem key={kgt.id} {...kgt} id={kgt.id} onDelete={onDelete} />
           ))}
         </div>
       )}
