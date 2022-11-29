@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import { FaCoins } from 'react-icons/fa';
 import { HiOutlineTrash } from 'react-icons/hi';
@@ -6,9 +7,10 @@ import { Link } from "react-router-dom";
 import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import swal from "sweetalert";
-
+import LocaleContext from "../contexts/LocaleContext";
 
 function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
+  const { locale } = React.useContext(LocaleContext);
   
   const deleteAnggota = async (idPatungan,idMember) => {
     const patunganRef = doc(db, "patungan", idPatungan);
@@ -32,31 +34,31 @@ function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
     }).map((member) => {
       const onDeleteAnggota = () => {
         swal({
-          title: "Apakah anda yakin ingin menghapus anggota ini?",
-          text: "Anggota yang dihapus akan hilang dari daftar anggota patungan",
+          title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus anggota ini?' : 'Are you sure want to delete this member?'}`,
+          text: `${locale === 'id' ? 'Anggota yang dihapus akan hilang dari daftar anggota patungan' : 'Deleted members will disappear from patungan member list'}`,
           icon: "warning",
           buttons: true,
           dangerMode: true,
         })
         .then((willDelete) => {
           if (willDelete) {
-            swal("Anggota berhasil dihapus", {
+            swal(`${locale === 'id' ? 'Anggota berhasil dihapus' : 'Member was successfully deleted'}`, {
               icon: "success",
             });
             deleteAnggota(idPatungan, member.id);
           } else {
-            swal("Anggota batal dihapus");
+            swal(`${locale === 'id' ? 'Anggota batal dihapus' : 'Canceled member deleted'}`);
           }
         });
       }
-      return <div className="detail__list-user__wrapper" key={member.id}>
+      return  <div className="detail__list-user__wrapper" key={member.id}>
                 <div className="detail__list-user-item">
-                  <p className="detail__list-user-item__name">{member.Name}</p>
-                  <p className="detail__list-user-item__money"><FaCoins /> Rp {member.Total}</p>
+                  <p tabIndex="0" className="detail__list-user-item__name">{member.Name}</p>
+                  <p tabIndex="0" className="detail__list-user-item__money"><FaCoins /> Rp {member.Total}</p>
                 </div>
                 <div className="detail__list-user-button">
-                  <button onClick={onDeleteAnggota}><HiOutlineTrash /></button>
-                  <button><Link to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`}><FiPlusSquare /></Link></button>
+                  <button onClick={onDeleteAnggota} aria-label='delete button'><HiOutlineTrash /></button>
+                  <button><Link to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`} aria-label='add money'><FiPlusSquare /></Link></button>
                 </div>
               </div>
     })}

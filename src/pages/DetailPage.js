@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import AnggotaList from "../components/AnggotaList";
 import DetailDashboard from "../components/DetailDashboard";
@@ -6,10 +7,12 @@ import { doc, getDoc, deleteDoc } from "firebase/firestore"
 import KegiatanList from "../components/KegiatanList";
 import swal from "sweetalert";
 import UrlParser from "../url-parser";
+import LocaleContext from "../contexts/LocaleContext";
 
 function DetailPage(){
   const [ tab, setTab ] = React.useState('Anggota');
   const url = UrlParser.parserActiveUrl();
+  const { locale } = React.useContext(LocaleContext);
     
   const deletePatungan = async (id) => {
     const patunganRef = doc(db, "patungan", id);
@@ -18,8 +21,8 @@ function DetailPage(){
 
   const onDeletePatungan = () => {
     swal({
-      title: "Apakah anda yakin ingin menghapus patungan ini?",
-      text: "Patungan yang dihapus akan hilang dari daftar patunganmu",
+      title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus patungan ini?' : 'Are you sure you want to delete this patungan?'}`,
+      text: `${locale === 'id' ? 'Patungan yang dihapus akan hilang dari daftar patunganmu' : 'Deleted patungan will disappear from your patungan list'}`,
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -27,11 +30,11 @@ function DetailPage(){
     .then((willDelete) => {
       if (willDelete) {
         deletePatungan(url.id);
-        swal("Patungan berhasil dihapus", {
+        swal(`${locale === 'id' ? 'Patungan berhasil dihapus' : 'Patungan has been successfully deleted'}`, {
           icon: "success",
         });
       } else {
-        swal("Patungan batal dihapus");
+        swal(`${locale === 'id' ? 'Patungan batal dihapus' : 'Patungan canceled deleted'}`);
       }
     });
   }
@@ -79,7 +82,7 @@ function DetailPage(){
 
   useEffect(() => {
     getDetailPatungan();
-  },[])
+  },[]);
 
   useEffect(() => {
 
@@ -100,8 +103,8 @@ function DetailPage(){
       <section className="detail-patungan">
         <section className="detail__dashboard">
           <div className="detail__dashboard-title">
-            <h2>Halaman Patungan</h2>
-            <p>Detail Patungan Kamu</p>
+            <h2 tabIndex="0">{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
+            <p tabIndex="0">{locale === 'id' ? 'Detail Patungan Kamu' : 'Your patungan details'}</p>
           </div>
           <DetailDashboard 
             deletePatungan={onDeletePatungan}
@@ -114,13 +117,13 @@ function DetailPage(){
         </section>
         <section className="detail__list-user">
           <div className="detail__list-user-choice" id="tab-button">
-            <button type="button" className='tab active' onClick={() => setTab('Anggota')}>Anggota</button>
-            <button type="button" className='tab' onClick={() => setTab('Kegiatan')}>Kegiatan</button>
+            <button type="button" className='tab active' onClick={() => setTab('Anggota')}>{locale === 'id' ? 'Anggota' : 'Members'}</button>
+            <button type="button" className='tab' onClick={() => setTab('Kegiatan')}>{locale === 'id' ? 'Kegiatan' : 'Activity'}</button>
           </div>
           {/* <DetailButtonChoice /> */}
           <input 
             className="detail__list-user-search" 
-            placeholder="Cari nama anggota"
+            placeholder={locale === 'id' ? 'Cari nama anggota' : 'Find Members name'}
             onChange={event => {setSearchTerm(event.target.value)}}>
           </input>
           <div className='detail__list-user-content'>

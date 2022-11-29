@@ -5,10 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { putAccessToken, getUserLogged } from "../utils/helper";
+import LocaleContext from "../contexts/LocaleContext";
 
 function LoginInput({ login }){
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
+  const { locale } = React.useContext(LocaleContext);
 
   const navigate = useNavigate();
 
@@ -41,7 +43,7 @@ function LoginInput({ login }){
         <input className="input__action" type="password" id='password' placeholder="Password" value={password} onChange={onPasswordChange} required/>
         <div className='login__action'>
           <button className='action-submit' type='submit' title='Simpan'>
-            <p>Masuk</p>
+            <p>{locale === 'id' ? 'Masuk' : 'Sign In'}</p>
             <FiArrowRight />
           </button>
         </div>

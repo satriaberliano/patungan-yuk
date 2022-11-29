@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { AboutPath, LoginPath, RegisterPath } from '../routes';
 import { FiArrowRight } from 'react-icons/fi';
 import logo from '../assets/patungan-image.png';
+import LocaleContext from "../contexts/LocaleContext";
 
 function InfoPage() {
+  const { locale } = React.useContext(LocaleContext);
+
   return(
     <div className="info-page">
       <div className="info-page__image">
@@ -12,21 +15,23 @@ function InfoPage() {
       </div>
       <div className="info-page__container">
         <div className="info-page__text">
-          <h2>Selamat Datang di PAYU</h2>
-          <p className="info-page__text-acronym">Patungan Yuk!</p>
-          <p className="info-page__text-desc">Aplikasi pencatatan patungan yang dapat mempermudah Anda dalam mengumpulkan uang bersama dengan teman, keluarga, dan semua orang di dunia.</p>
+          <h2 tabIndex="0">{locale === 'id' ? 'Selamat Datang di PAYU' : 'Welcome to PAYU'}</h2>
+          <p tabIndex="0" className="info-page__text-acronym">Patungan Yuk!</p>
+          <p tabIndex="0" className="info-page__text-desc">
+          {locale === 'id' ? 'Aplikasi pencatatan patungan yang dapat mempermudah Anda dalam mengumpulkan uang bersama dengan teman, keluarga, dan semua orang di dunia' : 'A joint record-keeping application that can make it easier for you to collect money together with friends, family, and everyone in the world'}.
+          </p>
         </div>
         <div className="info-page__link">
           <Link to={LoginPath} className='action-submit'>
-            <p>Masuk</p>
+            <p>{locale === 'id' ? 'Masuk' : 'Sign In'}</p>
             <FiArrowRight />
           </Link>
           <Link to={RegisterPath} className='action-submit'>
-            <p>Buat Akun</p>
+            <p>{locale === 'id' ? 'Daftar' : 'Sign Up'}</p>
             <FiArrowRight />
           </Link>
           <Link to={AboutPath} className='action-submit action-about-page'>
-            <p>Tentang PAYU</p>
+            <p>{locale === 'id' ? 'Tentang PAYU' : 'About PAYU'}</p>
             <FiArrowRight />
           </Link>
         </div>

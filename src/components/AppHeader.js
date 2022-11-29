@@ -9,7 +9,7 @@ function AppHeader(){
     <>
       <div className='header-logo-wrapper'>
         <Link to={`${rootPath}`}>
-          <img className='header-logo' src={logo} alt='Payu' />   
+          <img className='header-logo' src={logo} alt='Payu Logo' />   
         </Link>
       </div>
       <Navigation />
