@@ -1,20 +1,4 @@
 class ApiSource {
-  static async getQuotes() {
-    const api_key = 'Sc7xoVI31tmWoJruUSG1LQ==sVAe9UzgTZLqeW3q';
-    const baseURL = 'https://api.api-ninjas.com/v1/';
-    const param = 'money';
-
-    const response = await fetch(`${baseURL}quotes?category=${param}`, {
-      method: 'GET',
-      headers: {
-        'X-Api-Key': api_key,
-      },
-      contentType: 'application/json'
-    });
-    const responseJson = response.json();
-    return responseJson;
-  }
-
   static async getImages() {
     const api_key = 'lp1W5Gs6lPRK3yStImVldAIi5U-IO__Zh3SMqgjV2dc';
     const baseURL = 'https://api.unsplash.com/';

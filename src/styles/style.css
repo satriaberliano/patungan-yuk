@@ -6,9 +6,6 @@
 @import url('./_login-and-register.css');
 @import url('./_responsive.css');
 
-/* react spinner */
-/* react loading skeleton */
-
 :root {
   --background: #f4f7ed;
   --on-background: #202124;
@@ -193,6 +190,12 @@ a {
   text-align: center;
 }
 
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
  
 footer {
   font-weight: 500;
