@@ -18,7 +18,7 @@ class ApiSource {
   static async getImages() {
     const api_key = 'lp1W5Gs6lPRK3yStImVldAIi5U-IO__Zh3SMqgjV2dc';
     const baseURL = 'https://api.unsplash.com/';
-    const param = 'cloud';
+    const param = 'white';
     const orientation = 'landscape';
     const color = 'white';
 

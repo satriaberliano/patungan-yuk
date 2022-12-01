@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable eqeqeq */
 import React from "react";
 import { FaCoins } from 'react-icons/fa';
 
@@ -5,7 +7,7 @@ function KegiatanList({ patunganActivity, searchTerm }) {
 
   return(
   <div className="detail__list-activity-container">
-    {patunganActivity.filter((val) =>{
+    {patunganActivity.filter((val) => {
       if (searchTerm == "") {
         return val
       } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
