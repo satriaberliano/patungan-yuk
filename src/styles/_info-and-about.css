@@ -28,6 +28,10 @@
   text-decoration: none;
 }
 
+.info-page__link a:hover {
+  background-color: var(--button-green-light);
+}
+
 /* 
   about page
 */
@@ -54,4 +58,51 @@
 
 .about-page__who ol li {
   margin-left: 15px;
+}
+
+.about-page__who__list {
+  /* display: flex;
+  flex-direction: column; */
+  margin: 5px 0 30px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.about-page__who__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.about__page__who__image {
+  width: 120px;
+  border-radius: 50%;
+}
+
+.about__page__who__content {
+  padding-left: 20px;
+  width: 100%;
+}
+
+.about__page__who__content p {
+  font-weight: 200;
+  margin: 5px 0 10px 0;
+}
+
+.about__page__who__content-links {
+  display: flex;
+  align-items: center;
+}
+
+.about__page__who__content-links a {
+  font-size: 30px;
+  padding: 6.5px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.about__page__who__content-links a:hover {
+  color: var(--text-green);
+  transition: all .3s ease-in;
 }

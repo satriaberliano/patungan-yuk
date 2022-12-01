@@ -29,6 +29,11 @@
   font-size: 14px;
 }
 
+.login__link a:hover {
+  color: var(--button-green-light);
+  transition: all .3s ease-in;
+}
+
 /* 
   register
 */
@@ -66,4 +71,9 @@
 .register__link {
   margin: 15px 2px;
   font-size: 14px;
+}
+
+.register__link a:hover {
+  color: var(--button-green-light);
+  transition: all .3s ease-in;
 }

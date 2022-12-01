@@ -23,15 +23,15 @@ function InfoPage() {
         </div>
         <div className="info-page__link">
           <Link to={LoginPath} className='action-submit'>
-            <p>{locale === 'id' ? 'Masuk' : 'Sign In'}</p>
+            {locale === 'id' ? 'Masuk' : 'Sign In'}
             <FiArrowRight />
           </Link>
           <Link to={RegisterPath} className='action-submit'>
-            <p>{locale === 'id' ? 'Daftar' : 'Sign Up'}</p>
+            {locale === 'id' ? 'Daftar' : 'Sign Up'}
             <FiArrowRight />
           </Link>
           <Link to={AboutPath} className='action-submit action-about-page'>
-            <p>{locale === 'id' ? 'Tentang PAYU' : 'About PAYU'}</p>
+            {locale === 'id' ? 'Tentang PAYU' : 'About PAYU'}
             <FiArrowRight />
           </Link>
         </div>

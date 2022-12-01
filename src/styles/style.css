@@ -6,6 +6,9 @@
 @import url('./_login-and-register.css');
 @import url('./_responsive.css');
 
+/* react spinner */
+/* react loading skeleton */
+
 :root {
   --background: #f4f7ed;
   --on-background: #202124;
@@ -25,6 +28,7 @@
   --text-smaller: #323232;
   --button-choice: #0f891b;
   --input-field: #fafafa;
+  --button-green-light: #26bd35;
 }
 
 [data-theme='dark'] {
@@ -113,7 +117,7 @@ h3 {
 
 
 button:hover {
-  background-color: #26bd35;
+  background-color: var(--button-green-light);
   transition: all .3s ease-in-out;
   cursor: pointer;
 }
@@ -176,12 +180,25 @@ a {
   background-color: #c0bbbb;
   text-align: center;
 }
+
+.conditional-rendering,
+.home-conditional-rendering {
+  font-size: 14px;
+  font-style: italic;
+  color: #636363;
+  padding: 20px 0;
+}
+
+.home-conditional-rendering {
+  text-align: center;
+}
+
  
 footer {
   font-weight: 500;
   text-align: center;
   color: #929aaa;
-  background-color: var(--list);
+  background-color: var(--background);
   margin-top: auto;
   width: 100%;
   padding: 40px 20px;

@@ -280,13 +280,6 @@
   background-color: transparent;
 }
 
-.conditional-rendering {
-  font-size: 14px;
-  font-style: italic;
-  color: #636363;
-  padding: 20px 0;
-}
-
 .add-new-patungan__input .judul,
 .add-new-patungan__input .anggota,
 .add-new-patungan__input .kegiatan {
