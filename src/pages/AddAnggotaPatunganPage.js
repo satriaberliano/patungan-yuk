@@ -5,13 +5,13 @@ import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import UrlParser from "../url-parser";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function AddAnggotaPatunganPage(){
   const [name, setName] = useInput('');
   const [money, setMoney ] = useInput(0);
   const url = UrlParser.parserActiveUrl();
   const { locale } = React.useContext(LocaleContext);
-
 
   const addNewAnggotaHandler = async (event) => {
     event.preventDefault();
@@ -26,8 +26,11 @@ function AddAnggotaPatunganPage(){
     let membersData = data.data().Members;
     membersData.push(newMember);
 
-    await updateDoc(patunganRef, {Members: membersData})
-    alert(`${locale === 'id' ? 'Data anggota berhasil ditambahkan' : 'Member data added successfully'}`); 
+    await updateDoc(patunganRef, {Members: membersData});
+    swal({
+      title: `${locale === 'id' ? 'Data anggota berhasil ditambahkan' : 'Member data added successfully'}`,
+      icon: "success",
+    });
   }
 
   return (

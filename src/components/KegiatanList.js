@@ -34,20 +34,20 @@ function KegiatanList({ patunganActivity, idPatungan, searchTerm }) {
     }).map((activity) => {
       const onDeleteKegiatan = () => {
         swal({
-          title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus kegiatan ini?' : 'Are you sure want to delete this activity?'}`,
-          text: `${locale === 'id' ? 'Kegiatan yang dihapus akan hilang dari daftar kegiatan patungan' : 'Deleted activity will disappear from patungan activity list'}`,
+          title: `${locale === 'id' ? 'Hapus kegiatan ini?' : 'Delete this activity?'}`,
           icon: "warning",
           buttons: true,
           dangerMode: true,
         })
         .then((willDelete) => {
           if (willDelete) {
-            swal(`${locale === 'id' ? 'Kegiatan berhasil dihapus' : 'Activity was successfully deleted'}`, {
-              icon: "success",
+            swal({
+              icon: 'success',
+              title: `${locale === 'id' ? 'Kegiatan berhasil dihapus' : 'Activity was successfully deleted'}`,
+              buttons: false,
+              timer: 1000,
             });
             deleteKegiatan( idPatungan, activity.id);
-          } else {
-            swal(`${locale === 'id' ? 'Kegiatan batal dihapus' : 'Canceled activity deleted'}`);
           }
         });
       }

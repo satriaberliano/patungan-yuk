@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable eqeqeq */
 import React from "react";
 import { FaCoins } from 'react-icons/fa';
 
@@ -6,7 +8,7 @@ function SharedAnggotaList({ patunganMembers, searchTerm }) {
   
   return(
   <div className="detail__list-user-container">
-    {patunganMembers.filter((val) =>{
+    {patunganMembers.filter((val) => {
       if (searchTerm == "") {
         return val
       } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {

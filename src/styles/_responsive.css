@@ -32,7 +32,7 @@
   .payu__dashboard-image {
     border-radius: 20px;
   }
-
+  
   .payu__dashboard-item {
     height: 100%;
   }
@@ -168,5 +168,17 @@
 
   .detail__list-user-item__money {
     font-size: 12px;
+  }
+
+  .about-page__who__list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about__page__who__image {
+    width: 160px;
+  }
+
+  .about__page__who__content {
+    padding-left: 40px;
   }
 }

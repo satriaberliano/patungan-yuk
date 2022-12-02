@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from "react";
 import SharedAnggotaList from "../components/SharedAnggotaList";
 import SharedDetailDashboard from "../components/SharedDetailDashboard";
@@ -5,6 +6,7 @@ import SharedKegiatanList from "../components/SharedKegiatanList";
 import {db} from '../config/firebase-config';
 import { getDocs, where, query, collection } from "firebase/firestore"
 import UrlParser from "../url-parser";
+import LocaleContext from "../contexts/LocaleContext";
 
 function SharedDetailPage(){
     const [ tab, setTab ] = React.useState('Anggota');
@@ -15,6 +17,7 @@ function SharedDetailPage(){
     const [patunganMembers, setMembers] = useState([]);
     const [patunganActivity, setActivity] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const { locale } = React.useContext(LocaleContext);
 
     const url = UrlParser.parserActiveUrl();
   
@@ -72,9 +75,9 @@ function SharedDetailPage(){
     if(patunganTitle === undefined) {
       return (
         <section className="shared-detail-patungan-notfound-wrapper">
-          <h1 className="shared-detail-patungan-notfound-title">HALAMAN TIDAK DITEMUKAN</h1>
-          <p className="shared-detail-patungan-notfound-title" >Maaf, detail patungan yang kamu cari tidak ada atau telah dihapus</p>
-          <p>Klik logo untuk kembali</p>
+          <h1 className="shared-detail-patungan-notfound-title">{locale === 'id' ? 'HALAMAN TIDAK DITEMUKAN' : 'PAGE NOT FOUND'}</h1>
+          <p className="shared-detail-patungan-notfound-title" >{locale === 'id' ? 'Maaf, detail patungan yang kamu cari tidak ada atau telah dihapus' : 'Sorry, the patungan (joint venture) details you are looking for do not exist or have been removed'}</p>
+          <p>{locale === 'id' ? 'Klik logo untuk kembali' : 'Click the logo to return'}</p>
           <div className="detail__list-user-choice tab" id="tab-button">
           </div>
         </section>
@@ -83,8 +86,8 @@ function SharedDetailPage(){
       <section className="detail-patungan">
         <section className="detail__dashboard">
             <div className="detail__dashboard-title">
-              <h2>Halaman Patungan</h2>
-              <p>Detail Patungan yang dibagikan</p>
+              <h2>{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
+              <p>{locale === 'id' ? 'Detail patungan yang dibagikan' : 'Shared patungan details'}</p>
             </div>
             <SharedDetailDashboard
               patunganTitle={patunganTitle} 
@@ -94,12 +97,11 @@ function SharedDetailPage(){
           </section>
           <section className="detail__list-user">
             <div className="detail__list-user-choice" id="tab-button">
-              <button type="button" className='tab active' onClick={() => setTab('Anggota')}>Anggota</button>
-              <button type="button" className='tab' onClick={() => setTab('Kegiatan')}>Kegiatan</button>
+              <button type="button" className='tab active' onClick={() => setTab('Anggota')}>{locale === 'id' ? 'Anggota' : 'Members'}</button>
+              <button type="button" className='tab' onClick={() => setTab('Kegiatan')}>{locale === 'id' ? 'kegiatan' : 'Activity'}</button>
             </div>
-            {/* <DetailButtonChoice /> */}
             <input className="detail__list-user-search" 
-                   placeholder="Cari pada list di bawah" 
+                   placeholder={locale === 'id' ? 'Cari anggota atau kegiatan' : 'Find members or activity'} 
                    onChange={event => {setSearchTerm(event.target.value)}}>
             </input>
             <div className='detail__list-user-content'>

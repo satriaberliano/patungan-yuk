@@ -4,6 +4,7 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import { HiOutlineTrash } from 'react-icons/hi';
 import { Link } from "react-router-dom";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function DetailDashboard({ deletePatungan, patunganTitle, numbersOfMember, balance, remainingBalance, idPatungan, patuganIdShare }){
   const urlShared = `http://localhost:3000/shared-detail-patungan/${patuganIdShare}`;
@@ -17,7 +18,12 @@ function DetailDashboard({ deletePatungan, patunganTitle, numbersOfMember, balan
           <button type="button" onClick={deletePatungan} aria-label='delete button'><HiOutlineTrash /></button>
           <button title='Bagikan patungan' 
                   onClick={() =>  navigator.clipboard.writeText(urlShared)}
-                  onMouseUp={()=> alert("Link patungan berhasil dicopy")}>
+                  onMouseUp={()=> {
+                      swal({
+                        icon: 'success',
+                        title: `${locale === 'id' ? 'Link patungan berhasil dicopy' : 'The link was successfully copied'}`,
+                      });
+                    }}>
                     <AiOutlineShareAlt />
           </button>
         </div>
@@ -25,7 +31,7 @@ function DetailDashboard({ deletePatungan, patunganTitle, numbersOfMember, balan
       <div className="detail__dashboard-item__info">
         <p tabIndex="0" className="detail__dashboard-item__user"><FaUsers /> {numbersOfMember} {locale === 'id' ? 'Anggota' : 'Members'}</p>
         <p tabIndex="0" className="detail__dashboard-item__money"><FaCoins /> Rp {balance}</p>
-        <p tabIndex="0" className="detail__dashboard-item__leftover">{locale === 'id' ? 'Sisa patungan' : 'Balance'}: Rp {remainingBalance}</p>
+        <p tabIndex="0" className="detail__dashboard-item__leftover">{locale === 'id' ? 'Sisa patungan' : 'Current balance'}: Rp {remainingBalance}</p>
       </div>
       <div className="detail__dashboard-item-button">
         <button type="button"><Link to={`/detail-patungan/${idPatungan}/add/anggota`}>{locale === 'id' ? 'Tambah Anggota' : 'Add Member'}</Link></button>

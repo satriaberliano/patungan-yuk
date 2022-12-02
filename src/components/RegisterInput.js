@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useInput from "../hooks/useInput";
 import { FiArrowRight } from "react-icons/fi";
 import { ref, set } from "firebase/database";
@@ -6,6 +6,7 @@ import { auth, userDatabase } from "../config/firebase-config";
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function RegisterInput() {
   const [name, onNameChange] = useInput('');
@@ -13,28 +14,36 @@ function RegisterInput() {
   const [password, onPasswordChange] = useInput('');
   const [confirmPassword, onConfirmPasswordChange] = useInput('');
   const { locale } = React.useContext(LocaleContext);
-
   const navigate = useNavigate();
 
   const onRegisterHandler = async ({ email, name, password  }) => {
     try {
-    await createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      set(ref(userDatabase, "users/" + user.uid), {
-        name: name,
-        email: email,
-        password: password,
+      await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        set(ref(userDatabase, "users/" + user.uid), {
+          name: name,
+          email: email,
+          password: password,
+        });
+        swal({
+          icon: 'success',
+          title: `${locale === 'id' ? 'Registrasi berhasil' : 'Registration success'}`,
+          buttons: false,
+          timer: 1000,
+        })
+        .then(() => {
+          navigate('/login');
+        });
+      })
+      .catch((error) => {
+        swal({
+          icon: 'error',
+          title: error.message,
+        });
       });
-      alert('User Telah Ditambahkan')
-      navigate('/login');
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      alert(errorMessage);
-    });
-    await sendEmailVerification(auth.currentUser).catch((error) => console.log(error.message));
-    await updateProfile(auth.currentUser, { displayName : name }).catch((error) => console.log(error.message));
+      await sendEmailVerification(auth.currentUser).catch((error) => console.log(error.message));
+      await updateProfile(auth.currentUser, { displayName : name }).catch((error) => console.log(error.message));
     } catch (error) {
       console.log(error.message)
     }
@@ -47,7 +56,11 @@ function RegisterInput() {
       onRegisterHandler({ email, name, password });
     }
     else{
-      alert(`${locale === 'id' ? 'Register Gagal, Password dan Confirm Password harus sama' : 'Registration Failed, Password and Confirm Password must be the same'}`);
+      swal({
+        icon: 'error',
+        title: `${locale === 'id' ? 'Pendaftaran Gagal' : 'Registration Failed'}`,
+        text: `${locale === 'id' ? 'Password dan Confirm Password harus sama' : 'Password and Confirm Password must be the same'}`,
+      });
     }
   }
 
