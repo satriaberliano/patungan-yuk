@@ -1,10 +1,14 @@
-import { Navigate } from "react-router-dom";
-import { getAccessToken } from "./helper";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope */
+import { Navigate } from 'react-router-dom';
+import { getAccessToken } from './helper';
 
-function ProtectedRoute(props){
+function ProtectedRoute(props) {
   const token = getAccessToken();
 
-  if(!token) return <Navigate to='/info' />;
+  if (!token) return <Navigate to="/info" />;
   return props.children;
 }
 

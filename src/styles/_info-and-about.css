@@ -53,7 +53,7 @@
 }
 
 .about-page__who__list {
-  margin: 5px 0 30px 0;
+  margin: 5px 0 0 0;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -62,7 +62,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin: 20px 0;
+  margin-top: 20px;
 }
 
 .about__page__who__image {
