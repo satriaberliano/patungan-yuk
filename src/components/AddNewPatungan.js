@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FiArrowRight } from 'react-icons/fi';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useInput from "../hooks/useInput";
 import AddNewKegiatan from "./AddNewKegiatan";
 import NewKegiatanList from "./NewKegiatanList";
@@ -8,6 +8,7 @@ import AddNewAnggota from "./AddNewAnggota";
 import NewAnggotaList from "./NewAnggotaList";
 import { getUserID } from "../utils/helper";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function AddNewPatungan({ newPatungan }) {
   const [ title, setTitle ] = useInput('');
@@ -15,6 +16,7 @@ function AddNewPatungan({ newPatungan }) {
   const [ kegiatan, setKegiatan ] = useState([]);
   const [idUser, setIdUser] = useState();
   const { locale } = React.useContext(LocaleContext);
+  const navigate = useNavigate();
 
   function addNewAnggotaHandler(newAnggota) {
     const data = [];
@@ -48,7 +50,18 @@ function AddNewPatungan({ newPatungan }) {
       Members: anggota,
       Activity: kegiatan,
     });
+
+    swal({
+      icon: 'success',
+      title: `${locale === 'id' ? 'Patungan berhasil dibuat!' : 'Patungan was successfully created'}`,
+      buttons: false,
+      timer: 1000,
+    })
+    .then(() => {
+      navigate('/');
+    });
   }
+
   useEffect(() => {
     getUserID(setIdUser);
   },[])
@@ -67,7 +80,7 @@ function AddNewPatungan({ newPatungan }) {
     <section className='add-new-patungan__input'>
       <div className='add-new-patungan__title'>
         <h2 tabIndex="0">{locale === 'id' ? 'Buat Patungan' : 'Create Patungan'}</h2>
-        <p tabIndex="0">{locale === 'id' ? 'Silakan isi data berikut untuk membuat patungan.' : 'Please fill in the following data to make a patungan (joint venture).'}</p>
+        <p tabIndex="0">{locale === 'id' ? 'Silakan isi data berikut untuk membuat patungan' : 'Please fill in the following data to make a patungan (joint venture)'}</p>
       </div>
 
       <div className="judul">

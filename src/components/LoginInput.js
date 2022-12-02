@@ -6,6 +6,7 @@ import { auth } from "../config/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { putAccessToken, getUserLogged } from "../utils/helper";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function LoginInput({ login }){
   const [email, onEmailChange] = useInput('');
@@ -19,12 +20,24 @@ function LoginInput({ login }){
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user.accessToken;
-      alert('Login Berhasil')
-      putAccessToken(user);
-      getUserLogged();
-      navigate('/');
+      swal({
+        icon: 'success',
+        title: `${locale === 'id' ? 'Login berhasil' : 'Login success'}`,
+        buttons: false,
+        timer: 1000,
+      })
+      .then(() => {
+        putAccessToken(user);
+        getUserLogged();
+        navigate('/');
+      });
     })
     .catch((error) => {
+      swal({
+        icon: 'error',
+        title: `${locale === 'id' ? 'Login gagal' : 'Login failed'}`,
+        text: `${locale === 'id' ? 'Periksa kembali email dan password anda' : 'Check your email and password again'}`,
+      })
       const errorMessage = error.message;
       console.log(errorMessage);
     });

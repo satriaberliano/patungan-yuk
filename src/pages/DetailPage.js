@@ -9,12 +9,14 @@ import swal from "sweetalert";
 import UrlParser from "../url-parser";
 import LocaleContext from "../contexts/LocaleContext";
 import Loader from "../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 function DetailPage(){
   const [ tab, setTab ] = React.useState('Anggota');
   const [ loading, setLoading ] = useState(true);
   const url = UrlParser.parserActiveUrl();
   const { locale } = React.useContext(LocaleContext);
+  const navigate = useNavigate();
     
   const deletePatungan = async (id) => {
     const patunganRef = doc(db, "patungan", id);
@@ -24,19 +26,20 @@ function DetailPage(){
   const onDeletePatungan = () => {
     swal({
       title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus patungan ini?' : 'Are you sure you want to delete this patungan?'}`,
-      text: `${locale === 'id' ? 'Patungan yang dihapus akan hilang dari daftar patunganmu' : 'Deleted patungan will disappear from your patungan list'}`,
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-        deletePatungan(url.id);
-        swal(`${locale === 'id' ? 'Patungan berhasil dihapus' : 'Patungan has been successfully deleted'}`, {
-          icon: "success",
+        swal({
+          icon: 'success',
+          title: `${locale === 'id' ? 'Patungan berhasil dihapus' : 'Patungan was successfully deleted'}`,
+          buttons: false,
+          timer: 1000,
         });
-      } else {
-        swal(`${locale === 'id' ? 'Patungan batal dihapus' : 'Patungan canceled deleted'}`);
+        deletePatungan(url.id);
+        navigate('/');
       }
     });
   }
@@ -130,7 +133,7 @@ function DetailPage(){
                 </div>
                 <input 
                   className="detail__list-user-search" 
-                  placeholder={locale === 'id' ? 'Cari nama anggota atau kegiatan' : 'Find Members name or activity'}
+                  placeholder={locale === 'id' ? 'Cari anggota atau kegiatan' : 'Find members or activity'}
                   onChange={event => {setSearchTerm(event.target.value)}}>
                 </input>
                 <div className='detail__list-user-content'>

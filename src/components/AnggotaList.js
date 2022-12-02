@@ -34,20 +34,20 @@ function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
     }).map((member) => {
       const onDeleteAnggota = () => {
         swal({
-          title: `${locale === 'id' ? 'Apakah anda yakin ingin menghapus anggota ini?' : 'Are you sure want to delete this member?'}`,
-          text: `${locale === 'id' ? 'Anggota yang dihapus akan hilang dari daftar anggota patungan' : 'Deleted members will disappear from patungan member list'}`,
+          title: `${locale === 'id' ? 'Hapus anggota ini?' : 'Delete this member?'}`,
           icon: "warning",
           buttons: true,
           dangerMode: true,
         })
         .then((willDelete) => {
           if (willDelete) {
-            swal(`${locale === 'id' ? 'Anggota berhasil dihapus' : 'Member was successfully deleted'}`, {
-              icon: "success",
+            swal({
+              icon: 'success',
+              title: `${locale === 'id' ? 'Anggota berhasil dihapus' : 'Member was successfully deleted'}`,
+              buttons: false,
+              timer: 1000,
             });
             deleteAnggota(idPatungan, member.id);
-          } else {
-            swal(`${locale === 'id' ? 'Anggota batal dihapus' : 'Canceled member deleted'}`);
           }
         });
       }

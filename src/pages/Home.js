@@ -12,6 +12,7 @@ import { getUserName, getUserID, putAccessToken } from "../utils/helper";
 import LocaleContext from "../contexts/LocaleContext";
 import ApiSource from "../data/api-source";
 import Loader from "../components/Loader";
+import swal from "sweetalert";
 
 function Home(){
   const [ currentUser, setCurrentUser ] = useState();
@@ -24,12 +25,30 @@ function Home(){
   const navigate = useNavigate();
 
   const onLogoutHandler = () => {
-    signOut(auth)
-    .then(() => {
-      alert('Logout Berhasil');
-      putAccessToken('');
-      navigate('/info');
+    swal({
+      title: `Logout`,
+      text: `${locale === 'id' ? 'Apakah kamu yakin?' : 'Are you sure?'}`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
+    .then((willLogout) => {
+      if (willLogout) {
+        swal({
+          icon: 'success',
+          title: `${locale === 'id' ? 'Logout berhasil' : 'Logout success'}`,
+          buttons: false,
+          timer: 1000,
+        })
+        .then(() => {
+          signOut(auth)
+          .then(() => {
+            putAccessToken('');
+            navigate('/info');
+          });
+        });
+      }
+    });
   }
 
   let patunganCollectionRef = query(collection(db, "patungan"), where("idUser", "==", null));

@@ -7,6 +7,7 @@ import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import UrlParser from "../url-parser";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function ChangeKegiatanPatunganPage(){
   const [newName, setNewName] = useInput('');
@@ -26,8 +27,11 @@ function ChangeKegiatanPatunganPage(){
       activityData[activityEditIndex].Name = newName;
       activityData[activityEditIndex].Spend = Number(newSpend);
 
-      await updateDoc(patunganRef, {Activity: activityData})
-      alert(`${locale === 'id' ? 'Detail kegiatan berhasil diubah' : 'Activity details changed successfully'}`);
+      await updateDoc(patunganRef, {Activity: activityData});
+      swal({
+        icon: 'success',
+        title: `${locale === 'id' ? 'Detail kegiatan berhasil diubah' : 'Activity details changed successfully'}`,
+      });
   }
 
   useEffect(()=> {

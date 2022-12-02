@@ -5,6 +5,7 @@ import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import UrlParser from "../url-parser";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function AddKegiatanPatunganPage(){
   const [name, setName] = useInput('');
@@ -24,8 +25,11 @@ function AddKegiatanPatunganPage(){
     let activityData = data.data().Activity;
     activityData.push(newActivity);
 
-    await updateDoc(patunganRef, {Activity: activityData})
-    alert(`${locale === 'id' ? 'Data kegiatan berhasil ditambahkan' : 'Activity data added successfully'}`);
+    await updateDoc(patunganRef, {Activity: activityData});
+    swal({
+      icon: 'success',
+      title: `${locale === 'id' ? 'Data kegiatan berhasil ditambahkan' : 'Activity data added successfully'}`,
+    });
   }
 
   return(

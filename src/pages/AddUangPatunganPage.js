@@ -7,6 +7,7 @@ import {db} from '../config/firebase-config';
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import UrlParser from "../url-parser";
 import LocaleContext from "../contexts/LocaleContext";
+import swal from "sweetalert";
 
 function AddUangPatunganPage(){
   const [name, setName] = useState('');
@@ -26,8 +27,11 @@ function AddUangPatunganPage(){
     const newTotal = membersData[memberEditIndex].Total + Number(addedMoney);
     membersData[memberEditIndex].Total = newTotal;
 
-    await updateDoc(patunganRef, {Members: membersData})
-    alert(`${locale === 'id' ? 'Total patungan anggota berhasil ditambahkan' : 'Member patungan has been successfully added'}`);
+    await updateDoc(patunganRef, {Members: membersData});
+    swal({
+      icon: 'success',
+      title: `${locale === 'id' ? 'Patungan anggota berhasil ditambahkan' : 'Member patungan has been successfully added'}`,
+    });
   }
 
   useEffect(()=> {
