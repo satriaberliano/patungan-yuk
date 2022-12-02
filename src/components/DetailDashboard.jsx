@@ -54,12 +54,21 @@ function DetailDashboard({
           {' '}
           {balance}
         </p>
-        <p tabIndex="0" className="detail__dashboard-item__leftover">
-          {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
-          : Rp
-          {' '}
-          {remainingBalance}
-        </p>
+        {remainingBalance < 0 ? (
+          <p tabIndex="0" className="detail__dashboard-item__leftover remaining-balance-red">
+            {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
+            : Rp
+            {' '}
+            {remainingBalance}
+          </p>
+        ) : (
+          <p tabIndex="0" className="detail__dashboard-item__leftover">
+            {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
+            : Rp
+            {' '}
+            {remainingBalance}
+          </p>
+        )}
       </div>
       <div className="detail__dashboard-item-button">
         <button type="button"><Link to={`/detail-patungan/${idPatungan}/add/anggota`}>{locale === 'id' ? 'Tambah Anggota' : 'Add Member'}</Link></button>

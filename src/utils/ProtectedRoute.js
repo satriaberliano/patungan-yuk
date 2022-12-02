@@ -3,7 +3,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/react-in-jsx-scope */
 import { Navigate } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 import { getAccessToken } from './helper';
 
 function ProtectedRoute(props) {

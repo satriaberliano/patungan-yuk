@@ -58,6 +58,10 @@
   color: var(--text-green);
 }
 
+.detail__dashboard-item__leftover.remaining-balance-red {
+  color: var(--text-red);
+}
+
 .detail__dashboard-item__info p {
   font-size: 13px;
   margin: 3px 0;

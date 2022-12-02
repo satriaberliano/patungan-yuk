@@ -28,12 +28,21 @@ function SharedDetailDashboard({
           {' '}
           {balance}
         </p>
-        <p className="detail__dashboard-item__leftover">
-          {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
-          : Rp
-          {' '}
-          {remainingBalance}
-        </p>
+        {remainingBalance < 0 ? (
+          <p tabIndex="0" className="detail__dashboard-item__leftover remaining-balance-red">
+            {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
+            : Rp
+            {' '}
+            {remainingBalance}
+          </p>
+        ) : (
+          <p tabIndex="0" className="detail__dashboard-item__leftover">
+            {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
+            : Rp
+            {' '}
+            {remainingBalance}
+          </p>
+        )}
       </div>
     </div>
   );

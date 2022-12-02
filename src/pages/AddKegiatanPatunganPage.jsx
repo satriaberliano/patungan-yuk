@@ -2,6 +2,7 @@ import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import { db } from '../config/firebase-config';
 import UrlParser from '../url-parser';
@@ -12,6 +13,7 @@ function AddKegiatanPatunganPage() {
   const [spend, setSpend] = useInput(0);
   const url = UrlParser.parserActiveUrl();
   const { locale } = React.useContext(LocaleContext);
+  const navigate = useNavigate();
 
   const addNewActivityHandler = async (event) => {
     event.preventDefault();
@@ -28,8 +30,9 @@ function AddKegiatanPatunganPage() {
     await updateDoc(patunganRef, { Activity: activityData });
     swal({
       icon: 'success',
-      title: `${locale === 'id' ? 'Data kegiatan berhasil ditambahkan' : 'Activity data added successfully'}`,
+      title: `${locale === 'id' ? 'Kegiatan berhasil ditambahkan' : 'Activity added successfully'}`,
     });
+    navigate(-1);
   };
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import { db } from '../config/firebase-config';
 import UrlParser from '../url-parser';
@@ -12,6 +13,7 @@ function AddAnggotaPatunganPage() {
   const [money, setMoney] = useInput(0);
   const url = UrlParser.parserActiveUrl();
   const { locale } = React.useContext(LocaleContext);
+  const navigate = useNavigate();
 
   const addNewAnggotaHandler = async (event) => {
     event.preventDefault();
@@ -28,9 +30,10 @@ function AddAnggotaPatunganPage() {
 
     await updateDoc(patunganRef, { Members: membersData });
     swal({
-      title: `${locale === 'id' ? 'Data anggota berhasil ditambahkan' : 'Member data added successfully'}`,
+      title: `${locale === 'id' ? 'Anggota berhasil ditambahkan' : 'Member added successfully'}`,
       icon: 'success',
     });
+    navigate(-1);
   };
 
   return (
