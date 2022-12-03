@@ -8,6 +8,8 @@ import SharedKegiatanList from '../components/SharedKegiatanList';
 import { db } from '../globals/firebase-config';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
+import PageNotFound from './PageNotFound';
+import Loader from '../components/Loader';
 
 function SharedDetailPage() {
   const [tab, setTab] = React.useState('Anggota');
@@ -18,6 +20,7 @@ function SharedDetailPage() {
   const [patunganMembers, setMembers] = useState([]);
   const [patunganActivity, setActivity] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
   const { locale } = React.useContext(LocaleContext);
 
   const url = UrlParser.parserActiveUrl();
@@ -44,9 +47,10 @@ function SharedDetailPage() {
       setNumbersOfMember(dataPatungan.Members.length);
       setMembers(dataPatungan.Members);
       setActivity(dataPatungan.Activity);
+      setLoading(false);
     } catch (error) {
-      setPatunganTitle(undefined);
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -55,34 +59,35 @@ function SharedDetailPage() {
   }, []);
 
   useEffect(() => {
-    const tabContainer = document.getElementById('tab-button');
-    const tabItem = tabContainer.getElementsByClassName('tab');
-    for (let i = 0; i < tabItem.length; i++) {
-      tabItem[i].addEventListener('click', function () {
-        const current = document.getElementsByClassName('active');
-        current[0].className = current[0].className.replace(' active', '');
-        this.className += ' active';
-      });
+    if (!loading && patunganTitle !== '') {
+      const tabContainer = document.getElementById('tab-button');
+      const tabItem = tabContainer.getElementsByClassName('tab');
+      for (let i = 0; i < tabItem.length; i++) {
+        tabItem[i].addEventListener('click', function () {
+          const current = document.getElementsByClassName('active');
+          current[0].className = current[0].className.replace(' active', '');
+          this.className += ' active';
+        });
+      }
     }
 
     countDetail();
-  });
+  }, [loading]);
 
-  if (patunganTitle === undefined) {
-    return (
-      <section className="shared-detail-patungan-notfound-wrapper">
-        <h1 className="shared-detail-patungan-notfound-title">{locale === 'id' ? 'HALAMAN TIDAK DITEMUKAN' : 'PAGE NOT FOUND'}</h1>
-        <p className="shared-detail-patungan-notfound-title">{locale === 'id' ? 'Maaf, detail patungan yang kamu cari tidak ada atau telah dihapus' : 'Sorry, the patungan (joint venture) details you are looking for do not exist or have been removed'}</p>
-        <p>{locale === 'id' ? 'Klik logo untuk kembali' : 'Click the logo to return'}</p>
-        <div className="detail__list-user-choice tab" id="tab-button" />
-      </section>
-    );
-  } return (
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (patunganTitle === '') {
+    return <PageNotFound />;
+  }
+
+  return (
     <section className="detail-patungan">
       <section className="detail__dashboard">
         <div className="detail__dashboard-title">
-          <h2>{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
-          <p>{locale === 'id' ? 'Detail patungan yang dibagikan' : 'Shared patungan details'}</p>
+          <h2 tabIndex="0">{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
+          <p tabIndex="0">{locale === 'id' ? 'Detail patungan yang dibagikan' : 'Shared patungan details'}</p>
         </div>
         <SharedDetailDashboard
           patunganTitle={patunganTitle}

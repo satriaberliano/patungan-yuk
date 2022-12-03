@@ -1,5 +1,5 @@
-const CONFIG = {
+const sharedConfig = {
   sharedUrl: 'http://localhost:3000/shared-detail-patungan/',
 };
 
-export default CONFIG;
+export default sharedConfig;
