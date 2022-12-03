@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import LocaleContext from '../contexts/LocaleContext';
@@ -27,7 +27,7 @@ function AddNewKegiatan({ addNewKegiatan }) {
         type="text"
         placeholder={locale === 'id' ? 'Judul' : 'Title'}
         value={title}
-        onChange={event =>setTitle(event.target.value)}
+        onChange={(event) => setTitle(event.target.value)}
         required
       />
       <span className="currencyinput">
@@ -37,7 +37,7 @@ function AddNewKegiatan({ addNewKegiatan }) {
           type="number"
           placeholder={locale === 'id' ? 'Jumlah dana yang dihabiskan' : 'Amount of funds spent'}
           value={money}
-          onChange={event =>setMoney(event.target.value)}
+          onChange={(event) => setMoney(event.target.value)}
           required
         />
       </span>
