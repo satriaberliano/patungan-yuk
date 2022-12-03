@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import LocaleContext from '../contexts/LocaleContext';
-import useInput from '../hooks/useInput';
 
 function AddNewAnggota({ addNewAnggota }) {
-  const [name, setName] = useInput('');
-  const [money, setMoney] = useInput(0);
+  const [name, setName] = useState('');
+  const [money, setMoney] = useState(0);
   const { locale } = React.useContext(LocaleContext);
   const newAnggotaSubmitHandler = (event) => {
     event.preventDefault();
@@ -15,6 +14,8 @@ function AddNewAnggota({ addNewAnggota }) {
       Name: name,
       Total: Number(money),
     });
+    setName('');
+    setMoney(0);
   };
 
   return (
@@ -24,7 +25,7 @@ function AddNewAnggota({ addNewAnggota }) {
         type="text"
         placeholder={locale === 'id' ? 'Nama' : 'Name'}
         value={name}
-        onChange={setName}
+        onChange={event => setName(event.target.value)}
         required
       />
       <span className="currencyinput">
@@ -34,7 +35,7 @@ function AddNewAnggota({ addNewAnggota }) {
           type="number"
           placeholder={locale === 'id' ? 'Jumlah patungan' : 'Number of joint ventures'}
           value={money}
-          onChange={setMoney}
+          onChange={event =>setMoney(event.target.value)}
           required
         />
       </span>
