@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import LocaleContext from '../contexts/LocaleContext';
+import sharedConfig from '../globals/shared-config';
 
 function DetailDashboard({
   deletePatungan,
@@ -16,7 +17,7 @@ function DetailDashboard({
   idPatungan,
   patuganIdShare,
 }) {
-  const urlShared = `http://localhost:3000/shared-detail-patungan/${patuganIdShare}`;
+  const urlShared = `${sharedConfig.sharedUrl}${patuganIdShare}`;
   const { locale } = React.useContext(LocaleContext);
 
   return (

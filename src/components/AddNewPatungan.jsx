@@ -133,7 +133,7 @@ function AddNewPatungan({ newPatungan }) {
       <div className="add-new-patungan__action">
         <button className="action-submit" type="submit" title="Selanjutnya" onClick={addPatunganClickHandler} disabled={!title}>
           <Link className="action-submit__link">
-            <p>{locale === 'id' ? 'Simpan' : 'Save'}</p>
+            {locale === 'id' ? 'Simpan' : 'Save'}
             <FiArrowRight />
           </Link>
         </button>

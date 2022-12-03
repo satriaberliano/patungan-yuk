@@ -4,7 +4,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
-import { db } from '../config/firebase-config';
+import { db } from '../globals/firebase-config';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
 import Loader from '../components/Loader';
@@ -74,7 +74,7 @@ function AddUangPatunganPage() {
           />
           <div className="register__action">
             <button className="action-submit" type="submit" title="Tambah dana patungan anggota" disabled={!addedMoney}>
-              <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
+              {locale === 'id' ? 'Tambah' : 'Add'}
               <FiArrowRight />
             </button>
           </div>

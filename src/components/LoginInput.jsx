@@ -3,7 +3,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import swal from 'sweetalert';
-import { auth } from '../config/firebase-config';
+import { auth } from '../globals/firebase-config';
 import { putAccessToken, getUserLogged } from '../utils/helper';
 import LocaleContext from '../contexts/LocaleContext';
 import useInput from '../hooks/useInput';
@@ -56,7 +56,7 @@ function LoginInput() {
         <input className="input__action" type="password" id="password" placeholder="Password" value={password} onChange={onPasswordChange} required />
         <div className="login__action">
           <button className="action-submit" type="submit" title="Simpan">
-            <p>{locale === 'id' ? 'Masuk' : 'Sign In'}</p>
+            {locale === 'id' ? 'Masuk' : 'Sign In'}
             <FiArrowRight />
           </button>
         </div>

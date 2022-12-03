@@ -25,7 +25,7 @@ function AddNewAnggota({ addNewAnggota }) {
         type="text"
         placeholder={locale === 'id' ? 'Nama' : 'Name'}
         value={name}
-        onChange={event => setName(event.target.value)}
+        onChange={(event) => setName(event.target.value)}
         required
       />
       <span className="currencyinput">
@@ -35,13 +35,13 @@ function AddNewAnggota({ addNewAnggota }) {
           type="number"
           placeholder={locale === 'id' ? 'Jumlah patungan' : 'Number of joint ventures'}
           value={money}
-          onChange={event =>setMoney(event.target.value)}
+          onChange={(event) => setMoney(event.target.value)}
           required
         />
       </span>
 
       <button className="action-submit new-patungan-action-submit" type="submit" title="Tambah">
-        <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
+        {locale === 'id' ? 'Tambah' : 'Add'}
         <FiArrowRight />
       </button>
     </form>

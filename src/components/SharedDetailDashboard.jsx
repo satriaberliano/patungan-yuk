@@ -11,17 +11,17 @@ function SharedDetailDashboard({
   return (
     <div className="detail__dashboard-item">
       <div className="detail__dashboard-item__flex">
-        <p className="detail__dashboard-item__name">{patunganTitle}</p>
+        <p tabIndex="0" className="detail__dashboard-item__name">{patunganTitle}</p>
       </div>
       <div className="detail__dashboard-item__info">
-        <p className="detail__dashboard-item__user">
+        <p tabIndex="0" className="detail__dashboard-item__user">
           <FaUsers />
           {' '}
           {numbersOfMember}
           {' '}
           {locale === 'id' ? 'Anggota' : 'Members'}
         </p>
-        <p className="detail__dashboard-item__money">
+        <p tabIndex="0" className="detail__dashboard-item__money">
           <FaCoins />
           {' '}
           Rp
