@@ -55,12 +55,8 @@ function AddNewPatungan({ newPatungan }) {
     swal({
       icon: 'success',
       title: `${locale === 'id' ? 'Patungan berhasil dibuat!' : 'Patungan was successfully created'}`,
-      buttons: false,
-      timer: 1000,
-    })
-      .then(() => {
-        navigate('/');
-      });
+    });
+    navigate('/');
   }
 
   useEffect(() => {

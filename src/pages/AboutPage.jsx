@@ -23,60 +23,60 @@ function AboutPage() {
         <h2 tabIndex="0">{locale === 'id' ? 'Tim Pengembang' : 'Developers Team'}</h2>
         <div className="about-page__who__list">
           <div className="about-page__who__item">
-            <img className="about__page__who__image" src={aldo} alt="developer" />
+            <img className="about__page__who__image" src={aldo} alt="aldo" />
             <div className="about__page__who__content">
-              <h3>Aldo Wijaya</h3>
-              <p>Universitas Lampung</p>
+              <h3 tabIndex="0">Aldo Wijaya</h3>
+              <p tabIndex="0">Universitas Lampung</p>
               <div className="about__page__who__content-links">
-                <a href="https://github.com/AldoWijaya27" target="_blank" rel="noreferrer">
+                <a href="https://github.com/AldoWijaya27" target="_blank" rel="noreferrer" aria-label="github">
                   <FaGithub />
                 </a>
-                <a href="https://www.linkedin.com/in/aldo-wijaya-0a8750201/" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/aldo-wijaya-0a8750201/" target="_blank" rel="noreferrer" aria-label="linkedin">
                   <FaLinkedin />
                 </a>
               </div>
             </div>
           </div>
           <div className="about-page__who__item">
-            <img className="about__page__who__image" src={hifki} alt="developer" />
+            <img className="about__page__who__image" src={hifki} alt="hifki" />
             <div className="about__page__who__content">
-              <h3>Hifki Yuda Pratama</h3>
-              <p>Universitas Pasundan</p>
+              <h3 tabIndex="0">Hifki Yuda Pratama</h3>
+              <p tabIndex="0">Universitas Pasundan</p>
               <div className="about__page__who__content-links">
-                <a href="https://github.com/hifkiyuda" target="_blank" rel="noreferrer">
+                <a href="https://github.com/hifkiyuda" target="_blank" rel="noreferrer" aria-label="github">
                   <FaGithub />
                 </a>
-                <a href="https://www.linkedin.com/in/hifki-yuda-pratama-37ab0b248/" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/hifki-yuda-pratama-37ab0b248/" target="_blank" rel="noreferrer" aria-label="linkedin">
                   <FaLinkedin />
                 </a>
               </div>
             </div>
           </div>
           <div className="about-page__who__item">
-            <img className="about__page__who__image" src={bachtiar} alt="developer" />
+            <img className="about__page__who__image" src={bachtiar} alt="bachtiar" />
             <div className="about__page__who__content">
-              <h3>Muhammad Bachtiar</h3>
-              <p>Universitas Lampung</p>
+              <h3 tabIndex="0">Muhammad Bachtiar</h3>
+              <p tabIndex="0">Universitas Lampung</p>
               <div className="about__page__who__content-links">
-                <a href="https://github.com/muhammadbachtiar" target="_blank" rel="noreferrer">
+                <a href="https://github.com/muhammadbachtiar" target="_blank" rel="noreferrer" aria-label="github">
                   <FaGithub />
                 </a>
-                <a href="https://www.linkedin.com/in/muhammad-bachtiar-93b861222/" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/muhammad-bachtiar-93b861222/" target="_blank" rel="noreferrer" aria-label="linkedin">
                   <FaLinkedin />
                 </a>
               </div>
             </div>
           </div>
           <div className="about-page__who__item">
-            <img className="about__page__who__image" src={satria} alt="developer" />
+            <img className="about__page__who__image" src={satria} alt="satria" />
             <div className="about__page__who__content">
-              <h3>Satria Berliano Manzi</h3>
-              <p>Universitas Lampung</p>
+              <h3 tabIndex="0">Satria Berliano Manzi</h3>
+              <p tabIndex="0">Universitas Lampung</p>
               <div className="about__page__who__content-links">
-                <a href="https://github.com/satriaberliano" target="_blank" rel="noreferrer">
+                <a href="https://github.com/satriaberliano" target="_blank" rel="noreferrer" aria-label="github">
                   <FaGithub />
                 </a>
-                <a href="https://www.linkedin.com/in/satriaberlianomanzi" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/satriaberlianomanzi" target="_blank" rel="noreferrer" aria-label="linkedin">
                   <FaLinkedin />
                 </a>
               </div>

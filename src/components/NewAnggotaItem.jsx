@@ -9,8 +9,8 @@ function NewAnggotaItem({
   return (
     <div className="new-anggota__item">
       <div className="new-anggota__content">
-        <p className="new-anggota__name">{Name}</p>
-        <p className="new-anggota__money">
+        <p tabIndex="0" className="new-anggota__name">{Name}</p>
+        <p tabIndex="0" className="new-anggota__money">
           <FaCoins />
           {' '}
           Rp

@@ -9,8 +9,8 @@ function NewKegiatanItem({
   return (
     <div className="new-kegiatan__item">
       <div className="new-kegiatan__content">
-        <p className="new-kegiatan__title">{Name}</p>
-        <p className="new-kegiatan__money">
+        <p tabIndex="0" className="new-kegiatan__title">{Name}</p>
+        <p tabIndex="0" className="new-kegiatan__money">
           <FaCoins />
           {' '}
           Rp

@@ -63,11 +63,11 @@ function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
               </p>
             </div>
             <div className="detail__list-user-button">
-              <button onClick={onDeleteAnggota} aria-label="delete button">
+              <button className="detail__list-user-button-delete" onClick={onDeleteAnggota} aria-label="delete button">
                 <HiOutlineTrash />
               </button>
               <button>
-                <Link to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`} aria-label="add money">
+                <Link className="detail__list-user-button-add" to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`} aria-label="add money">
                   <FiPlusSquare />
                 </Link>
               </button>

@@ -1,12 +1,10 @@
 class ApiSource {
-  static async getImages() {
+  static async getImages(param) {
     const apiKey = 'lp1W5Gs6lPRK3yStImVldAIi5U-IO__Zh3SMqgjV2dc';
     const baseURL = 'https://api.unsplash.com/';
-    const param = 'white';
     const orientation = 'landscape';
-    const color = 'white';
 
-    const response = await fetch(`${baseURL}/search/photos/?client_id=${apiKey}&query=${param}&orientation=${orientation}&color=${color}`);
+    const response = await fetch(`${baseURL}/search/photos/?client_id=${apiKey}&query=${param}&orientation=${orientation}`);
     const responseJson = await response.json();
 
     const random = responseJson.results[Math.floor(Math.random() * responseJson.results.length)];

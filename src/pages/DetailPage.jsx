@@ -9,6 +9,7 @@ import KegiatanList from '../components/KegiatanList';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
 import Loader from '../components/Loader';
+import PageNotFound from './PageNotFound';
 
 function DetailPage() {
   const [tab, setTab] = React.useState('Anggota');
@@ -78,6 +79,7 @@ function DetailPage() {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -86,7 +88,7 @@ function DetailPage() {
   }, []);
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && patunganTitle !== '') {
       const tabContainer = document.getElementById('tab-button');
       const tabItem = tabContainer.getElementsByClassName('tab');
       for (let i = 0; i < tabItem.length; i++) {
@@ -100,47 +102,47 @@ function DetailPage() {
     }
   }, [loading]);
 
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (patunganTitle === '') {
+    return <PageNotFound />;
+  }
+
   return (
-    <>
-      {
-          loading
-            ? <Loader />
-            : (
-              <section className="detail-patungan">
-                <section className="detail__dashboard">
-                  <div className="detail__dashboard-title">
-                    <h2 tabIndex="0">{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
-                    <p tabIndex="0">{locale === 'id' ? 'Detail Patungan Kamu' : 'Your patungan details'}</p>
-                  </div>
-                  <DetailDashboard
-                    deletePatungan={onDeletePatungan}
-                    patunganTitle={patunganTitle}
-                    numbersOfMember={numbersOfMember}
-                    balance={Balance}
-                    remainingBalance={remainingBalance}
-                    idPatungan={url.id}
-                    patuganIdShare={patunganIdShare}
-                  />
-                </section>
-                <section className="detail__list-user">
-                  <div className="detail__list-user-choice" id="tab-button">
-                    <button type="button" className="tab active" onClick={() => setTab('Anggota')}>{locale === 'id' ? 'Anggota' : 'Members'}</button>
-                    <button type="button" className="tab" onClick={() => setTab('Kegiatan')}>{locale === 'id' ? 'Kegiatan' : 'Activity'}</button>
-                  </div>
-                  <input
-                    className="detail__list-user-search"
-                    placeholder={locale === 'id' ? 'Cari anggota atau kegiatan' : 'Find members or activity'}
-                    onChange={(event) => { setSearchTerm(event.target.value); }}
-                  />
-                  <div className="detail__list-user-content">
-                    {tab === 'Anggota' && <AnggotaList patunganMembers={patunganMembers} searchTerm={searchTerm} idPatungan={url.id} />}
-                    {tab === 'Kegiatan' && <KegiatanList patunganActivity={patunganActivity} searchTerm={searchTerm} idPatungan={url.id} />}
-                  </div>
-                </section>
-              </section>
-            )
-        }
-    </>
+    <section className="detail-patungan">
+      <section className="detail__dashboard">
+        <div className="detail__dashboard-title">
+          <h2 tabIndex="0">{locale === 'id' ? 'Halaman Patungan' : 'Patungan Page'}</h2>
+          <p tabIndex="0">{locale === 'id' ? 'Detail Patungan Kamu' : 'Your patungan details'}</p>
+        </div>
+        <DetailDashboard
+          deletePatungan={onDeletePatungan}
+          patunganTitle={patunganTitle}
+          numbersOfMember={numbersOfMember}
+          balance={Balance}
+          remainingBalance={remainingBalance}
+          idPatungan={url.id}
+          patuganIdShare={patunganIdShare}
+        />
+      </section>
+      <section className="detail__list-user">
+        <div className="detail__list-user-choice" id="tab-button">
+          <button type="button" className="tab active" onClick={() => setTab('Anggota')}>{locale === 'id' ? 'Anggota' : 'Members'}</button>
+          <button type="button" className="tab" onClick={() => setTab('Kegiatan')}>{locale === 'id' ? 'Kegiatan' : 'Activity'}</button>
+        </div>
+        <input
+          className="detail__list-user-search"
+          placeholder={locale === 'id' ? 'Cari anggota atau kegiatan' : 'Find members or activity'}
+          onChange={(event) => { setSearchTerm(event.target.value); }}
+        />
+        <div className="detail__list-user-content">
+          {tab === 'Anggota' && <AnggotaList patunganMembers={patunganMembers} searchTerm={searchTerm} idPatungan={url.id} />}
+          {tab === 'Kegiatan' && <KegiatanList patunganActivity={patunganActivity} searchTerm={searchTerm} idPatungan={url.id} />}
+        </div>
+      </section>
+    </section>
   );
 }
 

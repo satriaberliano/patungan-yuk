@@ -76,7 +76,6 @@
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: var(--text-dark);
-  padding: 12px;
   margin-top: 20px;
   margin-right: 20px;
   border: 1px solid #3fd34e;
@@ -87,12 +86,14 @@
 
 .detail__dashboard-item-button button:hover {
   background-color: var(--button);
-  color: var(--text);
+  color: #ffffff;
   font-weight: 500;
 }
 
 .detail__dashboard-item-button button a {
   color: var(--button-text);
+  padding: 12px;
+  display: block;
 }
 
 .detail__list-user {
@@ -171,8 +172,6 @@
 .detail__list-user-button button,
 .detail__list-activity-button button {
   border: 0;
-  font-size: 25px;
-  padding: 9.5px;
   background-color: transparent;
   color: var(--text);
   display: flex;
@@ -182,6 +181,14 @@
 .detail__list-activity-button button a {
   color: var(--text);
   display: flex;
+}
+
+.detail__list-user-button-delete,
+.detail__list-user-button-add,
+.detail__list-activity-button-delete,
+.detail__list-activity-button-change {
+  font-size: 25px;
+  padding: 9.5px;
 }
 
 .detail__list-user-button button:hover,

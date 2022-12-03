@@ -12,6 +12,7 @@ import { AddNewPatunganPath } from '../routes';
 
 import { getUserName, getUserID, putAccessToken } from '../utils/helper';
 import LocaleContext from '../contexts/LocaleContext';
+import ThemeContext from '../contexts/ThemeContext';
 import ApiSource from '../data/api-source';
 import Loader from '../components/Loader';
 
@@ -23,6 +24,7 @@ function Home() {
   const [image, setImage] = useState();
   const [loading, setLoading] = useState(true);
   const { locale } = React.useContext(LocaleContext);
+  const { theme } = React.useContext(ThemeContext);
   const navigate = useNavigate();
 
   const onLogoutHandler = () => {
@@ -66,85 +68,85 @@ function Home() {
   }
 
   useEffect(() => {
-    async function images() {
-      const result = await ApiSource.getImages();
-      setImage(result);
-    }
-
-    images();
     getUserID(setIdUser);
     getUserName(setCurrentUser);
     getPatungan();
   }, [idUser]);
 
+  useEffect(() => {
+    const param = `${theme === 'light' ? 'black' : 'white'}`;
+    async function images() {
+      const result = await ApiSource.getImages(param);
+      setImage(result);
+    }
+
+    images();
+  }, [theme]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {
-        loading
-          ? <Loader />
-          : (
-            <section className="home">
-              <section className="payu__dashboard">
-                <div className="payu__dashboard-hero">
-                  <img className="payu__dashboard-image" src={image} alt="dashboard-images" />
-                  <div className="payu__dashboard-hero-content">
-                    <h2 tabIndex="0">
-                      {locale === 'id' ? `Hai ${currentUser}` : `Hi ${currentUser}`}
-                      !
-                    </h2>
-                    <p tabIndex="0">{locale === 'id' ? 'Selamat datang di dashboard patungan' : 'Welcome to patungan dashboard'}</p>
-                    <p tabIndex="0">{locale === 'id' ? `Kamu memiliki ${numbersPatungan} patungan` : `You have ${numbersPatungan} patungan`}</p>
+    <section className="home">
+      <section className="payu__dashboard">
+        <div className="payu__dashboard-hero">
+          <img className="payu__dashboard-image" src={image} alt="dashboard-images" />
+          <div className="payu__dashboard-hero-content">
+            <h2 tabIndex="0">
+              {locale === 'id' ? `Hai ${currentUser}` : `Hi ${currentUser}`}
+              !
+            </h2>
+            <p tabIndex="0">{locale === 'id' ? 'Selamat datang di dashboard patungan' : 'Welcome to patungan dashboard'}</p>
+            <p tabIndex="0">{locale === 'id' ? `Kamu memiliki ${numbersPatungan} patungan` : `You have ${numbersPatungan} patungan`}</p>
+          </div>
+        </div>
+        <div className="payu__dashboard-item">
+          <div className="payu__dashboard-item__title">
+            <h3 tabIndex="0">{locale === 'id' ? 'Daftar Patungan' : 'Patungan List'}</h3>
+          </div>
+          <div className="payu__dashboard-item__button">
+            <button type="button" aria-label="add new patungan"><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
+            <button type="button" className="payu__dashboard-logout-button" aria-label="logout button" onClick={onLogoutHandler}><FiLogOut /></button>
+          </div>
+        </div>
+      </section>
+      {patungan.length === 0 ? (
+        <p className="home-conditional-rendering">{locale === 'id' ? 'Patungan kosong...' : 'Patungan is empty...'}</p>
+      ) : (
+        <section className="payu__list-patungan">
+          {patungan.map((group) => {
+            const balanceMembers = group.Members.map((member) => member.Total);
+            const sumBalance = balanceMembers.reduce((partialSum, a) => partialSum + a, 0);
+            return (
+              <div className="list-wrapper" key={group.id}>
+                <Link to={`/detail-patungan/${group.id}`}>
+                  <div className="payu__list-patungan-item">
+                    <h3 className="payu__list-patungan-item__description">{group.title}</h3>
+                    <section className="payu__list-patungan-item__text">
+                      <p>
+                        <FaUsers />
+                        {' '}
+                        {group.Members.length}
+                        {' '}
+                        {locale === 'id' ? 'anggota' : 'members'}
+                      </p>
+                      <p>
+                        <FaCoins />
+                        {' '}
+                        Rp
+                        {' '}
+                        {sumBalance}
+                      </p>
+                    </section>
                   </div>
-                </div>
-                <div className="payu__dashboard-item">
-                  <div className="payu__dashboard-item__title">
-                    <h3 tabIndex="0">{locale === 'id' ? 'Daftar Patungan' : 'Patungan List'}</h3>
-                  </div>
-                  <div className="payu__dashboard-item__button">
-                    <button type="button" aria-label="add new patungan"><Link to={`${AddNewPatunganPath}`}><FiPlusSquare /></Link></button>
-                    <button type="button" className="payu__dashboard-logout-button" aria-label="logout button" onClick={onLogoutHandler}><FiLogOut /></button>
-                  </div>
-                </div>
-              </section>
-              {patungan.length === 0 ? (
-                <p className="home-conditional-rendering">{locale === 'id' ? 'Patungan kosong...' : 'Patungan is empty...'}</p>
-              ) : (
-                <section className="payu__list-patungan">
-                  {patungan.map((group) => {
-                    const balanceMembers = group.Members.map((member) => member.Total);
-                    const sumBalance = balanceMembers.reduce((partialSum, a) => partialSum + a, 0);
-                    return (
-                      <div className="list-wrapper" key={group.id}>
-                        <Link to={`/detail-patungan/${group.id}`}>
-                          <div className="payu__list-patungan-item">
-                            <h3 className="payu__list-patungan-item__description">{group.title}</h3>
-                            <section className="payu__list-patungan-item__text">
-                              <p>
-                                <FaUsers />
-                                {' '}
-                                {group.Members.length}
-                                {' '}
-                                {locale === 'id' ? 'anggota' : 'members'}
-                              </p>
-                              <p>
-                                <FaCoins />
-                                {' '}
-                                Rp
-                                {' '}
-                                {sumBalance}
-                              </p>
-                            </section>
-                          </div>
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </section>
-              )}
-            </section>
-          )
-      }
-    </>
+                </Link>
+              </div>
+            );
+          })}
+        </section>
+      )}
+    </section>
   );
 }
 

@@ -10,7 +10,7 @@
   --background: #f4f7ed;
   --on-background: #202124;
   --dashboard: #b9f1bf;
-  --hero-text: #232323;
+  --hero-text: #eeeeee;
   --list: #e0e0e0;
   --text-green: #0F891B;
   --text-red: #F32424;
@@ -35,26 +35,23 @@
   --text-smaller: #cecccc;
   --list: #0b0b0b;
   --border-header: #4a4a4a;
+  --hero-text: #232323;
 }
 
 .swal-text {
-  font-weight: 600;
-  font-size: 16px;
   text-align: center;
 }
+
 .swal-modal {
-  border-radius: 25px;
+  border-radius: 20px;
 }
+
 .swal-button {
   border-radius: 8px;
 }
-.swal-button--cancel {
-  background-color: var(--text-green);
-  color: var(--button-text);
-}
+
 .swal-button--confirm {
-  background-color: var(--text-red);
-  color: var(--button-text);
+  background-color: var(--text-green);
 }
 
 * {
@@ -195,6 +192,18 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.page__not__found {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.page__not__found .sad {
+  font-size: 80px;
 }
  
 footer {
