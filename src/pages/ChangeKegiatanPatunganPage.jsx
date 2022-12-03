@@ -51,34 +51,30 @@ function ChangeKegiatanPatunganPage() {
     getPatungan();
   }, []);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {
-        loading
-          ? <Loader />
-          : (
-            <div className="change-kegiatan-patungan-page">
-              <div className="add-patungan__change-kegiatan">
-                <div className="add-patungan__change-kegiatan__text">
-                  <h2 tabIndex="0">{locale === 'id' ? 'Ubah Kegiatan' : 'Change Activity'}</h2>
-                  <p tabIndex="0">{locale === 'id' ? `Nama kegiatan saat ini: ${name}` : `Current activity name: ${name}`}</p>
-                  <p tabIndex="0">{locale === 'id' ? `Jumlah dana untuk kegiatan saat ini: Rp ${spend}` : `Amount of funds for current activities: Rp ${spend}`}</p>
-                </div>
-                <form onSubmit={changeKegiatanPatunganHandler}>
-                  <input className="input__action" type="text" placeholder="Judul baru" value={newName} onChange={setNewName} required />
-                  <input className="input__action" type="number" placeholder="Jumlah dana kegiatan baru" value={newSpend} onChange={setNewSpend} required />
-                  <div className="register__action">
-                    <button className="action-submit" type="submit" title="Ubah" disabled={!newName || !newSpend}>
-                      <p>{locale === 'id' ? 'Ubah' : 'Change'}</p>
-                      <FiArrowRight />
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )
-      }
-    </>
+    <div className="change-kegiatan-patungan-page">
+      <div className="add-patungan__change-kegiatan">
+        <div className="add-patungan__change-kegiatan__text">
+          <h2 tabIndex="0">{locale === 'id' ? 'Ubah Kegiatan' : 'Change Activity'}</h2>
+          <p tabIndex="0">{locale === 'id' ? `Nama kegiatan saat ini: ${name}` : `Current activity name: ${name}`}</p>
+          <p tabIndex="0">{locale === 'id' ? `Jumlah dana untuk kegiatan saat ini: Rp ${spend}` : `Amount of funds for current activities: Rp ${spend}`}</p>
+        </div>
+        <form onSubmit={changeKegiatanPatunganHandler}>
+          <input className="input__action" type="text" placeholder="Judul baru" value={newName} onChange={setNewName} required />
+          <input className="input__action" type="number" placeholder="Jumlah dana kegiatan baru" value={newSpend} onChange={setNewSpend} required />
+          <div className="register__action">
+            <button className="action-submit" type="submit" title="Ubah" disabled={!newName || !newSpend}>
+              <p>{locale === 'id' ? 'Ubah' : 'Change'}</p>
+              <FiArrowRight />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

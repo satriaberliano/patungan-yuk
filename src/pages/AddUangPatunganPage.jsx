@@ -50,41 +50,37 @@ function AddUangPatunganPage() {
     getPatungan();
   }, []);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {
-        loading
-          ? <Loader />
-          : (
-            <div className="add-uang-patungan-page">
-              <div className="add-patungan__add-uang">
-                <div className="add-patungan__add-uang__text">
-                  <h2 tabIndex="0">{locale === 'id' ? 'Tambah Patungan' : 'Add Patungan'}</h2>
-                  <p tabIndex="0">{locale === 'id' ? `Untuk ${name}` : `For ${name}`}</p>
-                  <p tabIndex="0">{locale === 'id' ? `Dana saat ini : Rp ${total}` : `Current funds : Rp ${total}`}</p>
-                </div>
-                <p tabIndex="0"><span>{locale === 'id' ? 'Dana yang ingin ditambahkan' : 'Funds you want to add'}</span></p>
-                <form onSubmit={addUangPatunganHandler}>
-                  <input
-                    className="input__action"
-                    type="number"
-                    placeholder="Jumlah Patungan"
-                    value={addedMoney}
-                    onChange={setAddedMoney}
-                    required
-                  />
-                  <div className="register__action">
-                    <button className="action-submit" type="submit" title="Tambah dana patungan anggota" disabled={!addedMoney}>
-                      <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
-                      <FiArrowRight />
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )
-      }
-    </>
+    <div className="add-uang-patungan-page">
+      <div className="add-patungan__add-uang">
+        <div className="add-patungan__add-uang__text">
+          <h2 tabIndex="0">{locale === 'id' ? 'Tambah Patungan' : 'Add Patungan'}</h2>
+          <p tabIndex="0">{locale === 'id' ? `Untuk ${name}` : `For ${name}`}</p>
+          <p tabIndex="0">{locale === 'id' ? `Dana saat ini : Rp ${total}` : `Current funds : Rp ${total}`}</p>
+        </div>
+        <p tabIndex="0"><span>{locale === 'id' ? 'Dana yang ingin ditambahkan' : 'Funds you want to add'}</span></p>
+        <form onSubmit={addUangPatunganHandler}>
+          <input
+            className="input__action"
+            type="number"
+            placeholder="Jumlah Patungan"
+            value={addedMoney}
+            onChange={setAddedMoney}
+            required
+          />
+          <div className="register__action">
+            <button className="action-submit" type="submit" title="Tambah dana patungan anggota" disabled={!addedMoney}>
+              <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
+              <FiArrowRight />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

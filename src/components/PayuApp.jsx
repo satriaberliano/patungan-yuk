@@ -17,6 +17,7 @@ import {
   AddKegiatanPatunganPath,
   AddUangPatunganPath,
   ChangeKegiatanPath,
+  NotFoundPath,
 } from '../routes';
 import InfoPage from '../pages/InfoPage';
 import LoginPage from '../pages/LoginPage';
@@ -31,6 +32,7 @@ import ProtectedRoute from '../utils/ProtectedRoute';
 import AppFooter from './AppFooter';
 import LocaleContext from '../contexts/LocaleContext';
 import ThemeContext from '../contexts/ThemeContext';
+import PageNotFound from '../pages/PageNotFound';
 
 function PayuApp() {
   const [locale, setLocale] = useState(localStorage.getItem('locale') || 'id');
@@ -72,6 +74,7 @@ function PayuApp() {
               <Route path={RegisterPath} element={<RegisterPage />} />
               <Route path={AboutPath} element={<AboutPage />} />
               <Route path={SharedDetailPatunganPath} element={<SharedDetailPage />} />
+              <Route path={NotFoundPath} element={<PageNotFound />} />
 
               <Route
                 path={rootPath}
