@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import LocaleContext from '../contexts/LocaleContext';
-import useInput from '../hooks/useInput';
 
 function AddNewKegiatan({ addNewKegiatan }) {
-  const [title, setTitle] = useInput('');
-  const [money, setMoney] = useInput(0);
+  const [title, setTitle] = useState('');
+  const [money, setMoney] = useState(0);
   const { locale } = React.useContext(LocaleContext);
 
   const newKegiatanSubmitHandler = (event) => {
@@ -17,6 +16,8 @@ function AddNewKegiatan({ addNewKegiatan }) {
       Name: title,
       Spend: Number(money),
     });
+    setTitle('');
+    setMoney(0);
   };
 
   return (
@@ -26,7 +27,7 @@ function AddNewKegiatan({ addNewKegiatan }) {
         type="text"
         placeholder={locale === 'id' ? 'Judul' : 'Title'}
         value={title}
-        onChange={setTitle}
+        onChange={event =>setTitle(event.target.value)}
         required
       />
       <span className="currencyinput">
@@ -36,7 +37,7 @@ function AddNewKegiatan({ addNewKegiatan }) {
           type="number"
           placeholder={locale === 'id' ? 'Jumlah dana yang dihabiskan' : 'Amount of funds spent'}
           value={money}
-          onChange={setMoney}
+          onChange={event =>setMoney(event.target.value)}
           required
         />
       </span>
