@@ -41,6 +41,10 @@
         "no-plusplus": 0,
         "func-names": 0,
         "react/jsx-filename-extension": 0,
-        "react/forbid-prop-types": 0
+        "react/forbid-prop-types": 0,
+        "prefer-template": 0,
+        "prefer-regex-literals": 0,
+        "no-param-reassign": 0,
+        "no-use-before-define": 0
     }
 }
