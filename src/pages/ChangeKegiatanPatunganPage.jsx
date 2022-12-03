@@ -4,7 +4,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
-import { db } from '../config/firebase-config';
+import { db } from '../globals/firebase-config';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
 import Loader from '../components/Loader';
@@ -68,7 +68,7 @@ function ChangeKegiatanPatunganPage() {
           <input className="input__action" type="number" placeholder="Jumlah dana kegiatan baru" value={newSpend} onChange={setNewSpend} required />
           <div className="register__action">
             <button className="action-submit" type="submit" title="Ubah" disabled={!newName || !newSpend}>
-              <p>{locale === 'id' ? 'Ubah' : 'Change'}</p>
+              {locale === 'id' ? 'Ubah' : 'Change'}
               <FiArrowRight />
             </button>
           </div>

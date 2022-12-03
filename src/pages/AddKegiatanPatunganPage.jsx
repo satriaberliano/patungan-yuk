@@ -4,7 +4,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
-import { db } from '../config/firebase-config';
+import { db } from '../globals/firebase-config';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
 
@@ -49,7 +49,7 @@ function AddKegiatanPatunganPage() {
           </span>
           <div className="add-patungan__action">
             <button className="action-submit" type="submit" title={locale === 'id' ? 'Tambah rinci kegiatan' : 'Add activity details'} disabled={!name || !spend}>
-              <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
+              {locale === 'id' ? 'Tambah' : 'Add'}
               <FiArrowRight />
             </button>
           </div>

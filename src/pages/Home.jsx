@@ -7,7 +7,7 @@ import { FiPlusSquare, FiLogOut } from 'react-icons/fi';
 import { FaUsers, FaCoins } from 'react-icons/fa';
 import { signOut } from 'firebase/auth';
 import swal from 'sweetalert';
-import { db, auth } from '../config/firebase-config';
+import { db, auth } from '../globals/firebase-config';
 import { AddNewPatunganPath } from '../routes';
 
 import { getUserName, getUserID, putAccessToken } from '../utils/helper';

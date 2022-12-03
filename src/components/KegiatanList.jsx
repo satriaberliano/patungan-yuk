@@ -6,7 +6,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import LocaleContext from '../contexts/LocaleContext';
-import { db } from '../config/firebase-config';
+import { db } from '../globals/firebase-config';
 
 function KegiatanList({ patunganActivity, idPatungan, searchTerm }) {
   const { locale } = React.useContext(LocaleContext);

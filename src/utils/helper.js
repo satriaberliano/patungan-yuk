@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../config/firebase-config';
+import { auth } from '../globals/firebase-config';
 
 export const getAccessToken = () => localStorage.getItem('accessToken');
 

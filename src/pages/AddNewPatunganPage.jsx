@@ -1,7 +1,7 @@
 import React from 'react';
 import { addDoc, collection } from 'firebase/firestore';
 import AddNewPatungan from '../components/AddNewPatungan';
-import { db } from '../config/firebase-config';
+import { db } from '../globals/firebase-config';
 
 function AddNewPatunganPage() {
   const patunganCollectionRef = collection(db, 'patungan');

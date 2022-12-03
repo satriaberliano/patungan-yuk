@@ -40,7 +40,7 @@ function AddNewAnggota({ addNewAnggota }) {
       </span>
 
       <button className="action-submit new-patungan-action-submit" type="submit" title="Tambah">
-        <p>{locale === 'id' ? 'Tambah' : 'Add'}</p>
+        {locale === 'id' ? 'Tambah' : 'Add'}
         <FiArrowRight />
       </button>
     </form>

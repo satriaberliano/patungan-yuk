@@ -5,7 +5,7 @@ import {
 import SharedAnggotaList from '../components/SharedAnggotaList';
 import SharedDetailDashboard from '../components/SharedDetailDashboard';
 import SharedKegiatanList from '../components/SharedKegiatanList';
-import { db } from '../config/firebase-config';
+import { db } from '../globals/firebase-config';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
 

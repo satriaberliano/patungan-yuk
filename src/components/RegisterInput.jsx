@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } 
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import LocaleContext from '../contexts/LocaleContext';
-import { auth, userDatabase } from '../config/firebase-config';
+import { auth, userDatabase } from '../globals/firebase-config';
 import useInput from '../hooks/useInput';
 
 function RegisterInput() {
@@ -72,7 +72,7 @@ function RegisterInput() {
         <input className="input__action" type="password" placeholder={locale === 'id' ? 'Konfirmasi Password' : 'Confirm Password'} value={confirmPassword} onChange={onConfirmPasswordChange} required />
         <div className="register__action">
           <button className="action-submit" type="submit" title="Simpan">
-            <p>{locale === 'id' ? 'Daftar' : 'Sign Up'}</p>
+            {locale === 'id' ? 'Daftar' : 'Sign Up'}
             <FiArrowRight />
           </button>
         </div>

@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import AnggotaList from '../components/AnggotaList';
 import DetailDashboard from '../components/DetailDashboard';
-import { db } from '../config/firebase-config';
+import { db } from '../globals/firebase-config';
 import KegiatanList from '../components/KegiatanList';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
