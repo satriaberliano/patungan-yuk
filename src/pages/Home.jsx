@@ -12,6 +12,7 @@ import { AddNewPatunganPath } from '../routes';
 
 import { getUserName, getUserID, putAccessToken } from '../utils/helper';
 import LocaleContext from '../contexts/LocaleContext';
+import ThemeContext from '../contexts/ThemeContext';
 import ApiSource from '../data/api-source';
 import Loader from '../components/Loader';
 
@@ -23,6 +24,7 @@ function Home() {
   const [image, setImage] = useState();
   const [loading, setLoading] = useState(true);
   const { locale } = React.useContext(LocaleContext);
+  const { theme } = React.useContext(ThemeContext);
   const navigate = useNavigate();
 
   const onLogoutHandler = () => {
@@ -66,16 +68,20 @@ function Home() {
   }
 
   useEffect(() => {
-    async function images() {
-      const result = await ApiSource.getImages();
-      setImage(result);
-    }
-
-    images();
     getUserID(setIdUser);
     getUserName(setCurrentUser);
     getPatungan();
   }, [idUser]);
+
+  useEffect(() => {
+    const param = `${theme === 'light' ? 'black' : 'white'}`;
+    async function images() {
+      const result = await ApiSource.getImages(param);
+      setImage(result);
+    }
+
+    images();
+  }, [theme]);
 
   return (
     <>

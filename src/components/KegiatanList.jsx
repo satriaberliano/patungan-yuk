@@ -63,8 +63,8 @@ function KegiatanList({ patunganActivity, idPatungan, searchTerm }) {
               </p>
             </div>
             <div className="detail__list-activity-button">
-              <button onClick={onDeleteKegiatan} aria-label="delete button"><HiOutlineTrash /></button>
-              <button><Link to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`} aria-label="change activity"><HiOutlinePencil /></Link></button>
+              <button className="detail__list-activity-button-delete" onClick={onDeleteKegiatan} aria-label="delete button"><HiOutlineTrash /></button>
+              <button><Link className="detail__list-activity-button-change" to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`} aria-label="change activity"><HiOutlinePencil /></Link></button>
             </div>
           </div>
         );

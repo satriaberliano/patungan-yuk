@@ -37,7 +37,7 @@ header .navigation ul li {
   display: flex;
   align-items: center;
   max-width: fit-content;
-  padding-left: 9.5px;
+  padding: 9.5px;
 }
 
 .header-logo {

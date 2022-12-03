@@ -10,7 +10,7 @@
   --background: #f4f7ed;
   --on-background: #202124;
   --dashboard: #b9f1bf;
-  --hero-text: #232323;
+  --hero-text: #eeeeee;
   --list: #e0e0e0;
   --text-green: #0F891B;
   --text-red: #F32424;
@@ -35,6 +35,7 @@
   --text-smaller: #cecccc;
   --list: #0b0b0b;
   --border-header: #4a4a4a;
+  --hero-text: #232323;
 }
 
 .swal-text {
