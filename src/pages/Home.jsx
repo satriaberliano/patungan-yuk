@@ -29,8 +29,7 @@ function Home() {
 
   const onLogoutHandler = () => {
     swal({
-      title: 'Logout',
-      text: `${locale === 'id' ? 'Apakah kamu yakin?' : 'Are you sure?'}`,
+      title: `${locale === 'id' ? 'Apakah kamu yakin?' : 'Are you sure?'}`,
       icon: 'warning',
       buttons: true,
       dangerMode: true,
