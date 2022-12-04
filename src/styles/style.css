@@ -17,7 +17,7 @@
   --button: #0f891b;
   --on-button-text: #eeeeee;
   --border-grey: #a3abbb;
-  --border-header: #00004d;
+  --border-header: #bbbbbb;
   --text-dark: #232323;
   --text: #232323;
   --link-logreg: #0f891b;
@@ -34,8 +34,13 @@
   --text: #eeeeee;
   --text-smaller: #cecccc;
   --list: #0b0b0b;
-  --border-header: #4a4a4a;
+  --border-header: #444444;
   --hero-text: #232323;
+}
+
+.swal-title {
+  font-size: 18px;
+  margin-bottom: 30px;
 }
 
 .swal-text {
@@ -43,11 +48,7 @@
 }
 
 .swal-modal {
-  border-radius: 20px;
-}
-
-.swal-button {
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .swal-button--confirm {
