@@ -3,7 +3,7 @@
 Patungan Yuk (PAYU) is a website created to make it easier to record the finances of a group that wants to carry out an activity such as vacations, hangouts, etc.
 <br />
 <div align="center">
-    <img src="src/assets/logo-header.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/logo-header.png" alt="Logo" height="80">
  </div>
 
 ## Getting Started with Create React App
