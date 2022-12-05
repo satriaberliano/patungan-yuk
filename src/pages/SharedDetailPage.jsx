@@ -99,7 +99,7 @@ function SharedDetailPage() {
       <section className="detail__list-user">
         <div className="detail__list-user-choice" id="tab-button">
           <button type="button" className="tab active" onClick={() => setTab('Anggota')}>{locale === 'id' ? 'Anggota' : 'Members'}</button>
-          <button type="button" className="tab" onClick={() => setTab('Kegiatan')}>{locale === 'id' ? 'kegiatan' : 'Activity'}</button>
+          <button type="button" className="tab" onClick={() => setTab('Kegiatan')}>{locale === 'id' ? 'Kegiatan' : 'Activity'}</button>
         </div>
         <input
           className="detail__list-user-search"
