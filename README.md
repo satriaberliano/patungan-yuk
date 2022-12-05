@@ -7,8 +7,8 @@ Patungan Yuk (PAYU) is a website created to make it easier to record the finance
 
 <br />
 <div align="center">
-    <img src="src/assets/logo-header.png" alt="Logo" height="80">
- </div>
+<img src="src/assets/Dokumentasi1.png" alt="Dokumentasi" height="750">
+</div>
 
 ## Getting Started with Create React App
 
