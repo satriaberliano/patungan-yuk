@@ -1,6 +1,31 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
+
+# Patungan Yuk
+
+Patungan Yuk (PAYU) is a website created to make it easier to record the finances of a group that wants to carry out an activity such as vacations, hangouts, etc.The available features are made to make all recording activities easier, including add activities, add members, log in, sign up, there are even features to change language and change dark mode.
+
+<br />
+<div align="center">
+<img src="src/assets/Dokumentasi1.png" alt="Dokumentasi">
+</div>
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Installation
+
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+
+1. Get a free API Key at https://api.unsplash.com/
+2. Clone the repo
+   ```sh
+   git clone https://github.com/satriaberliano/patungan-yuk.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
 
 ## Available Scripts
 
@@ -39,6 +64,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+<p align="right">--<a href="#readme-top">back to top</a>--</p>
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -68,3 +95,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<p align="right">--<a href="#readme-top">back to top</a>--</p>
