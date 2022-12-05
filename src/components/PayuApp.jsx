@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import AppHeader from './AppHeader';
 import DetailPage from '../pages/DetailPage';
@@ -18,6 +18,7 @@ import {
   AddUangPatunganPath,
   ChangeKegiatanPath,
   NotFoundPath,
+  PatunganPath,
 } from '../routes';
 import InfoPage from '../pages/InfoPage';
 import LoginPage from '../pages/LoginPage';
@@ -33,6 +34,7 @@ import AppFooter from './AppFooter';
 import LocaleContext from '../contexts/LocaleContext';
 import ThemeContext from '../contexts/ThemeContext';
 import PageNotFound from '../pages/PageNotFound';
+import ReleaseRoute from '../utils/ReleaseRoute';
 
 function PayuApp() {
   const [locale, setLocale] = useState(localStorage.getItem('locale') || 'id');
@@ -69,41 +71,26 @@ function PayuApp() {
           </header>
           <main id="mainContent">
             <Routes>
-              <Route path={InfoPath} element={<InfoPage />} />
-              <Route path={LoginPath} element={<LoginPage />} />
-              <Route path={RegisterPath} element={<RegisterPage />} />
               <Route path={AboutPath} element={<AboutPage />} />
               <Route path={SharedDetailPatunganPath} element={<SharedDetailPage />} />
-              <Route path={NotFoundPath} element={<PageNotFound />} />
 
-              <Route
-                path={rootPath}
-                element={<ProtectedRoute><Home /></ProtectedRoute>}
-              />
-              <Route
-                path={DetailPatunganPath}
-                element={<ProtectedRoute><DetailPage /></ProtectedRoute>}
-              />
-              <Route
-                path={AddNewPatunganPath}
-                element={<ProtectedRoute><AddNewPatunganPage /></ProtectedRoute>}
-              />
-              <Route
-                path={AddAnggotaPatunganPath}
-                element={<ProtectedRoute><AddAnggotaPatunganPage /></ProtectedRoute>}
-              />
-              <Route
-                path={AddKegiatanPatunganPath}
-                element={<ProtectedRoute><AddKegiatanPatunganPage /></ProtectedRoute>}
-              />
-              <Route
-                path={AddUangPatunganPath}
-                element={<ProtectedRoute><AddUangPatunganPage /></ProtectedRoute>}
-              />
-              <Route
-                path={ChangeKegiatanPath}
-                element={<ProtectedRoute><ChangeKegiatanPatunganPage /></ProtectedRoute>}
-              />
+              <Route element={<ReleaseRoute />}>
+                <Route path={InfoPath} element={<InfoPage />} />
+                <Route path={LoginPath} element={<LoginPage />} />
+                <Route path={RegisterPath} element={<RegisterPage />} />
+              </Route>
+
+              <Route element={<ProtectedRoute />}>
+                <Route path={NotFoundPath} element={<PageNotFound />} />
+                <Route path={PatunganPath} element={<Navigate replace to={rootPath} />} />
+                <Route path={rootPath} element={<Home />} />
+                <Route path={DetailPatunganPath} element={<DetailPage />} />
+                <Route path={AddNewPatunganPath} element={<AddNewPatunganPage />} />
+                <Route path={AddAnggotaPatunganPath} element={<AddAnggotaPatunganPage />} />
+                <Route path={AddKegiatanPatunganPath} element={<AddKegiatanPatunganPage />} />
+                <Route path={AddUangPatunganPath} element={<AddUangPatunganPage />} />
+                <Route path={ChangeKegiatanPath} element={<ChangeKegiatanPatunganPage />} />
+              </Route>
             </Routes>
           </main>
           <footer>

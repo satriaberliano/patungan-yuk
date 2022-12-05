@@ -1,9 +1,10 @@
 export const rootPath = '/';
+export const PatunganPath = '/patungan';
 export const NotFoundPath = '/*';
 export const DetailPatunganPath = '/detail-patungan/:id';
 export const SharedDetailPatunganPath = '/shared-detail-patungan/:idShared';
 export const AddNewPatunganPath = '/patungan/add/new';
-export const InfoPath = '/info';
+export const InfoPath = '/welcome';
 export const LoginPath = '/login';
 export const RegisterPath = '/register';
 export const AboutPath = '/about';

@@ -209,3 +209,8 @@ footer {
   padding: 40px 20px;
   font-size: 15px;
 }
+
+.footer__payu:hover {
+  color: var(--button-green-light);
+  transition: all .3s ease-in;
+}

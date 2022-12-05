@@ -1,11 +1,13 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { getAccessToken } from './helper';
 
-function ProtectedRoute({ children }) {
+function ReleaseRoute({ children }) {
   const token = getAccessToken();
 
-  if (!token) return <Navigate to="/welcome" />;
+  if ((token)) {
+    return <Navigate to="/" />;
+  }
+
   return children ? children : <Outlet />;
 }
-
-export default ProtectedRoute;
+export default ReleaseRoute;

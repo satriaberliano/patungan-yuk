@@ -1,6 +1,7 @@
 class ApiSource {
   static async getImages(param) {
-    const apiKey = 'lp1W5Gs6lPRK3yStImVldAIi5U-IO__Zh3SMqgjV2dc';
+    // using unsplash api
+    const apiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
     const baseURL = 'https://api.unsplash.com/';
     const orientation = 'landscape';
 

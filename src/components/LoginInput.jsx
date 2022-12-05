@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import swal from 'sweetalert';
 import { auth } from '../globals/firebase-config';
-import { putAccessToken, getUserLogged } from '../utils/helper';
+import { putAccessToken } from '../utils/helper';
 import LocaleContext from '../contexts/LocaleContext';
 import useInput from '../hooks/useInput';
+import { PatunganPath } from '../routes';
 
 function LoginInput() {
   const [email, onEmailChange] = useInput('');
@@ -28,8 +29,7 @@ function LoginInput() {
         })
           .then(() => {
             putAccessToken(user);
-            getUserLogged();
-            navigate('/');
+            navigate(PatunganPath);
           });
       })
       .catch((error) => {
