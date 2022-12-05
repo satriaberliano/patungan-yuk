@@ -1,4 +1,6 @@
 <a name="readme-top"></a>
+<img src="src/assets/logo-header.png" alt="Logo" title="Aimeos" align="right" height="60" />
+
 # Patungan Yuk
 
 Patungan Yuk (PAYU) is a website created to make it easier to record the finances of a group that wants to carry out an activity such as vacations, hangouts, etc.
