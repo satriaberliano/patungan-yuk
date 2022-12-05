@@ -46,7 +46,7 @@ function Home() {
               signOut(auth)
                 .then(() => {
                   putAccessToken('');
-                  navigate('/info');
+                  navigate('/welcome');
                 });
             });
         }

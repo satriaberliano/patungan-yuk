@@ -5,20 +5,6 @@ export const getAccessToken = () => localStorage.getItem('accessToken');
 
 export const putAccessToken = (accessToken) => localStorage.setItem('accessToken', accessToken);
 
-export const getUserLogged = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const { uid } = user;
-      const name = user.displayName;
-      const { email } = user;
-      const data = { uid, name, email };
-      return data;
-    }
-    const data = null;
-    return data;
-  });
-};
-
 export const getUserName = (setCurrentUser) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
