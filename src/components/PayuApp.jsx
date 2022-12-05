@@ -71,13 +71,13 @@ function PayuApp() {
           </header>
           <main id="mainContent">
             <Routes>
+              <Route path={AboutPath} element={<AboutPage />} />
+              <Route path={SharedDetailPatunganPath} element={<SharedDetailPage />} />
+
               <Route element={<ReleaseRoute />}>
-                <Route path={NotFoundPath} element={<PageNotFound />} />
                 <Route path={InfoPath} element={<InfoPage />} />
                 <Route path={LoginPath} element={<LoginPage />} />
                 <Route path={RegisterPath} element={<RegisterPage />} />
-                <Route path={AboutPath} element={<AboutPage />} />
-                <Route path={SharedDetailPatunganPath} element={<SharedDetailPage />} />
               </Route>
 
               <Route element={<ProtectedRoute />}>
