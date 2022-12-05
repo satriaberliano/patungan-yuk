@@ -1,4 +1,4 @@
-#Patungan Yuk
+# Patungan Yuk
 
 Patungan Yuk (PAYU) is a website created to make it easier to record the finances of a group that wants to carry out an activity such as vacations, hangouts, etc.
 
