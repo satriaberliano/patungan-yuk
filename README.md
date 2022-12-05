@@ -13,6 +13,20 @@ Patungan Yuk (PAYU) is a website created to make it easier to record the finance
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Installation
+
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+
+1. Get a free API Key at https://api.unsplash.com/
+2. Clone the repo
+   ```sh
+   git clone https://github.com/satriaberliano/patungan-yuk.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+
 ## Available Scripts
 
 In the project directory, you can run:
