@@ -1,5 +1,4 @@
 <a name="readme-top"></a>
-<img src="src/assets/logo-header.png" alt="Logo" title="Aimeos" align="right" height="60" />
 
 # Patungan Yuk
 
