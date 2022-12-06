@@ -34,6 +34,13 @@
   transition: all .3s ease-in;
 }
 
+.login-page__image img {
+  display: none;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* 
   register
 */
@@ -76,4 +83,11 @@
 .register__link a:hover {
   color: var(--button-green-light);
   transition: all .3s ease-in;
+}
+
+.register-page__image img {
+  display: none;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
 }
