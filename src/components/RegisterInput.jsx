@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { ref, set } from 'firebase/database';
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth';
@@ -7,11 +7,13 @@ import swal from 'sweetalert';
 import LocaleContext from '../contexts/LocaleContext';
 import { auth, userDatabase } from '../globals/firebase-config';
 import useInput from '../hooks/useInput';
+import Loader from './Loader';
 
 function RegisterInput() {
   const [name, onNameChange] = useInput('');
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
+  const [loading, setLoading] = useState(false);
   const [confirmPassword, onConfirmPasswordChange] = useInput('');
   const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
@@ -33,10 +35,12 @@ function RegisterInput() {
             timer: 1000,
           })
             .then(() => {
+              setLoading(false);
               navigate('/login');
             });
         })
         .catch((error) => {
+          setLoading(false);
           swal({
             icon: 'error',
             title: error.message,
@@ -45,6 +49,7 @@ function RegisterInput() {
       await sendEmailVerification(auth.currentUser).catch((error) => console.log(error.message));
       await updateProfile(auth.currentUser, { displayName: name }).catch((error) => console.log(error.message));
     } catch (error) {
+      setLoading(false);
       console.log(error.message);
     }
   };
@@ -53,8 +58,10 @@ function RegisterInput() {
     event.preventDefault();
 
     if (password === confirmPassword) {
+      setLoading(true);
       onRegisterHandler({ email, name, password });
     } else {
+      setLoading(false);
       swal({
         icon: 'error',
         title: `${locale === 'id' ? 'Pendaftaran Gagal' : 'Registration Failed'}`,
@@ -65,6 +72,7 @@ function RegisterInput() {
 
   return (
     <div className="input-register">
+      {loading ? <Loader /> : ''}
       <form onSubmit={onSubmitHandler} className="register-input">
         <input className="input__action" type="text" placeholder={locale === 'id' ? 'Nama' : 'Name'} value={name} onChange={onNameChange} required />
         <input className="input__action" type="email" placeholder="Email" value={email} onChange={onEmailChange} required />

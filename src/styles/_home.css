@@ -28,6 +28,22 @@
   border-radius: 10px;
 }
 
+.placeholder {
+  animation: animation 2s infinite;
+}
+
+@keyframes animation {
+  0% {
+    background-color: #b1b1b1;
+  }
+  50% {
+    background-color: #dadada;
+  }
+  100% {
+    background-color: #b1b1b1;
+  }
+}
+
 .payu__dashboard-item {
   color: var(--text);
   margin-top: 10px;

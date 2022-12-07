@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -8,10 +8,12 @@ import { putAccessToken } from '../utils/helper';
 import LocaleContext from '../contexts/LocaleContext';
 import useInput from '../hooks/useInput';
 import { PatunganPath } from '../routes';
+import Loader from './Loader';
 
 function LoginInput() {
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
+  const [loading, setLoading] = useState(false);
   const { locale } = React.useContext(LocaleContext);
 
   const navigate = useNavigate();
@@ -19,7 +21,6 @@ function LoginInput() {
   const onLoginHandler = ({ email, password }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-      // Signed in
         const user = userCredential.user.accessToken;
         swal({
           icon: 'success',
@@ -28,6 +29,7 @@ function LoginInput() {
           timer: 1000,
         })
           .then(() => {
+            setLoading(false);
             putAccessToken(user);
             navigate(PatunganPath);
           });
@@ -38,6 +40,7 @@ function LoginInput() {
           title: `${locale === 'id' ? 'Login gagal' : 'Login failed'}`,
           text: `${locale === 'id' ? 'Periksa kembali email dan password anda' : 'Check your email and password again'}`,
         });
+        setLoading(false);
         const errorMessage = error.message;
         console.log(errorMessage);
       });
@@ -45,12 +48,13 @@ function LoginInput() {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-
+    setLoading(true);
     onLoginHandler({ email, password });
   };
 
   return (
     <div className="input-login">
+      {loading ? <Loader /> : ''}
       <form onSubmit={onSubmitHandler} className="login-input">
         <input className="input__action" type="email" id="email" placeholder="Email" value={email} onChange={onEmailChange} required />
         <input className="input__action" type="password" id="password" placeholder="Password" value={password} onChange={onPasswordChange} required />
