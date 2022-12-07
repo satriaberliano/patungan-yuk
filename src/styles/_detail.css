@@ -8,7 +8,7 @@
 }
 
 .detail__dashboard-title p {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .detail__dashboard-item {
@@ -56,6 +56,7 @@
 
 .detail__dashboard-item__leftover {
   color: var(--text-green);
+  font-size: 14px !important;
 }
 
 .detail__dashboard-item__leftover.remaining-balance-red {
@@ -154,7 +155,7 @@
 }
 
 .detail__list-user-item__money {
-  font-size: 12px;
+  font-size: 14px !important;
   color: var(--text-green);
 }
 
@@ -204,7 +205,7 @@
 }
 
 .detail__list-activity-item__money {
-  font-size: 12px;
+  font-size: 14px !important;
   color: var(--text-red);
 }
 

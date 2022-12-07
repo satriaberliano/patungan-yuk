@@ -1,5 +1,5 @@
 const sharedConfig = {
-  sharedUrl: 'https://patungan-yuk.netlify.app/shared-detail-patungan/',
+  sharedUrl: 'https://patungan-yuk-dicoding.web.app/shared-detail-patungan/',
 };
 
 export default sharedConfig;

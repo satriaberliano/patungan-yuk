@@ -189,10 +189,6 @@
     font-size: 28px;
   }
 
-  .detail__dashboard-title p {
-    font-size: 16px;
-  }
-
   .detail__dashboard-item__name {
     font-size: 22px;
   }
@@ -221,4 +217,11 @@
   .about__page__who__content {
     padding-left: 40px;
   }
+
+  .add-patungan__add-uang p span,
+  .add-patungan__add-uang__text p,
+  .add-patungan__change-kegiatan__text p {
+    font-size: 16px;
+  }
+  
 }
