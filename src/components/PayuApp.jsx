@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from '../pages/Home';
+import HomePage from '../pages/HomePage';
 import AppHeader from './AppHeader';
 import DetailPage from '../pages/DetailPage';
 import AddNewPatunganPage from '../pages/AddNewPatunganPage';
@@ -83,7 +83,7 @@ function PayuApp() {
               <Route element={<ProtectedRoute />}>
                 <Route path={NotFoundPath} element={<PageNotFound />} />
                 <Route path={PatunganPath} element={<Navigate replace to={rootPath} />} />
-                <Route path={rootPath} element={<Home />} />
+                <Route path={rootPath} element={<HomePage />} />
                 <Route path={DetailPatunganPath} element={<DetailPage />} />
                 <Route path={AddNewPatunganPath} element={<AddNewPatunganPage />} />
                 <Route path={AddAnggotaPatunganPath} element={<AddAnggotaPatunganPage />} />

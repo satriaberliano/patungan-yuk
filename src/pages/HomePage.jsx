@@ -23,6 +23,7 @@ function Home() {
   const [idUser, setIdUser] = useState();
   const [image, setImage] = useState();
   const [loading, setLoading] = useState(true);
+  const [imageLoading, setImageLoading] = useState(true);
   const { locale } = React.useContext(LocaleContext);
   const { theme } = React.useContext(ThemeContext);
   const navigate = useNavigate();
@@ -77,6 +78,7 @@ function Home() {
     async function images() {
       const result = await ApiSource.getImages(param);
       setImage(result);
+      setImageLoading(false);
     }
 
     images();
@@ -90,7 +92,7 @@ function Home() {
     <section className="home">
       <section className="payu__dashboard">
         <div className="payu__dashboard-hero">
-          <img className="payu__dashboard-image" src={image} alt="dashboard-images" />
+          {imageLoading ? <div className="payu__dashboard-image placeholder" /> : <img className="payu__dashboard-image" src={image} alt="dashboard-images" />}
           <div className="payu__dashboard-hero-content">
             <h2 tabIndex="0">
               {locale === 'id' ? `Hai ${currentUser}` : `Hi ${currentUser}`}
