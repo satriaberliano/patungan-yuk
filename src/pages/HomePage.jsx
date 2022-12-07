@@ -71,6 +71,7 @@ function Home() {
     getUserID(setIdUser);
     getUserName(setCurrentUser);
     getPatungan();
+    console.log('we');
   }, [idUser]);
 
   useEffect(() => {
@@ -113,7 +114,7 @@ function Home() {
         </div>
       </section>
       {patungan.length === 0 ? (
-        <p className="home-conditional-rendering">{locale === 'id' ? 'Patungan kosong...' : 'Patungan is empty...'}</p>
+        <p className="empty-conditional-rendering">{locale === 'id' ? 'Patungan kosong...' : 'Patungan is empty...'}</p>
       ) : (
         <section className="payu__list-patungan">
           {patungan.map((group) => {

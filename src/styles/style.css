@@ -169,11 +169,12 @@ a {
 }
 
 .conditional-rendering,
-.home-conditional-rendering {
+.empty-conditional-rendering {
   font-size: 14px;
   font-style: italic;
   color: #636363;
   padding: 20px 0;
+  text-align: center;
 }
 
 .home-conditional-rendering {
@@ -216,4 +217,5 @@ footer {
 .footer__payu:hover {
   color: var(--button-green-light);
   transition: all .3s ease-in;
+  text-decoration: line-through;
 }

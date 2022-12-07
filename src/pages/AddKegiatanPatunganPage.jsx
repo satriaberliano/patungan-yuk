@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
@@ -7,16 +7,19 @@ import useInput from '../hooks/useInput';
 import { db } from '../globals/firebase-config';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
+import Loader from '../components/Loader';
 
 function AddKegiatanPatunganPage() {
   const [name, setName] = useInput('');
   const [spend, setSpend] = useInput(0);
+  const [loading, setLoading] = useState(false);
   const url = UrlParser.parserActiveUrl();
   const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
 
   const addNewActivityHandler = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const patunganRef = doc(db, 'patungan', url.id);
     const data = await getDoc(patunganRef);
     const newActivity = {
@@ -32,11 +35,13 @@ function AddKegiatanPatunganPage() {
       icon: 'success',
       title: `${locale === 'id' ? 'Kegiatan berhasil ditambahkan' : 'Activity added successfully'}`,
     });
+    setLoading(false);
     navigate(-1);
   };
 
   return (
     <div className="add-kegiatan-patungan-page">
+      {loading ? <Loader /> : ''}
       <div className="add-patungan__add-activity">
         <div className="add-patungan__add-activity__text">
           <h2 tabIndex="0">{locale === 'id' ? 'Tambah Kegiatan' : 'Add Activity'}</h2>

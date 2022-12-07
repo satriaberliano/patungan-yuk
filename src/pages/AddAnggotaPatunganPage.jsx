@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
@@ -7,17 +7,19 @@ import useInput from '../hooks/useInput';
 import { db } from '../globals/firebase-config';
 import UrlParser from '../url-parser';
 import LocaleContext from '../contexts/LocaleContext';
+import Loader from '../components/Loader';
 
 function AddAnggotaPatunganPage() {
   const [name, setName] = useInput('');
   const [money, setMoney] = useInput(0);
+  const [loading, setLoading] = useState(false);
   const url = UrlParser.parserActiveUrl();
   const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
 
   const addNewAnggotaHandler = async (event) => {
     event.preventDefault();
-
+    setLoading(true);
     const patunganRef = doc(db, 'patungan', url.id);
     const data = await getDoc(patunganRef);
     const newMember = {
@@ -33,11 +35,13 @@ function AddAnggotaPatunganPage() {
       title: `${locale === 'id' ? 'Anggota berhasil ditambahkan' : 'Member added successfully'}`,
       icon: 'success',
     });
+    setLoading(false);
     navigate(-1);
   };
 
   return (
     <div className="add-anggota-patungan-page">
+      {loading ? <Loader /> : ''}
       <div className="add-patungan__add-user">
         <div className="add-patungan__add-user__text">
           <h2 tabIndex="0">{locale === 'id' ? 'Tambah Anggota' : 'Add Member'}</h2>

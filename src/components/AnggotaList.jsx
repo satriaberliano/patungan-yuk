@@ -9,7 +9,9 @@ import PropTypes from 'prop-types';
 import LocaleContext from '../contexts/LocaleContext';
 import { db } from '../globals/firebase-config';
 
-function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
+function AnggotaList({
+  patunganMembers, idPatungan, searchTerm, refresh,
+}) {
   const { locale } = React.useContext(LocaleContext);
 
   const deleteAnggota = async (idPatungan, idMember) => {
@@ -20,62 +22,69 @@ function AnggotaList({ patunganMembers, idPatungan, searchTerm }) {
     membersData.splice(memberDeleteIndex, 1);
 
     await updateDoc(patunganRef, { Members: membersData });
-    window.location.reload();
+    refresh();
   };
+
   return (
-    <div className="detail__list-user-container">
-      {patunganMembers.filter((val) => {
-        if (searchTerm == '') {
-          return val;
-        } if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
-          return val;
-        }
-      }).map((member) => {
-        const onDeleteAnggota = () => {
-          swal({
-            title: `${locale === 'id' ? 'Hapus anggota ini?' : 'Delete this member?'}`,
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-          })
-            .then((willDelete) => {
-              if (willDelete) {
-                swal({
-                  icon: 'success',
-                  title: `${locale === 'id' ? 'Anggota berhasil dihapus' : 'Member was successfully deleted'}`,
-                  buttons: false,
-                  timer: 1000,
+    <>
+      {patunganMembers.length === 0 ? (
+        <p className="empty-conditional-rendering">{locale === 'id' ? 'Anggota kosong...' : 'Members is empty...'}</p>
+      ) : (
+        <div className="detail__list-user-container">
+          {patunganMembers.filter((val) => {
+            if (searchTerm == '') {
+              return val;
+            } if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return val;
+            }
+          }).map((member) => {
+            const onDeleteAnggota = () => {
+              swal({
+                title: `${locale === 'id' ? 'Hapus anggota ini?' : 'Delete this member?'}`,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+              })
+                .then((willDelete) => {
+                  if (willDelete) {
+                    swal({
+                      icon: 'success',
+                      title: `${locale === 'id' ? 'Anggota berhasil dihapus' : 'Member was successfully deleted'}`,
+                      buttons: false,
+                      timer: 1000,
+                    });
+                    deleteAnggota(idPatungan, member.id);
+                  }
                 });
-                deleteAnggota(idPatungan, member.id);
-              }
-            });
-        };
-        return (
-          <div className="detail__list-user__wrapper" key={member.id}>
-            <div className="detail__list-user-item">
-              <p tabIndex="0" className="detail__list-user-item__name">{member.Name}</p>
-              <p tabIndex="0" className="detail__list-user-item__money">
-                <FaCoins />
-                {' '}
-                Rp
-                {' '}
-                {member.Total}
-              </p>
-            </div>
-            <div className="detail__list-user-button">
-              <button className="detail__list-user-button-delete" onClick={onDeleteAnggota} aria-label="delete button">
-                <HiOutlineTrash />
-              </button>
-              <button>
-                <Link className="detail__list-user-button-add" to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`} aria-label="add money">
-                  <FiPlusSquare />
-                </Link>
-              </button>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+            };
+            return (
+              <div className="detail__list-user__wrapper" key={member.id}>
+                <div className="detail__list-user-item">
+                  <p tabIndex="0" className="detail__list-user-item__name">{member.Name}</p>
+                  <p tabIndex="0" className="detail__list-user-item__money">
+                    <FaCoins />
+                    {' '}
+                    Rp
+                    {' '}
+                    {member.Total}
+                  </p>
+                </div>
+                <div className="detail__list-user-button">
+                  <button className="detail__list-user-button-delete" onClick={onDeleteAnggota} aria-label="delete button">
+                    <HiOutlineTrash />
+                  </button>
+                  <button>
+                    <Link className="detail__list-user-button-add" to={`/detail-patungan/${idPatungan}/${member.id}/add-uang-patungan`} aria-label="add money">
+                      <FiPlusSquare />
+                    </Link>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 }
 
