@@ -13,6 +13,7 @@ function AnggotaList({
   patunganMembers, idPatungan, searchTerm, refresh,
 }) {
   const { locale } = React.useContext(LocaleContext);
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
 
   const deleteAnggota = async (idPatungan, idMember) => {
     const patunganRef = doc(db, 'patungan', idPatungan);
@@ -47,13 +48,13 @@ function AnggotaList({
               })
                 .then((willDelete) => {
                   if (willDelete) {
+                    deleteAnggota(idPatungan, member.id);
                     swal({
                       icon: 'success',
                       title: `${locale === 'id' ? 'Anggota berhasil dihapus' : 'Member was successfully deleted'}`,
                       buttons: false,
                       timer: 1000,
                     });
-                    deleteAnggota(idPatungan, member.id);
                   }
                 });
             };
@@ -66,7 +67,7 @@ function AnggotaList({
                     {' '}
                     Rp
                     {' '}
-                    {member.Total}
+                    {formatRupiah(member.Total)}
                   </p>
                 </div>
                 <div className="detail__list-user-button">

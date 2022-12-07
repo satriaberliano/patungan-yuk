@@ -110,17 +110,22 @@
     font-size: 18px;
   }
 
-  .login-page {
+  /*    LOGIN & REGISTER PAGE    */
+  .login-page,
+  .register-page {
     margin-top: 10px;
     display: flex;
+    align-items: center;
     gap: 40px;
   }
 
-  .login-page__container {
+  .login-page__container,
+  .register-page__container {
     width: 60%;
   }
 
-  .login-page__image {
+  .login-page__image,
+  .register-page__image {
     width: 40%;
     margin: auto;
   }
@@ -128,22 +133,6 @@
   .login-page__image img {
     display: block;
     height: 425px;
-  }
-
-  /*    REGISTER PAGE    */
-  .register-page {
-    margin-top: 10px;
-    display: flex;
-    gap: 40px;
-  }
-
-  .register-page__container {
-    width: 60%;
-  }
-
-  .register-page__image {
-    width: 40%;
-    margin: auto;
   }
 
   .register-page__image img {

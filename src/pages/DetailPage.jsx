@@ -41,6 +41,7 @@ function DetailPage() {
     })
       .then((willDelete) => {
         if (willDelete) {
+          deletePatungan(url.id);
           swal({
             icon: 'success',
             title: `${locale === 'id' ? 'Patungan berhasil dihapus' : 'Patungan was successfully deleted'}`,
@@ -48,26 +49,10 @@ function DetailPage() {
             timer: 1000,
           })
             .then(() => {
-              deletePatungan(url.id);
-            })
-            .then(() => {
               navigate('/');
             });
         }
       });
-  };
-
-  const countDetail = async () => {
-    const total = await patunganMembers.map((member) => member.Total);
-    const sumBalance = await total.reduce((partialSum, a) => partialSum + a, 0);
-    setBalance(sumBalance);
-
-    const spend = await patunganActivity.map((activity) => activity.Spend);
-    const sumSpend = await spend.reduce((partialSum, a) => partialSum + a, 0);
-
-    const remainingBalance = sumBalance - sumSpend;
-
-    setRemainingBalance(remainingBalance);
   };
 
   const getDetailPatungan = async () => {
@@ -91,6 +76,22 @@ function DetailPage() {
     getDetailPatungan();
   }, [refresh]);
 
+  useEffect(() => {
+    const countDetail = async () => {
+      const total = await patunganMembers.map((member) => member.Total);
+      const sumBalance = await total.reduce((partialSum, a) => partialSum + a, 0);
+      setBalance(sumBalance);
+
+      const spend = await patunganActivity.map((activity) => activity.Spend);
+      const sumSpend = await spend.reduce((partialSum, a) => partialSum + a, 0);
+
+      const remainingBalance = sumBalance - sumSpend;
+
+      setRemainingBalance(remainingBalance);
+    };
+    countDetail();
+  }, [patunganMembers]);
+
   const reloadDetailPage = () => {
     if (refresh) {
       setRefresh(false);
@@ -110,10 +111,10 @@ function DetailPage() {
           this.className += ' active';
         });
       }
-      countDetail();
     }
   }, [loading]);
 
+  console.log('tes');
   if (loading) {
     return <Loader />;
   }

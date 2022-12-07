@@ -12,6 +12,7 @@ function KegiatanList({
   patunganActivity, idPatungan, searchTerm, refresh,
 }) {
   const { locale } = React.useContext(LocaleContext);
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
 
   const deleteKegiatan = async (idPatungan, idActivity) => {
     const patunganRef = doc(db, 'patungan', idPatungan);
@@ -46,13 +47,13 @@ function KegiatanList({
               })
                 .then((willDelete) => {
                   if (willDelete) {
+                    deleteKegiatan(idPatungan, activity.id);
                     swal({
                       icon: 'success',
                       title: `${locale === 'id' ? 'Kegiatan berhasil dihapus' : 'Activity was successfully deleted'}`,
                       buttons: false,
                       timer: 1000,
                     });
-                    deleteKegiatan(idPatungan, activity.id);
                   }
                 });
             };
@@ -65,7 +66,7 @@ function KegiatanList({
                     {' '}
                     Rp
                     {' '}
-                    {activity.Spend}
+                    {formatRupiah(activity.Spend)}
                   </p>
                 </div>
                 <div className="detail__list-activity-button">

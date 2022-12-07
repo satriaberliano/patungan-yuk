@@ -3,6 +3,8 @@ import { FaCoins } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 function SharedAnggotaList({ patunganMembers, searchTerm }) {
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
+
   return (
     <div className="detail__list-user-container">
       {patunganMembers.filter((val) => {
@@ -20,7 +22,7 @@ function SharedAnggotaList({ patunganMembers, searchTerm }) {
               {' '}
               Rp
               {' '}
-              {member.Total}
+              {formatRupiah(member.Total)}
             </p>
           </div>
         </div>

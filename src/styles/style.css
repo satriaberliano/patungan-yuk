@@ -172,12 +172,11 @@ a {
 .empty-conditional-rendering {
   font-size: 14px;
   font-style: italic;
-  color: #636363;
   padding: 20px 0;
-  text-align: center;
+  color: #636363;
 }
 
-.home-conditional-rendering {
+.empty-conditional-rendering {
   text-align: center;
 }
 

@@ -19,6 +19,7 @@ function DetailDashboard({
 }) {
   const urlShared = `${sharedConfig.sharedUrl}${patuganIdShare}`;
   const { locale } = React.useContext(LocaleContext);
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
 
   return (
     <div className="detail__dashboard-item">
@@ -53,21 +54,21 @@ function DetailDashboard({
           {' '}
           Rp
           {' '}
-          {balance}
+          {formatRupiah(balance)}
         </p>
         {remainingBalance < 0 ? (
           <p tabIndex="0" className="detail__dashboard-item__leftover remaining-balance-red">
             {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
             : Rp
             {' '}
-            {remainingBalance}
+            {formatRupiah(remainingBalance)}
           </p>
         ) : (
           <p tabIndex="0" className="detail__dashboard-item__leftover">
             {locale === 'id' ? 'Sisa patungan' : 'Current balance'}
             : Rp
             {' '}
-            {remainingBalance}
+            {formatRupiah(remainingBalance)}
           </p>
         )}
       </div>
