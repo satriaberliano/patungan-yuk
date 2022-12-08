@@ -114,7 +114,6 @@ function DetailPage() {
     }
   }, [loading]);
 
-  console.log('tes');
   if (loading) {
     return <Loader />;
   }
