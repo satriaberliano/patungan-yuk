@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 function NewKegiatanItem({
   Name, Spend, id, onDelete,
 }) {
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
+
   return (
     <div className="new-kegiatan__item">
       <div className="new-kegiatan__content">
@@ -15,7 +17,7 @@ function NewKegiatanItem({
           {' '}
           Rp
           {' '}
-          {Spend}
+          {formatRupiah(Spend)}
         </p>
       </div>
       <div className="new-kegiatan__delete">

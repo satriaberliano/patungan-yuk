@@ -9,7 +9,6 @@ import { signOut } from 'firebase/auth';
 import swal from 'sweetalert';
 import { db, auth } from '../globals/firebase-config';
 import { AddNewPatunganPath } from '../routes';
-
 import { getUserName, getUserID, putAccessToken } from '../utils/helper';
 import LocaleContext from '../contexts/LocaleContext';
 import ThemeContext from '../contexts/ThemeContext';
@@ -28,6 +27,8 @@ function Home() {
   const { theme } = React.useContext(ThemeContext);
   const navigate = useNavigate();
 
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
+
   const onLogoutHandler = () => {
     swal({
       title: `${locale === 'id' ? 'Apakah kamu yakin?' : 'Are you sure?'}`,
@@ -37,19 +38,17 @@ function Home() {
     })
       .then((willLogout) => {
         if (willLogout) {
+          signOut(auth)
+            .then(() => {
+              putAccessToken('');
+              navigate('/welcome');
+            });
           swal({
             icon: 'success',
             title: `${locale === 'id' ? 'Logout berhasil' : 'Logout success'}`,
             buttons: false,
             timer: 1000,
-          })
-            .then(() => {
-              signOut(auth)
-                .then(() => {
-                  putAccessToken('');
-                  navigate('/welcome');
-                });
-            });
+          });
         }
       });
   };
@@ -113,7 +112,7 @@ function Home() {
         </div>
       </section>
       {patungan.length === 0 ? (
-        <p className="home-conditional-rendering">{locale === 'id' ? 'Patungan kosong...' : 'Patungan is empty...'}</p>
+        <p className="empty-conditional-rendering">{locale === 'id' ? 'Patungan kosong...' : 'Patungan is empty...'}</p>
       ) : (
         <section className="payu__list-patungan">
           {patungan.map((group) => {
@@ -137,7 +136,7 @@ function Home() {
                         {' '}
                         Rp
                         {' '}
-                        {sumBalance}
+                        {formatRupiah(sumBalance)}
                       </p>
                     </section>
                   </div>

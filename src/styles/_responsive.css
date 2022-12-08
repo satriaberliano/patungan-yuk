@@ -110,14 +110,37 @@
     font-size: 18px;
   }
 
-  .login-page {
-    width: 50%;
-  }
-
+  /*    LOGIN & REGISTER PAGE    */
+  .login-page,
   .register-page {
-    width: 50%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
   }
 
+  .login-page__container,
+  .register-page__container {
+    width: 60%;
+  }
+
+  .login-page__image,
+  .register-page__image {
+    width: 40%;
+    margin: auto;
+  }
+
+  .login-page__image img {
+    display: block;
+    height: 425px;
+  }
+
+  .register-page__image img {
+    display: block;
+    height: 400px;
+  }
+
+  /*    INFO PAGE    */
   .info-page {
     margin-top: 30px;
     display: flex;
@@ -150,12 +173,9 @@
     width: 60%;
   }
 
+  /*    DETAIL PAGE    */
   .detail__dashboard-title h2 {
     font-size: 28px;
-  }
-
-  .detail__dashboard-title p {
-    font-size: 16px;
   }
 
   .detail__dashboard-item__name {
@@ -170,6 +190,7 @@
     font-size: 12px;
   }
 
+  /*    ABOUT PAGE    */
   .about-page__who__list {
     grid-template-columns: 1fr 1fr;
   }
@@ -185,4 +206,11 @@
   .about__page__who__content {
     padding-left: 40px;
   }
+
+  .add-patungan__add-uang p span,
+  .add-patungan__add-uang__text p,
+  .add-patungan__change-kegiatan__text p {
+    font-size: 16px;
+  }
+  
 }

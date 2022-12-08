@@ -17,10 +17,11 @@ function AddUangPatunganPage() {
   const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [inputLoading, setInputLoading] = useState(false);
 
   const addUangPatunganHandler = async (event) => {
     event.preventDefault();
-
+    setInputLoading(true);
     const patunganRef = doc(db, 'patungan', url.idPatungan);
     const data = await getDoc(patunganRef);
     const membersData = data.data().Members;
@@ -33,6 +34,7 @@ function AddUangPatunganPage() {
       icon: 'success',
       title: `${locale === 'id' ? 'Patungan anggota berhasil ditambahkan' : 'Member patungan has been successfully added'}`,
     });
+    setInputLoading(false);
     navigate(-1);
   };
 
@@ -56,6 +58,7 @@ function AddUangPatunganPage() {
 
   return (
     <div className="add-uang-patungan-page">
+      {inputLoading ? <Loader /> : ''}
       <div className="add-patungan__add-uang">
         <div className="add-patungan__add-uang__text">
           <h2 tabIndex="0">{locale === 'id' ? 'Tambah Patungan' : 'Add Patungan'}</h2>

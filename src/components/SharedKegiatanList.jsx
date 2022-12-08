@@ -3,6 +3,8 @@ import { FaCoins } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 function SharedKegiatanList({ patunganActivity, searchTerm }) {
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
+
   return (
     <div className="detail__list-activity-container">
       {patunganActivity.filter((val) => {
@@ -20,7 +22,7 @@ function SharedKegiatanList({ patunganActivity, searchTerm }) {
               {' '}
               Rp
               {' '}
-              {activity.Spend}
+              {formatRupiah(activity.Spend)}
             </p>
           </div>
         </div>

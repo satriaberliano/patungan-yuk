@@ -18,10 +18,11 @@ function ChangeKegiatanPatunganPage() {
   const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [inputLoading, setInputLoading] = useState(false);
 
   const changeKegiatanPatunganHandler = async (event) => {
     event.preventDefault();
-
+    setInputLoading(true);
     const patunganRef = doc(db, 'patungan', url.idPatungan);
     const data = await getDoc(patunganRef);
     const activityData = data.data().Activity;
@@ -34,6 +35,7 @@ function ChangeKegiatanPatunganPage() {
       icon: 'success',
       title: `${locale === 'id' ? 'Detail kegiatan berhasil diubah' : 'Activity details changed successfully'}`,
     });
+    setInputLoading(false);
     navigate(-1);
   };
 
@@ -57,6 +59,7 @@ function ChangeKegiatanPatunganPage() {
 
   return (
     <div className="change-kegiatan-patungan-page">
+      {inputLoading ? <Loader /> : ''}
       <div className="add-patungan__change-kegiatan">
         <div className="add-patungan__change-kegiatan__text">
           <h2 tabIndex="0">{locale === 'id' ? 'Ubah Kegiatan' : 'Change Activity'}</h2>

@@ -169,14 +169,14 @@ a {
 }
 
 .conditional-rendering,
-.home-conditional-rendering {
+.empty-conditional-rendering {
   font-size: 14px;
   font-style: italic;
-  color: #636363;
   padding: 20px 0;
+  color: #636363;
 }
 
-.home-conditional-rendering {
+.empty-conditional-rendering {
   text-align: center;
 }
 
@@ -210,10 +210,11 @@ footer {
   margin-top: auto;
   width: 100%;
   padding: 40px 20px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .footer__payu:hover {
   color: var(--button-green-light);
   transition: all .3s ease-in;
+  text-decoration: line-through;
 }

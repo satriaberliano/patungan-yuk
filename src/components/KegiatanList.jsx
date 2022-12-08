@@ -8,8 +8,11 @@ import PropTypes from 'prop-types';
 import LocaleContext from '../contexts/LocaleContext';
 import { db } from '../globals/firebase-config';
 
-function KegiatanList({ patunganActivity, idPatungan, searchTerm }) {
+function KegiatanList({
+  patunganActivity, idPatungan, searchTerm, refresh,
+}) {
   const { locale } = React.useContext(LocaleContext);
+  const formatRupiah = (changeFormat) => new Intl.NumberFormat('de-ID', { style: 'decimal', currency: 'IDR' }).format(changeFormat);
 
   const deleteKegiatan = async (idPatungan, idActivity) => {
     const patunganRef = doc(db, 'patungan', idPatungan);
@@ -19,57 +22,63 @@ function KegiatanList({ patunganActivity, idPatungan, searchTerm }) {
     activityData.splice(activityDeleteIndex, 1);
 
     await updateDoc(patunganRef, { Activity: activityData });
-    window.location.reload();
+    refresh();
   };
 
   return (
-    <div className="detail__list-activity-container">
-      {patunganActivity.filter((val) => {
-        if (searchTerm == '') {
-          return val;
-        } if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
-          return val;
-        }
-      }).map((activity) => {
-        const onDeleteKegiatan = () => {
-          swal({
-            title: `${locale === 'id' ? 'Hapus kegiatan ini?' : 'Delete this activity?'}`,
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-          })
-            .then((willDelete) => {
-              if (willDelete) {
-                swal({
-                  icon: 'success',
-                  title: `${locale === 'id' ? 'Kegiatan berhasil dihapus' : 'Activity was successfully deleted'}`,
-                  buttons: false,
-                  timer: 1000,
+    <>
+      {patunganActivity.length === 0 ? (
+        <p className="empty-conditional-rendering">{locale === 'id' ? 'Kegiatan kosong...' : 'Activity is empty...'}</p>
+      ) : (
+        <div className="detail__list-activity-container">
+          {patunganActivity.filter((val) => {
+            if (searchTerm == '') {
+              return val;
+            } if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return val;
+            }
+          }).map((activity) => {
+            const onDeleteKegiatan = () => {
+              swal({
+                title: `${locale === 'id' ? 'Hapus kegiatan ini?' : 'Delete this activity?'}`,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+              })
+                .then((willDelete) => {
+                  if (willDelete) {
+                    deleteKegiatan(idPatungan, activity.id);
+                    swal({
+                      icon: 'success',
+                      title: `${locale === 'id' ? 'Kegiatan berhasil dihapus' : 'Activity was successfully deleted'}`,
+                      buttons: false,
+                      timer: 1000,
+                    });
+                  }
                 });
-                deleteKegiatan(idPatungan, activity.id);
-              }
-            });
-        };
-        return (
-          <div className="detail__list-activity__wrapper" key={activity.id}>
-            <div className="detail__list-activity-item">
-              <p tabIndex="0" className="detail__list-activity-item__name">{activity.Name}</p>
-              <p tabIndex="0" className="detail__list-activity-item__money">
-                <FaCoins />
-                {' '}
-                Rp
-                {' '}
-                {activity.Spend}
-              </p>
-            </div>
-            <div className="detail__list-activity-button">
-              <button className="detail__list-activity-button-delete" onClick={onDeleteKegiatan} aria-label="delete button"><HiOutlineTrash /></button>
-              <button><Link className="detail__list-activity-button-change" to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`} aria-label="change activity"><HiOutlinePencil /></Link></button>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+            };
+            return (
+              <div className="detail__list-activity__wrapper" key={activity.id}>
+                <div className="detail__list-activity-item">
+                  <p tabIndex="0" className="detail__list-activity-item__name">{activity.Name}</p>
+                  <p tabIndex="0" className="detail__list-activity-item__money">
+                    <FaCoins />
+                    {' '}
+                    Rp
+                    {' '}
+                    {formatRupiah(activity.Spend)}
+                  </p>
+                </div>
+                <div className="detail__list-activity-button">
+                  <button className="detail__list-activity-button-delete" onClick={onDeleteKegiatan} aria-label="delete button"><HiOutlineTrash /></button>
+                  <button><Link className="detail__list-activity-button-change" to={`/detail-patungan/${idPatungan}/${activity.id}/change-kegiatan`} aria-label="change activity"><HiOutlinePencil /></Link></button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 }
 
