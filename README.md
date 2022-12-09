@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-# <div align="center">PAYU (Patungan Yuk)</div>
+# PAYU (Patungan Yuk)
 
 PAYU merupakan aplikasi pencatatan patungan yang dibangun guna memberi kemudahan bagi mereka yang ingin pergi berlibur ataupun sekedar hangout akan tetapi tetap memperhatikan budget/dana sehingga dapat tercatat setiap pemasukan dan pengeluarannya. Terdapat fitur untuk membuat grup patungan, memasukkan daftar anggota beserta jumlah dana dari setiap anggota, dan menambah daftar kegiatan apa saja yang ingin dilakukan. Dengan adanya aplikasi ini diharapkan dapat membantu pengguna agar perencanaan dan pengelolaan dana menjadi lebih baik.
 
