@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-# PAYU (Patungan Yuk)
+# <div align="center">PAYU (Patungan Yuk)</div>
 
 PAYU merupakan aplikasi pencatatan patungan yang dibangun guna memberi kemudahan bagi mereka yang ingin pergi berlibur ataupun sekedar hangout akan tetapi tetap memperhatikan budget/dana sehingga dapat tercatat setiap pemasukan dan pengeluarannya. Terdapat fitur untuk membuat grup patungan, memasukkan daftar anggota beserta jumlah dana dari setiap anggota, dan menambah daftar kegiatan apa saja yang ingin dilakukan. Dengan adanya aplikasi ini diharapkan dapat membantu pengguna agar perencanaan dan pengelolaan dana menjadi lebih baik.
 
@@ -32,19 +32,32 @@ Kehidupan masyarakat setelah pandemi Covid-19 mulai berjalan normal, kembali ke 
 
 ## Project Resources
 #### 1. Bahasa Pemrograman
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /><img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" /><img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
+* HTML
+* CSS
+* JavaScript
 
 #### 2. Library
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+* React.js
+* Sweetalert
+* React-icons
+* React-loader-spinner
 
 #### 3. Database & Deployment
-<img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black"/>
+* Firebase
 
 #### 4. Wireframe & Prototyping
-<img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" />
+* Figma
 
-#### 5. API
-[Unsplash Image API](https://unsplash.com/developers)
+#### 5. Linter
+* ESLint
+
+#### 6. Ilustrasi
+* [Storyset](https://storyset.com/)
+
+#### 7. API
+* [Unsplash Image API](https://unsplash.com/developers)
+
+
 
 #### Kunjungi aplikasi PAYU [disini](https://patungan-yuk-dicoding.web.app)
 
