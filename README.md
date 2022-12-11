@@ -57,9 +57,10 @@ Kehidupan masyarakat setelah pandemi Covid-19 mulai berjalan normal, kembali ke 
 #### 7. API
 * [Unsplash Image API](https://unsplash.com/developers)
 
-
-
 #### Kunjungi aplikasi PAYU [disini](https://patungan-yuk-dicoding.web.app)
+<br/>
 
+## User Guide
+#### Akses User Guide aplikasi PAYU [disini](https://drive.google.com/file/d/1628KXxINBzfTemJsE3UP7bMzdgFJRdfu/view?usp=sharing)
 
 <p align="right">--<a href="#readme-top">back to top</a>--</p>
